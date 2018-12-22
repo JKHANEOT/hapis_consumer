@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#eeeeee">
+
+    <RelativeLayout
+        android:id="@+id/nav_header_container"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_alignParentTop="true"
+        android:background="#131c2e"
+        android:paddingBottom="@dimen/margin"
+        android:paddingTop="@dimen/margin">
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/screen_title_tv"
+            style="@style/semi_bold_16sp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/account"
+            android:textAllCaps="false"
+            android:textColor="@color/md_white_1000" />
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/profile_pic_iv"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/default_profile_pic"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/nav_header_container">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/drawerList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="@dimen/default_gap" />
+
+            <LinearLayout
+                android:id="@+id/terms_conditions_tv_ll"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/drawerList"
+                android:layout_marginTop="@dimen/default_gap">
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/terms_conditions_tv"
+                    style="@style/regular_12sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="90dp"
+                    android:clickable="true"
+                    android:text="@string/terms_and_conditions"
+                    android:textAllCaps="false"
+                    android:textColor="#9e9e9e" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/privacy_policy_tv_ll"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/terms_conditions_tv_ll"
+                android:layout_marginTop="@dimen/default_gap">
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/privacy_policy_tv"
+                    style="@style/regular_12sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="90dp"
+                    android:clickable="true"
+                    android:text="@string/privacy_and_policy"
+                    android:textAllCaps="false"
+                    android:textColor="#9e9e9e" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/version_no_tv_ll"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/privacy_policy_tv_ll"
+                android:layout_marginBottom="@dimen/default_gap"
+                android:layout_marginTop="30dp">
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/version_no_tv"
+                    style="@style/regular_12sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="90dp"
+                    android:text="V 3.1.1 P13"
+                    android:textAllCaps="false"
+                    android:textColor="#9e9e9e" />
+
+            </LinearLayout>
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.AppBarLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/appbar_lay"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="0dp"
+    android:theme="@style/AppTheme.AppBarOverlay"
+    app:elevation="0dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="0dp">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorPrimary"
+            app:elevation="0dp"
+            app:layout_collapseMode="pin"
+            app:layout_scrollFlags="scroll|enterAlways">
+
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/prod_icon_toolbar"
+                style="@style/dk_tool_bar_imageview_thumbnail_style"
+                android:layout_centerVertical="true"
+                android:adjustViewBounds="true"
+                android:src="@mipmap/ic_launcher"
+                android:visibility="invisible" />
+
+            <ProgressBar
+                android:id="@+id/progress_spinner"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="5dp"
+                android:indeterminate="true"
+                android:visibility="gone" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:orientation="vertical">
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/toolbar_title"
+                    style="@style/semi_bold_16sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:layout_centerVertical="true"
+                    android:maxLines="1"
+                    android:textAllCaps="false"
+                    android:textColor="@color/md_white_1000" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/toolbar_subtitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/toolbar_title"
+                    android:textAllCaps="false"
+                    android:textColor="@color/md_grey_100"
+                    android:textSize="@dimen/toolbar_subtitle_text_size" />
+
+            </RelativeLayout>
+
+        </android.support.v7.widget.Toolbar>
+    </RelativeLayout>
+</android.support.design.widget.AppBarLayout>

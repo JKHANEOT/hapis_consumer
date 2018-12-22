@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+    <style type="text/css">
+        html, body {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            background: #000000;
+            overflow: hidden;
+            position: fixed;
+        }
+    </style>
+
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <script src="https://www.youtube.com/iframe_api"></script>
+    </head>
+
+    <body>
+        <div id="youTubePlayerDOM"></div>
+    </body>
+
+    <script type="text/javascript">
+        
+        const UNSTARTED = "UNSTARTED";
+        const ENDED = "ENDED";
+        const PLAYING = "PLAYING";
+        const PAUSED = "PAUSED";
+        const BUFFERING = "BUFFERING";
+        const CUED = "CUED";
+        
+        const YouTubePlayerBridge = window.YouTubePlayerBridge;
+    	var player;
+
+    	function onYouTubeIframeAPIReady() {
+
+            YouTubePlayerBridge.sendYouTubeIframeAPIReady();
+            
+    		player = new YT.Player('youTubePlayerDOM', {
+    			
+                height: '100%',
+    			width: '100%',
+    			
+                events: {
+    				onReady: function(event) { YouTubePlayerBridge.sendReady() },
+    				onStateChange: function(event) { sendPlayerStateChange(event.data) },
+    				onPlaybackQualityChange: function(event) { YouTubePlayerBridge.sendPlaybackQualityChange(event.data) },
+    				onPlaybackRateChange: function(event) { YouTubePlayerBridge.sendPlaybackRateChange(event.data) },
+    				onError: function(error) { YouTubePlayerBridge.sendError(error.data) },
+    				onApiChange: function(event) { YouTubePlayerBridge.sendApiChange() }
+    			},
+
+    			playerVars: {
+    				autoplay: 0,
+    				autohide: 1,
+    				controls: 0,
+    				enablejsapi: 1,
+    				fs: 0,
+    				origin: 'https://www.youtube.com',
+    				rel: 0,
+    				showinfo: 0,
+    				iv_load_policy: 3
+    			}
+                
+    		});
+    	}
+
+    	function sendPlayerStateChange(playerState) {
+            var timerTaskId;
+            clearTimeout(timerTaskId);
+
+            switch (playerState) {
+            	case YT.PlayerState.UNSTARTED:
+                    sendStateChange(UNSTARTED);
+                    return;
+
+            	case YT.PlayerState.ENDED:
+                    sendStateChange(ENDED);
+                    return;
+
+                case YT.PlayerState.PLAYING:
+                    sendStateChange(PLAYING);
+                    timerTaskId = setInterval(function() {
+                      YouTubePlayerBridge.sendVideoCurrentTime( player.getCurrentTime() )
+                    }, 100 );
+                    sendVideoData(player);
+                    return;
+
+                case YT.PlayerState.PAUSED:
+                    sendStateChange(PAUSED);
+                    return;
+
+                case YT.PlayerState.BUFFERING:
+                    sendStateChange(BUFFERING);
+                    return;
+
+                case YT.PlayerState.CUED:
+                    sendStateChange(CUED);
+                    return;
+            }
+
+            function sendVideoData(player) {
+                // const { video_id, title } = player.getVideoData();
+                const videoDuration = player.getDuration();
+
+                // YouTubePlayerBridge.sendVideoId(video_id)
+                // YouTubePlayerBridge.sendVideoTitle(title);
+                YouTubePlayerBridge.sendVideoDuration(videoDuration);
+            }
+
+            function sendStateChange(newState) {
+                YouTubePlayerBridge.sendStateChange(newState)
+            }
+        }
+
+        // WEB to JAVA functions
+
+        function sendMessage(msg) {
+        	YouTubePlayerBridge.sendMessage(msg);
+        }
+
+        // JAVA to WEB functions
+
+        function seekTo(startSeconds) {        	
+        	player.seekTo(startSeconds, true);
+        }
+
+        function pauseVideo() {
+        	player.pauseVideo();
+        }
+
+        function playVideo() {
+        	player.playVideo();
+        }
+
+        function loadVideo(videoId, startSeconds) {
+            player.loadVideoById(videoId, startSeconds);
+            YouTubePlayerBridge.sendVideoId(videoId);
+        }
+
+        function cueVideo(videoId, startSeconds) {
+            player.cueVideoById(videoId, startSeconds);
+            YouTubePlayerBridge.sendVideoId(videoId);
+        }
+
+        function mute() {
+            player.mute();
+        }
+
+        function unMute() {
+            player.unMute();
+        }
+
+        function setVolume(volumePercent) {
+            player.setVolume(volumePercent);
+        }
+
+    </script>
+</html>

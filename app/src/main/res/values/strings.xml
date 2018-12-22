@@ -1,0 +1,1752 @@
+<resources>
+    <!--<string name="google_api_key">AIzaSyCKZf_K2V-xwDn-Z8MqebutBRnz9OZk9kE</string>--><!--Release Key-->
+    <string name="google_api_key">AIzaSyBVs_89bipnMCNFf7u0vSPNsPzY7Tww38k</string><!--Debug Key-->
+    <string name="google_maps_gecoding_api_key">AIzaSyCbnmr91ZShTHO_TJRMSDzKxaml4215334</string><!--google_maps_gecoding_api_key-->
+
+    <string name="backend_url">http://192.168.0.3:</string>
+
+    <string name="app_name">HAPIS Customer</string> <!--QA build app name-->
+
+    <string name="source_type">android</string>
+
+    <string name="copyright">Copyright &#169; 2018, HAPIS</string>
+
+    <string name="action_settings">Settings</string>
+
+    <string name="exit_toast_txt">Press again to exit HAPIS App</string>
+
+    <string name="terms_of_use">\u0020<u>Terms of Service</u></string>  <!--.\u0020 \u002A-->
+    <string name="i_accept">By clicking \"Get Started\" You agree to HAPIS </string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="home_actionbar">Home</string>
+    <string name="profile_management">Profile Management</string>
+    <string name="submit_button_label">Submit</string>
+    <string name="password_hint">Password</string>
+    <string name="set_password_hint">Set Password</string>
+    <string name="confirm_password_hint">Confirm Password</string>
+    <string name="no_network_title">No network available.</string>
+    <string name="no_network_message">Network Alert! You are in a  Zero network zone, please connect to a network and try again.</string>
+    <string name="please_enter_email_id">Please enter email</string>
+    <string name="please_enter_password">Seems you forgot to enter the Password</string>
+    <string name="please_enter_valid_email_id">Email entered is an incorrect format</string>
+    <string name="fetching_user_profile_data">Fetching user profile data.</string>
+    <string name="add_product">Add Product</string>
+    <string name="under_warranty">Under Warranty?</string>
+    <string name="product_image_lbl">Product Image</string>
+    <string name="product_image">Product\nImage</string>
+    <string name="product_model_no_hint_mandatory">Model Number  <font fgcolor="#fd3e39">●</font></string>
+    <string name="product_model_no_floating_hint">Model Number</string>
+    <string name="product_model_no_hint">Model No.</string>
+    <string name="product_serial_no_imei_no_hint">Serial/IMEI No.</string>
+    <string name="product_vin_hint">VIN No.</string>
+    <string name="product_serial_no_hint">Serial No.</string>
+    <string name="product_serial_no_hint_mandatory">Serial No. *</string>
+    <string name="product_engine_no_hint">Engine No.</string>
+    <string name="product_regd_no_hint">Registration No.</string>
+    <string name="first_regd_on">First Registered On</string>
+    <string name="warrenty_exp_date_hint">Warranty Expiry Date</string>
+    <string name="purchase_date_hint">Purchase Date</string>
+    <string name="purchase_date_hint_mandatory">Purchase Date <font fgcolor="#fd3e39">●</font></string>
+    <string name="purchase_date_floating_hint">Purchase Date</string>
+    <string name="select_category">Select Category* (Ex: TV, Laptop, etc..)</string>
+    <string name="select_subcategory">Select Category <font fgcolor="#fd3e39">●</font></string>
+    <string name="till_date_mandatory_hint">Till Date <font fgcolor="#fd3e39">●</font></string>
+    <string name="till_date_floating_hint">Till Date</string>
+    <string name="subcategory_floating_hint">Category</string>
+    <string name="please_select_category">Please select category.</string>
+    <string name="please_select_subcategory">Please select product category.</string>
+    <string name="please_enter_product_model_no">Please enter or scan product model number.</string>
+    <string name="please_enter_or_scan_product_serial_no">Please enter or scan product serial number.</string>
+    <string name="select_brand">Select Brand  <font fgcolor="#fd3e39">●</font></string>
+    <string name="brand_floating_hint">Brand</string>
+    <string name="please_select_brand">Please select brand.</string>
+    <string name="please_select_purchase_date">Please select purchase date.</string>
+    <string name="captured_Photo">Captured Photo</string>
+
+    <string name="forgot_password">Forgot Password</string>
+    <string name="forgot_password_success">Your OTP is on it\'s way</string>
+    <string name="forgot_password_lbl">Forgot Password</string>
+    <string name="enter_current_password"> Current Password</string>
+    <string name="please_enter_otp">You need to enter a valid OTP to proceed.</string>
+    <string name="change_password">Change Password</string>
+    <string name="please_enter_old_password">Please enter old password.</string>
+    <string name="old_password_and_new_password_should_not_be_same">For security reasons new and old passwords should not be same</string>
+    <string name="registration_screen_title">Registration</string>
+    <string name="validate_otp_screen_title">Validate OTP</string>
+    <string name="dashboard">Dashboard</string>
+    <string name="grid_view_title">My Products</string>
+    <string name="registering">Registering...</string>
+    <string name="verifying_otp">Verifying OTP</string>
+    <string name="updating_profile">Updating profile</string>
+    <string name="change_password_lbl">Change Password</string>
+    <string name="cancel">Cancel</string>
+    <string name="proceed">Proceed</string>
+    <string name="user_login_in_process">User Login in process...</string>
+    <string name="ok">OK</string>
+    <string name="set_alarm">Set alarm</string>
+    <string name="delete">Delete</string>
+    <string name="not_available">Not Available</string>
+    <string name="product_details">Product Details</string>
+    <string name="fetching_product_category_types_details_progress_msg">Fetching Product Category Types details in progress...</string>
+    <string name="failed_to_fetch_details">Failed to fetch details</string>
+    <string name="digitalkitdetails">Digital Kit</string>
+    <string name="add_product_request_in_progress">Add product request in progress...</string>
+    <string name="add_product_sucessfull">Your digital kit has been generated.</string>
+    <string name="add_product_failed">Add product failed</string>
+    <string name="failed_to_fetch_or_update_details">Something seems to have gone wrong. We appreciate your patience while we put it back together.</string>
+    <string name="product_description">Product Description / Comments</string>
+    <string name="service_locator">Service Locations</string>
+    <string name="navigation_drawe_list_item">Navigation Drawer List Item</string>
+    <string name="logout">Logout</string>
+    <string name="user_logout_message">See you soon</string>
+    <string name="mobile_number_should_not_more_than_10">We can not take mobile number more than 12-digits</string>
+    <string name="incoomplete_otp">Alert! OTP  field should have 6 digits</string>
+    <string name="password_should_be_of_length">Password field should have minimum 6 digits.</string>
+    <string name="refer_friend">Refer Friend</string>
+
+    <string name="fetching_digital_kit_resources">Fetching Digital kit resources...</string>
+    <string name="product_resource_not_available">Product resource not available</string>
+    <string name="no_manual_available">Currently we do not have any manuals for you. We will notify you as soon as we add self help manuals.</string>
+    <string name="no_video_available">Currently we do not have any videos for you. We will notify you as soon as we add self help videos.</string>
+    <string name="loading_with_product_images_link">Fetching ...</string>
+
+    <string name="loading_with_product_video_link">Loading with product video links</string>
+    <string name="error_init_failure"><![CDATA[<string name=\"error_init_faiInitialization failure: Unable to play video.]]></string>
+    <string name="password_not_match">Passwords doesn\'t match</string>
+    <string name="invalid_mobile_number_starts_with_zero">Alert! Mobile number field should not start with zero</string>
+    <string name="password_change_successful">You have a new password</string>
+    <string name="unknown_errror">Unknown error.</string>
+    <string name="invalid_old_password">You have entered an incorrect password</string>
+    <string name="video_review_text">Was this useful?</string>
+
+    <string name="select_camera">Select a Camera</string>
+    <string name="unable_to_scan_product_serial_number">Unable to scan product serial number</string>
+    <string name="fetching_service_locators">Fetching service locators...</string>
+    <string name="view_product_details">View Product Details</string>
+    <string name="fetching_product_details">Fetching product details..</string>
+    <string name="product_details_not_available">Product details not available</string>
+    <string name="product_sub_category">Product Subcategory</string>
+    <string name="product_category">Product Category</string>
+    <string name="manufacturer">Manufacturer</string>
+    <string name="seller">Seller</string>
+    <string name="unable_to_process_request">Something seems to have gone wrong. We appreciate your patience while we put it back together.</string>
+    <string name="please_enter_city">Please enter city</string>
+    <string name="please_enter_pincode">Please enter pincode</string>
+    <string name="please_enter_state">Please enter stateCode</string>
+    <string name="no_notifications_to_show">You don\'t have any notifications</string>
+    <string name="no_offers_to_show">You don\'t have any offers :( But do keep checking. Something nice may pop up:)</string>
+    <string name="notification">Notification</string>
+    <string name="offer">Offer</string>
+    <string name="msg_center">Message Center</string>
+    <string name="fetching_notifications">Fetching notifications..</string>
+    <string name="fetching_services">Fetching Services...</string>
+    <string name="please_enter_country">Please enter country</string>
+    <string name="pay_now">Pay Now</string>
+    <string name="please_wait">Please wait…</string>
+    <string name="payment_success_thanks">Your payment has been successfully processed. Thank you for using PayUMoney!</string>
+    <string name="search">Search</string>
+    <!-- APPLOZIC CHAT  -->
+
+    <string name="application_key">easoftech28b7a8dd04cae7d9934014d5773395886</string>
+    <string name="default_media_location_folder">@string/app_name</string>
+
+
+    <!--===========================-->
+
+    <string name="login_label">Login</string>
+    <string name="sliding_text_1">Knowledge Base and Self Service</string>
+    <string name="new_user_sign_up_text">Don\'t have an account?&#160;</string>
+    <string name="already_hv_acnt_text">Already have an account? </string>
+    <string name="frgt_pswd_text">Forgot Password?</string>
+    <string name="frgt_pswd_heading">Forgot Password</string>
+    <string name="hint_mobile">Mobile Number</string>
+    <string name="hint_mobile_mandatory">Mobile Number*</string>
+    <string name="submit_label">Submit</string>
+
+    <string name="action_search">Search</string>
+    <string name="action_notification" translatable="false">Notifications</string>
+    <string name="fetching_digital_kits">Fetching Digital Kits</string>
+    <string name="hint_otp">OTP</string>
+    <string name="resend_label">Resend OTP</string>
+    <string name="if_otp_not_received_text">Didn\'t get OTP?</string>
+    <string name="sign_up_label">Sign Up</string>
+    <string name="otp_label">OTP</string>
+    <string name="hint_name">Name</string>
+    <string name="hint_email">@string/email_hint</string>
+    <string name="please_enter_name">Whats in a Name...Plenty! We need your name</string>
+    <string name="invalid_name">Invalid name.</string>
+    <string name="alpha_numeric_error">No special characters are allowed. Please enter alphanumeric characters only.</string>
+    <string name="name_should_be_of_minimum">Name should be of minimum</string>
+    <string name="name_max_count">Name should not exceed</string>
+    <string name="model_max_count">Model no. should not exceed</string>
+    <string name="password_should_be_of_minimum">For enhanced security we accept 6 characters or more</string>
+    <string name="pswd_max_error">Max 20 characters only</string>
+    <string name="white_space_error">Password should not have white spaces</string>
+    <string name="registration_successful">Enter OTP  to get started</string>
+    <string name="otp_resend_request_successfull">You will receive your OTP shortly.</string>
+    <string name="mobile_number_blank_error">Seems you forgot to enter Mobile Number/Email Id</string>
+    <string name="mobile_number_empty_error">Seems you forgot to enter Mobile Number</string>
+    <string name="email_id_blank_error">Seems you forgot to enter Email ID</string>
+    <string name="mobile_number_max_count">Mobile Number should not exceed 12 digits</string>
+    <string name="mobile_number_min_count">Mobile Number should not be less than 4 digits</string>
+    <string name="mobile_number_zero">Mobile Number should not start with zero</string>
+    <string name="service_request">Service Request</string>
+    <string name="digital_documents">Documents</string>
+    <string name="self_services">Training</string>
+    <string name="support_chat">Support Chat</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="event_calendar">My Events</string>
+    <string name="add_event_calendar">Add Event</string>
+
+    <string name="nav_item_change_pswd">Change Password</string>
+    <string name="nav_item_user_dk_details">Dashboard</string>
+    <string name="nav_item_send_feedback">Feedback</string>
+    <string name="nav_item_refernearn">My Referral</string>
+    <string name="nav_item_settings">Settings</string>
+    <string name="nav_item_help_and_support">Help &amp; Support</string>
+    <string name="nav_item_terms">Terms &amp; Conditions</string>
+    <string name="nav_item_privacy_policy">Privacy Policy</string>
+    <string name="nav_item_logout">Logout</string>
+
+    <string name="nav_item_tell_a_frnd">Tell-A-Friend</string>
+    <string name="new_password">New Password</string>
+    <string name="password_create_successful">Create Password Successful.</string>
+    <string name="forgot_password_success_msg">New password created. Please login.</string>
+
+    <!-- navigation drawer item labels  -->
+    <string-array name="nav_drawer_labels">
+        <item>@string/nav_item_change_pswd</item>
+        <item>@string/nav_item_user_dk_details</item>
+        <item>@string/nav_item_payments</item>
+        <item>@string/nav_item_my_documents</item>
+        <item>@string/nav_item_send_feedback</item>
+        <item>@string/nav_item_terms</item>
+        <item>@string/nav_item_privacy_policy</item>
+        <item>@string/nav_item_logout</item>
+    </string-array>
+
+    <string-array name="menu_more_labels">
+        <item>@string/my_profile</item>
+        <item>@string/my_address</item>
+        <item>@string/nav_item_orders</item>
+        <item>@string/nav_item_payments</item>
+        <!--<item>@string/nav_item_refernearn</item>-->
+        <item>@string/nav_item_send_feedback</item>
+        <item>@string/nav_item_help_and_support</item>
+        <item>@string/nav_item_change_pswd</item>
+        <item>@string/change_language</item>
+        <item>@string/nav_item_logout</item>
+    </string-array>
+
+    <!--<string name="rs">\u20B9</string>--> <!--ruppee-->
+    <string name="rs">&#36;</string> <!--dollar-->
+
+    <string name="Rs1">\u20B9\u00204000</string>
+    <string name="Rs2">\u20B9\u00202678</string>
+    <string name="Rs3">\u20B9\u00206678</string>
+
+    <string name="warranty_p1">For 1 year \u0020\u0020\u20B9 1500</string>
+    <string name="warranty_p2">For 2 year \u0020\u0020\u20B9 2800</string>
+    <string name="warranty_p3">For 3 year \u0020\u0020\u20B9 4000</string>
+
+    <string name="additional_price">\u0020\u0020\u002B\u0020\u0020\u20B9 2678.00</string>
+
+    <string name="warranty_details_not_available">There are no items available for purchase at this time.</string>
+    <string name="details_not_available">Details not available for selected plan.</string>
+    <string name="action_clear_all_text">Clear all</string>
+    <string name="action_view_toggle">View toggle</string>
+    <string name="subject_hint">Subject Line</string>
+    <string name="message_hint">Message</string>
+    <string name="place_request">Place Request</string>
+    <string name="please_enter_service_request_subject">For a quick response please provide a Subject line</string>
+    <string name="please_enter_service_request_message">For a better service please enter a relevant message</string>
+    <string name="place_request_successful">We will attend to your request at the earliest.</string>
+    <string name="replace">Replace</string>
+    <string name="track_request">Track Request</string>
+    <string name="no_service_requests_to_show">No records available.</string>
+    <string name="service_request_details">Service Request Details</string>
+    <string name="closed">Closed</string>
+    <string name="reply">Reply</string>
+    <string name="reopen">Reopen</string>
+    <string name="service_request_reply">Service Request Reply</string>
+    <string name="next">Next</string>
+    <string name="start">Start</string>
+    <string name="invoice_document_not_available">Invoice Documents not available.</string>
+    <string name="no_service_locators_found">No Locations found.</string>
+    <string name="photo_already_attached_would_you_like_to_replace">Photo already attached, would you like to replace?</string>
+    <string name="file_already_attached_would_you_like_to_replace">Media file already attached, would you like to replace?</string>
+    <string name="delete_attachment_message">Would you like to delete attachment?</string>
+    <string name="attachment_not_found">Attached document not found.</string>
+    <string name="customer_profile_updated_successfull">Customer profile updated successfully.</string>
+    <string name="document_not_supported">Document not supported.</string>
+
+    <string name="crop_image_activity_title">Crop Photo</string>
+    <string name="crop_image_menu_rotate_left">Rotate counter clockwise</string>
+    <string name="crop_image_menu_rotate_right">Rotate</string>
+    <string name="crop_image_menu_crop">Crop</string>
+    <string name="pick_image_intent_chooser_title">Select source</string>
+    <string name="main_action_crop">CROP</string>
+    <string name="main_action_rotate">Rotate 90 degrees clockwise</string>
+    <string name="customer_profile_details_changed_message">Customer profile details changed, would you like to continue?</string>
+    <string name="gallery">Gallery</string>
+    <string name="camera">Camera</string>
+    <string name="loading_with_product_digital_document">Loading documents for your product</string>
+    <string name="offer_share_via">Share Via</string>
+
+    <string name="no_digital_kits_to_show_message1">Add an item to experience the brand \n new way of Customer Service</string>
+    <string name="no_digital_kits_to_show_message2">Click on the \'+\' sign to see which \n items you can manage</string>
+    <string name="please_enter_address">Please enter address.</string>
+    <string name="future_date_can_not_be_selected">Future date can not be selected</string>
+    <string name="date_selection">Select Date</string>
+    <string name="invoice_copy">Invoice\nCopy</string>
+    <string name="plz_add_invoice">Please add Invoice</string>
+    <string name="warranty_card_copy">Warranty\nCopy</string>
+    <string name="next_button_label">Next</string>
+    <string name="easily_add_products">Easily add products</string>
+    <string name="scan_product_message">Scan your product\'s code and we\'ll try \n to look it up in our data base for you</string>
+    <string name="add_product_back_pressed_message">Product registration incomplete ! Do you wish to quit ?</string>
+    <string name="product_registration_back_pressed_message">Product registration incomplete ! Do you wish to quit ?</string>
+    <string name="sigup_otp_validate_back_pressed">OTP validation is pending. Do you want to exit Sign Up process?</string>
+    <string name="yes_button">Yes</string>
+    <string name="no_button">No</string>
+    <string name="login_success">Welcome</string>
+
+    <string name="no_events">You do not have any upcoming events.</string>
+    <string name="no_completed_events">You do not have any completed events.</string>
+    <string name="no_pending_events">You do not have any pending events.</string>
+    <string name="no_upcoming_events">You do not have any upcoming events.</string>
+
+    <string name="scan_document">Scan Document</string>
+    <string name="terms_conditions_title_label">Terms &amp; Conditions</string>
+    <string name="privacy_policies_title_label">Privacy Policy</string>
+
+    <string name="email_hint">Email</string>
+    <string name="mobile_hint">Mobile Number</string>
+    <string name="mobile_or_email_hint">Mobile / Email</string>
+    <string name="mobile">Mobile</string>
+    <string name="email">@string/email_hint</string>
+    <string name="addanothernumber">Add Another Number</string>
+    <string name="transaction_failed">Transaction failed</string>
+    <string name="user_returned_without_login">User declined transaction</string>
+    <string name="failed_to_payment_details">Unable to get payment details.Please try after some time.</string>
+
+    <string-array name="CountryCodes">
+        <item>93,AF</item>
+        <item>355,AL</item>
+        <item>213,DZ</item>
+        <item>376,AD</item>
+        <item>244,AO</item>
+        <item>54,AR</item>
+        <item>374,AM</item>
+        <item>297,AW</item>
+        <item>61,AU</item>
+        <item>43,AT</item>
+        <item>994,AZ</item>
+        <item>973,BH</item>
+        <item>880,BD</item>
+        <item>375,BY</item>
+        <item>32,BE</item>
+        <item>501,BZ</item>
+        <item>229,BJ</item>
+        <item>975,BT</item>
+        <item>591,BO</item>
+        <item>387,BA</item>
+        <item>267,BW</item>
+        <item>55,BR</item>
+        <item>673,BN</item>
+        <item>359,BG</item>
+        <item>226,BF</item>
+        <item>95,MM</item>
+        <item>257,BI</item>
+        <item>855,KH</item>
+        <item>237,CM</item>
+        <item>1,CA</item>
+        <item>238,CV</item>
+        <item>236,CF</item>
+        <item>235,TD</item>
+        <item>56,CL</item>
+        <item>86,CN</item>
+        <!--<item>61,CX</item>-->
+        <!--<item>61,CC</item>-->
+        <item>57,CO</item>
+        <item>269,KM</item>
+        <item>242,CG</item>
+        <item>243,CD</item>
+        <item>682,CK</item>
+        <item>506,CR</item>
+        <item>385,HR</item>
+        <item>53,CU</item>
+        <item>357,CY</item>
+        <item>420,CZ</item>
+        <item>45,DK</item>
+        <item>253,DJ</item>
+        <item>670,TL</item>
+        <item>593,EC</item>
+        <item>20,EG</item>
+        <item>503,SV</item>
+        <item>240,GQ</item>
+        <item>291,ER</item>
+        <item>372,EE</item>
+        <item>251,ET</item>
+        <!--<item>500,FK</item>-->
+        <item>298,FO</item>
+        <item>679,FJ</item>
+        <item>358,FI</item>
+        <item>33,FR</item>
+        <!--<item>689,PF</item>-->
+        <item>241,GA</item>
+        <item>220,GM</item>
+        <item>995,GE</item>
+        <item>49,DE</item>
+        <item>233,GH</item>
+        <item>350,GI</item>
+        <item>30,GR</item>
+        <item>299,GL</item>
+        <item>502,GT</item>
+        <item>224,GN</item>
+        <item>245,GW</item>
+        <item>592,GY</item>
+        <item>509,HT</item>
+        <item>504,HN</item>
+        <item>852,HK</item>
+        <item>36,HU</item>
+        <item>91,IN</item>
+        <item>62,ID</item>
+        <item>98,IR</item>
+        <item>964,IQ</item>
+        <item>353,IE</item>
+        <item>44,IM</item>
+        <item>972,IL</item>
+        <item>39,IT</item>
+        <item>225,CI</item>
+        <item>81,JP</item>
+        <item>962,JO</item>
+        <item>7,KZ</item>
+        <item>254,KE</item>
+        <item>686,KI</item>
+        <item>965,KW</item>
+        <item>996,KG</item>
+        <item>856,LA</item>
+        <item>371,LV</item>
+        <item>961,LB</item>
+        <item>266,LS</item>
+        <item>231,LR</item>
+        <item>218,LY</item>
+        <item>423,LI</item>
+        <item>370,LT</item>
+        <item>352,LU</item>
+        <item>853,MO</item>
+        <item>389,MK</item>
+        <item>261,MG</item>
+        <item>265,MW</item>
+        <item>60,MY</item>
+        <item>960,MV</item>
+        <item>223,ML</item>
+        <item>356,MT</item>
+        <item>692,MH</item>
+        <item>222,MR</item>
+        <item>230,MU</item>
+        <!--<item>262,YT</item>-->
+        <item>52,MX</item>
+        <item>691,FM</item>
+        <item>373,MD</item>
+        <item>377,MC</item>
+        <item>976,MN</item>
+        <item>382,ME</item>
+        <item>212,MA</item>
+        <item>258,MZ</item>
+        <item>264,NA</item>
+        <item>674,NR</item>
+        <item>977,NP</item>
+        <item>31,NL</item>
+        <!--<item>599,AN</item>-->
+        <item>687,NC</item>
+        <item>64,NZ</item>
+        <item>505,NI</item>
+        <item>227,NE</item>
+        <item>234,NG</item>
+        <!--<item>683,NU</item>-->
+        <item>850,KP</item>
+        <item>47,NO</item>
+        <item>968,OM</item>
+        <item>92,PK</item>
+        <item>680,PW</item>
+        <item>507,PA</item>
+        <item>675,PG</item>
+        <item>595,PY</item>
+        <item>51,PE</item>
+        <item>63,PH</item>
+        <!--<item>870,PN</item>-->
+        <item>48,PL</item>
+        <item>351,PT</item>
+        <item>1,PR</item>
+        <item>974,QA</item>
+        <item>40,RO</item>
+        <item>7,RU</item>
+        <item>250,RW</item>
+        <!--<item>590,BL</item>-->
+        <!--<item>685,WS</item>-->
+        <item>378,SM</item>
+        <item>239,ST</item>
+        <item>966,SA</item>
+        <item>221,SN</item>
+        <item>381,RS</item>
+        <item>248,SC</item>
+        <item>232,SL</item>
+        <item>65,SG</item>
+        <item>421,SK</item>
+        <item>386,SI</item>
+        <item>677,SB</item>
+        <item>252,SO</item>
+        <item>27,ZA</item>
+        <item>82,KR</item>
+        <item>34,ES</item>
+        <item>94,LK</item>
+        <!--<item>290,SH</item>-->
+        <!--<item>508,PM</item>-->
+        <item>249,SD</item>
+        <item>597,SR</item>
+        <item>268,SZ</item>
+        <item>46,SE</item>
+        <item>41,CH</item>
+        <item>963,SY</item>
+        <item>886,TW</item>
+        <item>992,TJ</item>
+        <item>255,TZ</item>
+        <item>66,TH</item>
+        <item>228,TG</item>
+        <!--<item>690,TK</item>-->
+        <item>676,TO</item>
+        <item>216,TN</item>
+        <item>90,TR</item>
+        <item>993,TM</item>
+        <item>688,TV</item>
+        <item>971,AE</item>
+        <item>256,UG</item>
+        <item>44,GB</item>
+        <item>380,UA</item>
+        <item>598,UY</item>
+        <item>1,US</item>
+        <item>998,UZ</item>
+        <item>678,VU</item>
+        <item>39,VA</item>
+        <item>58,VE</item>
+        <item>84,VN</item>
+        <!--<item>681,WF</item>-->
+        <item>967,YE</item>
+        <item>260,ZM</item>
+        <item>263,ZW</item>
+    </string-array>
+
+    <string name="otp_verified">OTP Verified</string>
+    <string name="please_enter_user_name">For a quick response please provide a User Name</string>
+    <string name="please_enter_mobile_number">For a better service please enter a Mobile Number</string>
+    <string name="adding_new_user">Adding new user</string>
+    <string name="validate_otp_dialog_title">Validate OTP</string>
+    <string name="deleting_user_mobile_number">Deleting user mobile number</string>
+    <string name="user_mobile_delete_cnfrm_alert">Would you like to delete mobile number :</string>
+    <string name="view_more_address_lbl">View More Addresses</string>
+
+    <string name="permission_camera_rationale">Access to the camera is needed for detection</string>
+    <string name="low_storage_error">Face detector dependencies cannot be downloaded due to low device storage</string>
+    <string name="no_camera_permission">Barcode cannot be scanned because it does not have the camera permission.</string>
+    <string name="barcode_error">"Error reading barcode: %1$s"</string>
+
+    <!-- Floating Window -->
+    <string name="window_icon">Window icon</string>
+    <string name="hide">Hide</string>
+    <string name="close">Close</string>
+    <string name="corner">Corner</string>
+    <string name="maximize">Maximize</string>
+
+    <string-array name="minutes_array">
+        <item>00</item>
+        <item>01</item>
+        <item>02</item>
+        <item>03</item>
+        <item>04</item>
+        <item>05</item>
+        <item>06</item>
+        <item>07</item>
+        <item>08</item>
+        <item>09</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+        <item>21</item>
+        <item>22</item>
+        <item>23</item>
+        <item>24</item>
+        <item>25</item>
+        <item>26</item>
+        <item>27</item>
+        <item>28</item>
+        <item>29</item>
+        <item>30</item>
+        <item>31</item>
+        <item>32</item>
+        <item>33</item>
+        <item>34</item>
+        <item>35</item>
+        <item>36</item>
+        <item>37</item>
+        <item>38</item>
+        <item>39</item>
+        <item>40</item>
+        <item>41</item>
+        <item>42</item>
+        <item>43</item>
+        <item>44</item>
+        <item>45</item>
+        <item>46</item>
+        <item>47</item>
+        <item>48</item>
+        <item>49</item>
+        <item>50</item>
+        <item>51</item>
+        <item>52</item>
+        <item>53</item>
+        <item>54</item>
+        <item>55</item>
+        <item>56</item>
+        <item>57</item>
+        <item>58</item>
+        <item>59</item>
+    </string-array>
+
+    <string-array name="hrs_array">
+        <item>00</item>
+        <item>01</item>
+        <item>02</item>
+        <item>03</item>
+        <item>04</item>
+        <item>05</item>
+        <item>06</item>
+        <item>07</item>
+        <item>08</item>
+        <item>09</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+        <item>21</item>
+        <item>22</item>
+        <item>23</item>
+    </string-array>
+
+    <string-array name="days_array">
+        <item>00</item>
+        <item>01</item>
+        <item>02</item>
+        <item>03</item>
+        <item>04</item>
+        <item>05</item>
+        <item>06</item>
+        <item>07</item>
+        <item>08</item>
+        <item>09</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+        <item>21</item>
+        <item>22</item>
+        <item>23</item>
+        <item>24</item>
+        <item>25</item>
+        <item>26</item>
+        <item>27</item>
+        <item>28</item>
+        <item>29</item>
+        <item>30</item>
+    </string-array>
+    <string name="video_call">Video Call Support</string>
+    <string name="rationale_video_app">This app needs access to your camera and mic so you can perform video calls</string>
+    <string name="rationale_ask_again">This app may not work correctly without the requested permissions. Open the app settings screen to modify app permissions.</string>
+    <string name="title_settings_dialog">Permissions Required</string>
+    <string name="setting">Settings</string>
+    <string name="add_friend_or_family_member">Add Friend/Family Member</string>
+    <string name="nav_item_payments">My Payments</string>
+    <string name="nav_item_orders">My Orders</string>
+    <string name="payments_screen_title">Payments</string>
+    <string name="nav_item_my_documents">Personal Digilocker</string>
+    <string name="add_on_number_already_registered">Addon number is already registered.</string>
+    <string name="cannot_add_as_on_number">Cannot add as add on number.</string>
+    <string name="send_location">Send Location</string>
+    <string name="search_places">Search Places</string>
+    <string name="product_data_input">Input Required</string>
+    <string name="product_price">Product Price</string>
+    <string name="continue_button_label">Continue</string>
+    <string name="cancel_button_label">Cancel</string>
+    <string name="please_enter_product_price">Please enter product price</string>
+    <string name="file_name">File Name</string>
+    <string name="filename_input">File Details</string>
+    <string name="completed">Completed</string>
+    <string name="undo">UNDO</string>
+
+    <!--    Date Time Seer - AutoCompleter-->
+    <string name="today">Today</string>
+    <string name="tomorrow">Tomorrow</string>
+    <string name="awesome_time">%s sounds amazing</string>
+
+    <string name="offer_text1">You are 300m away from redeeming your 20&#37; Ferrari voucher</string>
+    <string name="offer_text2">&#42;Valid till <b>24th Feb</b></string>
+    <!--Your 20&#37; discount voucher is-->
+    <string name="document_title">Document Title</string>
+    <string name="sync_success">Sync Successful</string>
+    <string name="back_press_video_call_msg">Do you want to end the call?</string>
+    <string name="document_type">Document Type</string>
+    <string name="no_extended_warranty_available">No extended warranty available</string>
+    <string name="no_purchase_items_available">No items available to purchase</string>
+    <string name="add_comment_for_product">Add comment for your product.</string>
+    <string name="please_select_till_warranty">Please select till warranty date</string>
+    <string name="user_logout_message_due_to_other_login">Logged out because you logged in from another device.</string>
+    <string name="customer_profile_details_changed_message_save_cancel">Customer profile details changed, would you like to save?</string>
+    <string name="uploading_document">Uploading Document.</string>
+    <string name="unable_to_add_docuemt">Unable to upload your document, Please try again.</string>
+    <string name="please_enter_file_name">Please enter a file name</string>
+    <string name="please_enter_file_name_without_extension">Please enter filename without extension.</string>
+    <string name="file_name_already_exists">File name already exists. Try another name.</string>
+    <string name="request_type_string">Request</string>
+    <string name="plz_select_doc_type">Please select document type</string>
+    <string name="dk_modified_msg">Update available for Digital Kit of %s, to update now click on Update. If ignored updates will reflect when you next time open the application.</string>
+    <string name="prod_cust_modified_msg">Update available for Digital Kits, to update now click on Update. If ignored updates will reflect when you next time open the application.</string>
+    <string name="multiple_dk_modified_msg">Update available for few Digital Kits, to update now click on Update. If ignored updates will reflect when you next time open the application.</string>
+    <string name="update">Update</string>
+    <string name="igonre">Ignore</string>
+
+    <string name="error_while_communicating">Error while communicating with server</string>
+    <string name="cancel_document_adding">Do you wish to interrupt the document upload?</string>
+
+    <!-- =========================== SingleDateAndTimePicker =========================== -->
+    <string name="picker_today">today</string>
+    <string name="picker_am">AM</string>
+    <string name="picker_pm">PM</string>
+    <string name="unable_to_fetch_products_test_drive">Unable to fetch list of products for test drive</string>
+    <string name="unable_to_request_for_testdrive">Unable to request for testdrive, please try again.</string>
+    <string name="processing_testdrive_request">Processing testdrive request</string>
+    <!-- ============================================================================= -->
+
+
+    <string name="select_address">Select Address</string>
+    <string name="confirm_address">Confirm Address</string>
+    <string name="req_test_drive">Request Test Drive</string>
+    <string name="select_preferred_date_time">Preferred date &amp; time</string>
+    <string name="dealers_locations_label">Dealers by locations</string>
+    <string name="cancel_test_drive_alert_msg">Do you really want to cancel the request?</string>
+    <string name="offer_details_label">Offer Details</string>
+    <string name="mandatory_attributes">Mandatory Attributes</string>
+    <string name="msg_capture_mandatory_fields">Digital Kit inactive. Please update %s to access various services of Digital Kit.</string>
+    <string name="msg_capture_mandatory_shopuld_fields">Please update %s to access a lot more services of Digital Kit. Cancel to update later.</string>
+    <string name="updating_dk">Updating Digital Kit</string>
+    <string name="will_process_ur_request">Thanks for submitting required attributes. We\'ll be get back to you as soon as these attributes are verified.</string>
+    <string name="dk_inactive">Digital Kit Inactive</string>
+    <string name="dk_deleted">Digital Kit Deleted</string>
+
+    <string name="select_prod_label">Select Product</string>
+    <string name="select_time_label">Select Time</string>
+    <string name="set_event_label">Set Event</string>
+    <string name="select_date_label">Set Date</string>
+    <string name="add">Add</string>
+    <string name="skip">Skip</string>
+    <string name="country_search_hint">Search country</string>
+    <string name="no_result_found">Result not found</string>
+    <string name="please_turn_on_locs">Please turn on locations service to get location</string>
+    <string name="try_some_other_loc">Unable to figure out location. Please try someother location.</string>
+
+
+    <!-- =================================== Youtube ================================= -->
+    <string name="play_button">Play button</string>
+    <string name="null_time">0:00</string>
+    <string name="open_video_in_youtube">Open video in YouTube</string>
+    <string name="full_screen_button">Full screen button</string>
+    <string name="payments">@string/nav_item_payments</string>
+    <!-- ============================================================================= -->
+
+
+    <string name="view_invoice_underlined">
+        <u>view invoice</u>
+    </string>
+    <string name="view_details_underlined">
+        <u>view details</u>
+    </string>
+    <string name="no_payments_pending">You don\'t have any pending payments</string>
+    <string name="no_transactions_to_display">You don\'t have any pending payments</string>
+    <string name="please_accept_terms_msg">Please accept terms and conditions</string>
+    <string name="max_file_length_warning_title">File size exceeded</string>
+    <string name="max_file_length_warning_msg">File size above 2MB cannot be uploaded</string>
+
+    <!-- ============================== Nhance Camera ================================= -->
+    <string name="cancel_label">Cancel</string>
+    <string name="ok_label">Ok</string>
+
+    <string name="settings_video_quality_title">Video size %s</string>
+    <string name="settings_photo_quality_title">Photo size</string>
+
+    <!-- Preview Activity -->
+    <string name="preview_controls_confirm">Save</string>
+    <string name="preview_controls_retake">Repeat</string>
+    <string name="preview_controls_cancel">Cancel</string>
+    <string name="preview_controls_crop">Crop</string>
+    <string name="preview_controls_original_ratio_label">Original</string>
+    <string name="details_label"><u>details</u></string>
+    <string name="txn_failed_due_to_cancel_button_press">Transaction failed due to pressing cancel button</string>
+    <!-- ============================================================================= -->
+
+    <string name="force_update">Update available</string>
+    <string name="force_update_msg">A new version is available. Please update.</string>
+    <string name="unsupportted_file_format_msg">Unsupported file format. Please select valid file.</string>
+    <string name="sign_in">Sign In</string>
+    <string name="fetching_required_parameters">Fetching required parameters</string>
+
+    <!-- ================================== User Documents ====================================== -->
+
+    <string name="user_documents">Personal Documents</string>
+    <string name="user_documents_not_available">You have not added any documents yet. Click \"+\" button to add your documents. You can add upto 4 documents.</string>
+    <string name="downloading_documents">Downloading documents..</string>
+    <string name="fetching_documents">Fetching documents ...</string>
+    <string name="document_quota_exceded">You have already added 4 documents, to add new document you have to delete older ones.</string>
+    <string name="unable_to_delete_document">Unable to delete the document.</string>
+    <string name="deleting_document">Deleting document...</string>
+    <string name="preparing_document_to_upload">Preparing document..</string>
+    <string name="live">LIVE</string>
+    <!-- ==================================================================================== -->
+
+    <string name="session_expired">Session Expired</string>
+    <string name="session_expired_message">Your session has expired. Please log in again.</string>
+    <string name="no_help_desk_contacts">No helpdesk contacts are provided</string>
+
+
+    <!-- /////////////////////////////////////// NEW UI STRINGS /////////////////////////////////////// -->
+    <string name="nav_title_home">Home</string>
+    <string name="nav_title_events">Events</string>
+    <string name="nav_title_dk">Digital Kit</string>
+    <string name="nav_title_inbox">Inbox</string>
+    <string name="nav_title_more">More</string>
+    <string name="products_overview_label">Product Overview</string>
+    <string name="frgt_pswd_msg">Enter your Mobile Number/Email Id below to receive your password reset instructions</string>
+    <string name="send_otp_label">Send OTP</string>
+    <string name="enter_otp_send_to">Enter the OTP Send to</string>
+    <string name="verify_otp">Verify OTP</string>
+    <string name="reset_password_heading">Reset Your Password</string>
+    <string name="reset_pswd_msg">Just type it twice and try not to forget it this time.</string>
+
+    <string name="my_profile">My Profile</string>
+    <string name="my_address">My Address</string>
+    <string name="digi_locker">Digi Locker</string>
+    <string name="invoice">Invoice</string>
+    <string name="document">Document</string>
+    <string name="discover_what_u_can_learn">Discover What You Can Learn</string>
+    <string name="search_video_manuals">Search for Videos and Manuals</string>
+    <string name="what_u_like_to_search">What would you like to search</string>
+    <string name="filter_label">Filter</string>
+    <string name="apply_label">Apply</string>
+    <string name="adoption">Adoption</string>
+    <string name="clear_label">Clear</string>
+    <string name="buy_now">Buy now</string>
+    <string name="select_label">Select</string>
+    <string name="helpdesk">Help Desk</string>
+    <string name="purchase_confirmation_label">Purchase Confirmation</string>
+    <string name="thank_you_label">Thank You</string>
+    <string name="order_received_label">Your order has been received.</string>
+    <string name="order_confirmation_msg_label">You will receive an order confirmation email  with details of your order.</string>
+    <string name="get_started">Get Started</string>
+    <string name="hint_full_name">Full Name</string>
+    <string name="done">Done</string>
+    <string name="new_request">New Request</string>
+    <string name="document_already_attached">Document Already Attached</string>
+    <string name="could_not_attach_document_more_than_four">Could not attach documents more than four.</string>
+    <string name="palns_found">Plans Found</string>
+    <string name="paln_found">Plan Found</string>
+    <string name="accessories_found">Accessories Found</string>
+    <string name="accessory_found">Accessory Found</string>
+    <string name="feedback_label">Feedback</string>
+    <string name="rating_label">Rating</string>
+    <string name="poll_label">Poll</string>
+    <string name="any_suggestions_hint">Additional comments</string>
+    <string name="submit_feedback_button_label">Submit Feedback</string>
+    <string name="preview">Preview</string>
+    <string name="capture">Capture</string>
+    <string name="browse">Browse</string>
+    <string name="product_registration">Product Registration</string>
+    <string name="action_register_product">Register Product</string>
+    <string name="valuable_feedback_label">For your valuable feedback.</string>
+    <string name="are_you_sure_to_logout">Are you sure you want to Logout?</string>
+    <string name="oops">Oops!</string>
+    <string name="dismiss_label">Dismiss</string>
+    <string name="survey_label">Survey</string>
+    <string name="yesterday">Yesterday</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="change_pswd_msg">Change your password by entering your current password and then new password.</string>
+
+    <!-- /////////////////////////////////////// NEW UI STRINGS /////////////////////////////////////// -->
+
+
+    <!-- /////////////////////////////////// Runtime Permissions Strings //////////////////////////////////// -->
+    <string name="contact_permission">Contact permission are needed to access</string>
+    <string name="storage_permission">Storage permission are needed to access</string>
+    <string name="read_sms_permission">Read sms permission are needed to access</string>
+    <string name="location_permission">Location permission are needed to access</string>
+    <string name="phone_state_permisssion">Phone stateCode permission are needed to access</string>
+    <string name="phone_call_permission">Phone call permission are needed to access</string>
+    <string name="phone_camera_permission">Camera permission are needed to access</string>
+    <string name="phone_file_picker_permission">Camera and Storage permissions are needed to access</string>
+    <string name="record_audio">Audio recording permission needed</string>
+
+
+    <string name="contact_permission_not_granted">Permission were not granted for Contact</string>
+    <string name="storage_permission_not_granted">Permissions were not granted for Storage</string>
+    <string name="read_sms_permission_not_granted">Permissions were not granted for Read</string>
+    <string name="location_permission_not_granted">Permissions were not granted for Location</string>
+    <string name="phone_state_permission_not_granted">Permissions were not granted for Phone stateCode</string>
+    <string name="phone_call_permission_not_granted">Permission were not granted for Phone call</string>
+    <string name="phone_camera_permission_not_granted">Permission were not granted for Camera</string>
+    <string name="record_audio_permission_not_granted">Permissions were not granted for Audio recording</string>
+
+
+    <string name="contact_permission_granted">Contacts Permission have been granted</string>
+    <string name="storage_permission_granted">Storage Permissions have been granted</string>
+    <string name="read_sms_permission_granted">Read sms Permissions have been granted</string>
+    <string name="location_permission_granted">Location Permissions has been granted</string>
+    <string name="phone_state_permission_granted">Phone stateCode Permissions has been granted</string>
+    <string name="phone_call_permission_granted">Phone call Permission has been granted</string>
+    <string name="phone_camera_permission_granted">Camera permission has been granted</string>
+    <string name="record_audio_permission_granted">Audio Record permissions has been granted</string>
+    <string name="no_brands_onboarded">Currently we have no brands onboarded with us for registering products.</string>
+    <string name="discover_products">Discover Products</string>
+    <string name="fetching_discoverable_products">Fetching Discoverable Products</string>
+
+
+    <string name="crashes">Crashes</string>
+    <string name="exceptions">Exceptions</string>
+    <string name="view_crash_report">View Crash Report</string>
+    <string name="check_your_message_here">Check your crashes and exceptions here.</string>
+    <string name="delete_confirmation_msg">Are you sure to delete all the crash logs</string>
+    <string name="crash_reporter">HAPIS Crash Reporter</string>
+    <string name="crash_reports_folder">Crash Reports</string>
+
+    <!-- /////////////////////////////////////// CUSTOM FILE PICKER /////////////////////////////////////// -->
+    <string name="all_images">All Images</string>
+    <string name="permission_filepicker_rationale">Storage permission is needed to access files.</string>
+    <string name="no_files_found">No Files Found</string>
+    <string name="attachments_title_text" formatted="false">(%d/%d)</string>
+    <string name="attachments_num" formatted="false">%d</string>
+    <string name="select_photo_text">Select a media</string>
+    <string name="select_doc_text">Select a document</string>
+    <string name="select_file_text">Select a file</string>
+    <string name="no_camera_exists">No Application exists for camera!</string>
+    <string name="pdf_title">PDF</string>
+    <string name="ppt_title">PPT</string>
+    <string name="word_title">DOC</string>
+    <string name="excel_title">XLS</string>
+    <string name="txt_title">TXT</string>
+    <string name="videos">Videos</string>
+    <string name="images">Images</string>
+    <string name="all_photos">All Photos</string>
+    <string name="all_videos">All Videos</string>
+    <string name="all_files">All Files</string>
+
+    <string name="pin_code_mandatory">PIN Code <font fgcolor="#fd3e39">●</font></string>
+    <string name="pin_code">PIN Code</string>
+    <string name="connection_time_out">It is not possible to connect to HAPIS at this time.</string>
+    <string name="connection_socket_ssl_exception">Something seems to have gone wrong. The operation couldn\'t be completed.</string>
+    <string name="please_enter_valid_model_number">Please enter valid model number</string>
+    <string name="city_mandatory_hint">City <font fgcolor="#fd3e39">●</font></string>
+    <string name="city_hint">City</string>
+    <string name="state_mandatory_hint">State <font fgcolor="#fd3e39">●</font></string>
+    <string name="state_hint">State</string>
+    <string name="country_mandatory_hint">Country <font fgcolor="#fd3e39">●</font></string>
+    <string name="country_hint">Country</string>
+    <string name="address_mandatory_hint">Address <font fgcolor="#fd3e39">●</font></string>
+    <string name="address_hint">Address</string>
+
+    <string name="title_activity_my_orders">My Orders</string>
+    <string name="status_label_with_hyphen">Status - \u0020</string>
+    <string name="status_label_pending">Pending</string>
+    <string name="status_label_dispatched">Dispatched</string>
+    <string name="status_label_out_for_delivery">Out for delivery</string>
+    <string name="status_label_delivered">Delivered</string>
+    <string name="status_label_unknown">Ordered</string>
+    <string name="password_invalid">Password should be 6 to 20 characters in length with at least one digit, one upper case letter, one lower case letter and one special symbol (\“@#$%\”)</string>
+    <string name="no_orders">You don\'t have any active orders</string>
+    <string name="password_not_matching_pattern">Password should contain at least one alphabet lower and upper case, one numeric and one special character(!@#$%).</string>
+    <string name="summary">Summary</string>
+    <string name="leaderboard">LeaderBoard</string>
+    <string name="hint_referral_code">Referral Code</string>
+    <string name="select_app_to_share">Select application to share</string>
+    <string name="no_activity_at_this_moment">There is no activity to show at the moment.</string>
+
+    <string name="requests_label">Requests</string>
+
+    <string name="need_help_label">I need help with</string>
+    <string name="our_suggestion_label">Our Suggestion</string>
+
+    <string name="help_center_has_next_level_yes">Y</string>
+    <string name="help_center_has_next_level_no">N</string>
+    <string name="no_help_center_ques_to_show">No Help Center questions available</string>
+    <string name="help_center_label">Help Center</string>
+    <string name="send_us_msg_label">Send us message</string>
+    <string name="copy_label">COPY</string>
+    <string name="coupon_code_copied">Coupon code copied</string>
+    <string name="total_label">Total :&#160;</string>
+    <string name="items_label">Items</string>
+    <string name="qty_label">QTY</string>
+    <string name="remove_label">Remove</string>
+    <string name="coupons_label">Coupons</string>
+    <string name="price_details_label">Price details</string>
+    <string name="cart_total_label">Cart Total</string>
+    <string name="coupon_discount_label">Coupon Discount</string>
+    <string name="total_payable_label">Total Payable</string>
+    <string name="confirm_order_label">Confirm Order</string>
+    <string name="no_coupons_available">No coupons available on this number</string>
+    <string name="t_n_c_label"><u>T&amp;Cs</u></string>
+    <string name="i_have_a_coupon_label">I have a coupon</string>
+    <string name="remove_purchase_item">Remove purchase item</string>
+    <string name="are_you_sure_to_remove_item">Do you really want to remove this item from cart?</string>
+    <string name="open_sr_lbl">OPEN</string>
+    <string name="closed_sr_lbl">CLOSED</string>
+    <string name="delivery_address_label">Delivery Address</string>
+    <string name="change_address_label">Change Address</string>
+    <string name="paynow_label">Pay Now</string>
+    <string name="cod_label">COD</string>
+    <string name="payment_method_label">Payment Method</string>
+    <string name="place_order_label">Place Order</string>
+    <string name="brand_invoices">INVOICE</string>
+    <string name="no_invoices_available">No invoices available.</string>
+    <string name="my_invoice">MY INVOICE</string>
+    <string name="no_invoices_added_by_you_n_nyou_can_add_additional_invoices_by_clicking_on">You have not added any invoices yet. You can add additional invoices by clicking on +</string>
+    <string name="document_lbl">DOCUMENT</string>
+    <string name="no_documents_available">No documents available.</string>
+    <string name="my_document">MY DOCUMENT</string>
+    <string name="you_have_not_added_any_documents_yet_you_can_add_a_document_by_clicking_on">You have not added any documents yet. You can add additional documents by clicking on +</string>
+    <string name="no_videos_available_for_this_product">No videos available for this product</string>
+    <string name="no_manuals_available_for_this_product">No manuals available for this product</string>
+    <string name="documents">Documents</string>
+    <string name="scan_code_enter_unique_number">Scan Code / Enter Unique Number <font fgcolor="#fd3e39">●</font></string>
+    <string name="unique_number">Unique Number</string>
+    <string name="pls_select_future_time">Please select future date and time to place a request</string>
+    <string name="password_should_not_contains_special_chars">Password should not contain</string>
+    <string name="please_enter_valid_serial_number">Please enter valid serial number.</string>
+    <string name="please_select_some_items_to_purchse">Please select some items to purchase</string>
+    <string name="user_permission_denied_alert_title">User Permission Denied</string>
+    <string name="user_permission_denied_alert_msg1">Without </string>
+    <string name="user_permission_denied_alert_msg2">permission app is unable to proceed.</string>
+    <string name="user_permission_checked_dont_ask_denied_alert_msg1">Without </string>
+    <string name="user_permission_checked_dont_ask_denied_alert_msg2">permission app is unable to proceed, please set permission manually.</string>
+    <string name="camera_operation">Camera Operations</string>
+    <string name="data_storage">Data Storage</string>
+    <string name="call_phone">Phone Call</string>
+    <string name="user_permission_msg_set_manually">, please set permission manually.</string>
+    <string name="location_access">Network Provider Location Access</string>
+    <string name="read_access">Read Access</string>
+    <string name="receive_SMS">Receive SMS</string>
+    <string name="read_SMS">Read SMS</string>
+    <string name="unable_to_auto_fill_otp_set_manually">Unable to auto fill OTP</string>
+    <string name="read_phone_state">Read Phone State</string>
+    <string name="get_account">Get Account</string>
+    <string name="network_or_gps_provider_location_access">Network / GPS Provider Location Access</string>
+    <string name="your_happiness_expert">Your Happiness Expert</string>
+    <string name="take_me_there">Take me there</string>
+    <string name="file_type">File Type</string>
+    <string name="order">Order</string>
+    <string name="invoices">Invoices</string>
+    <string name="no_invoice_available">No invoices available. You can add an invoice by clicking on +</string>
+    <string name="welcome">Welcome</string>
+    <string name="customer_type">Customer Type</string>
+    <string name="individual">Individual</string>
+    <string name="organisation">Organisation</string>
+    <string name="gender">Gender</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="profile_address">Profile Address</string>
+    <string name="default_address">Default Address</string>
+    <string name="submit">Submit</string>
+    <string name="srn">Srn</string>
+    <string name="invoice_no">Invoice No</string>
+    <string name="subject">Subject</string>
+    <string name="select_brand_non_mandatory">Select Brand</string>
+    <string name="four_txt">4</string>
+    <string name="p_txt">P</string>
+    <string name="documents_details">DOCUMENTS DETAILS</string>
+    <string name="brand">Brand</string>
+    <string name="product">Product</string>
+    <string name="invoice_copy_call_caps">INVOICE COPY</string>
+    <string name="warranty_copy_call_caps">WARRANTY COPY</string>
+    <string name="default_value">0.00</string>
+    <string name="zero_char">0</string>
+    <string name="products_from_brand">Products from brand</string>
+    <string name="you_have_added_products">You have added Products</string>
+    <string name="new_offers">New Offers</string>
+    <string name="service_request_updates">Service Request updates</string>
+    <string name="pending_payments">Pending payments</string>
+    <string name="events_coming_next_30_days">Events in coming next 30 days</string>
+    <string name="warranties_expiring_next_30_days">Warranties expiring in next 30 days</string>
+    <string name="swap_camera">Swap Camera</string>
+    <string name="toggle_video">Toggle Video</string>
+    <string name="open_closed">OPEN/CLOSED</string>
+    <string name="demo">Demo</string>
+    <string name="SRN">SRN</string>
+    <string name="history_message">History Message</string>
+    <string name="p_char">P</string>
+    <string name="product_comments">Product Comments</string>
+    <string name="select_category_dialog_title">Select Category</string>
+    <string name="select_manufacturer">Select Manufacturer</string>
+    <string name="not_available_na">N/A</string>
+    <string name="training">Training</string>
+    <string name="self_service">Self Service</string>
+    <string name="document_corrupted_title">Document corrupted</string>
+    <string name="document_corrupted_msg">The document cannot be opened because it is corrupted or damaged.</string>
+    <string name="document_view_title">Document View</string>
+    <string name="failed_to_load_file_msg">Failed to load file. Please try again.</string>
+    <string name="service_request_closed_success_msg">Service Request closed successfully.</string>
+    <string name="reply_service_request_success_msg">Reply service request successful.</string>
+    <string name="reopen_service_request_msg">Would you like to reopen service request?</string>
+    <string name="could_not_find_attachment">Could not find attachment.</string>
+    <string name="downloading_progress_msg">Downloading...</string>
+    <string name="fetching_service_request_progress_msg">Fetching service request history.</string>
+    <string name="add_product_details_progress_msg">Adding product details</string>
+    <string name="fetching_address_progress_msg">Fetching address..</string>
+    <string name="loading_progress_msg">Loading...</string>
+    <string name="fetching_updating_service_request_progress_msg">Fetching/Updating service requests...</string>
+    <string name="fetching_invoice_progress_msg">fetching invoice..</string>
+    <string name="unable_to_download_document">Unable to download document.</string>
+    <string name="please_wait_progress_msg">Please wait..</string>
+    <string name="no_documents_available_plz_add">No documents available, please add +</string>
+    <string name="address_book">Address Book</string>
+    <string name="change_language">Change Language</string>
+    <string name="english">English</string>
+    <string name="hindi">हिंदी</string>
+    <string name="would_you_like_to_update_selected_language">Would you like to update selected language?</string>
+    <string name="no_system_generate_docs_msg">Currently there are no system generated documents for you. However you can add a document by clicking on +</string>
+    <string name="no_system_generate_invoices_msg">Currently there are no system generated invoices for you. However you can add an invoice by clicking on +</string>
+    <string name="offers">Offers</string>
+    <string name="attach_invoice_copy">Attach Invoice Copy</string>
+    <string name="could_not_find_product">Couldn\\\'t find product.</string>
+    <string name="validate">Validate</string>
+    <string name="view_less">View Less</string>
+    <string name="view_more">View More</string>
+    <string name="doc_box">Doc Box</string>
+    <string name="buy">Buy</string>
+    <string name="help_desk">Help Desk</string>
+    <string name="year">year</string>
+    <string name="month">month</string>
+    <string name="week">week</string>
+    <string name="day">day</string>
+    <string name="hour">hour</string>
+    <string name="minute">minute</string>
+    <string name="second">second</string>
+    <string name="years">years</string>
+    <string name="months">months</string>
+    <string name="weeks">weeks</string>
+    <string name="days">days</string>
+    <string name="hours">hours</string>
+    <string name="minutes">minutes</string>
+    <string name="seconds">seconds</string>
+    <string name="location">Location</string>
+    <string name="m_store">M-Store</string>
+    <string name="benefits_of_registering">Benefits of Registering</string>
+    <string name="product_registration_benefits_msg"><![CDATA[Unlock gifts &amp; offers! Get the easiest access to product support.]]></string>
+    <string name="add_product_benefits_msg">Upload products. Our virtual assistance service will manage it on your behalf.</string>
+    <string name="benefits_of_adding">Benefits of Adding</string>
+    <string name="warranty_expires">Warranty Expires</string>
+    <string name="choose_from_library">Choose From Library</string>
+    <string name="take_a_photo">Take a Photo</string>
+    <string name="view_photo">View Photo</string>
+    <string name="account">Account</string>
+    <string name="terms_and_conditions">Terms and Conditions</string>
+    <string name="privacy_and_policy">Privacy and Policy</string>
+    <string name="purchase">Purchase</string>
+    <string name="pay">Pay</string>
+    <string name="accessory">Accessory</string>
+    <string name="insurance">Insurance</string>
+    <string name="amc">AMC</string>
+    <string name="extended_warranty">Extended Warranty</string>
+    <string name="place_a_service_request">PLACE A SERVICE REQUEST</string>
+    <string name="faqs">FAQS</string>
+    <string name="breakdown">Breakdown</string>
+    <string name="installation">Installation</string>
+    <string name="general_repair">General Repair</string>
+    <string name="others">Others</string>
+    <string name="address_01">Address 01</string>
+    <string name="please_add_address">Please add address</string>
+    <string name="select_service_schedule_date_and_time">Select service schedule date and time</string>
+    <string name="attachments">Attachments</string>
+    <string name="service_fee">Service Fee</string>
+    <string name="use_my_current_location">Use My Current Location</string>
+    <string name="add_new_address">Add New Address</string>
+    <string name="edit">Edit</string>
+    <string name="do_you_wish_to_cancel_update_address">Do you wish to cancel update address?</string>
+    <string name="do_you_wish_to_cancel_add_address">Do you wish to cancel add address?</string>
+    <string name="update_address">Update Address</string>
+    <string name="please_enter_pin_code">Please enter PIN Code</string>
+    <string name="please_enter_valid_address">Please enter valid address</string>
+    <string name="please_enter_state_province">Please enter stateCode province</string>
+    <string name="please_enter_city_name">Please enter city name</string>
+    <string name="request_lodged">Request Lodged</string>
+    <string name="under_progress">Under Progress</string>
+    <string name="resolved">Resolved</string>
+    <string name="type_a_message">Type a Message...</string>
+    <string name="products_not_found">Products Not Found.</string>
+    <string name="goto_mcommerce_site">goto mcommerce site</string>
+    <string name="pending">Pending</string>
+    <string name="upcoming">Upcoming</string>
+    <string name="reschedule">Reschedule</string>
+    <string name="set_reschedule">Set reschedule</string>
+    <string name="notifications">Notifications</string>
+    <string name="name">Name</string>
+    <string name="birthday">Birthday</string>
+    <string name="prefix">Prefix</string>
+    <string name="please_add_profile_default_address">Please add profile default address</string>
+    <string name="address">Address</string>
+    <string name="add_address">Add Address</string>
+    <string name="could_not_find_location">Could not find address based on current location.</string>
+    <string name="add_address_for_purchase">Would you like to add this address for purchase delivery?</string>
+    <string name="add_address_for_prod_registration">Would you like to add this address for product registration?</string>
+    <string name="select_address_for_place_service_request">Would you like to select as address to place service request?</string>
+    <string name="already_selected_as_profile_default_address">Already selected as an profile default address</string>
+    <string name="would_you_like_to_select_as_profile_default_address">Would you like to select as profile default address?</string>
+    <string name="would_you_like_to_delete_address">Would you like to delete address?</string>
+    <string name="could_not_delete_address">Couldn\'t delete Address.</string>
+    <string name="unable_to_delete_address_as_it_is_default_address">Unable to delete the address, as it is set as default one. Please make other as default and then continue.</string>
+    <string name="loading_items">Loading items</string>
+    <string name="address_updated_success_and_set_as_default_address">Address updated successfully and selected as profile default address.</string>
+    <string name="address_updated_successfully">Address updated successfully.</string>
+    <string name="address_added_successfully">Address added successfully.</string>
+    <string name="no_profile_to_view_capture_first">Profile Pic not available, Please add.</string>
+    <string name="name_changed_msg">Name is changed, would you like to proceed?</string>
+    <string name="mobile_number_changed_msg">Mobile Number is changed, would you like to proceed?</string>
+    <string name="email_id_changed_msg">Email ID is changed, would you like to proceed?</string>
+    <string name="date_of_birth_changed_msg">Date of Birth is changed, would you like to proceed?</string>
+    <string name="gender_changed_msg">Gender is changed, would you like to proceed?</string>
+    <string name="customer_type_changed_msg">Customer type is changed, would you like to proceed?</string>
+    <string name="select_server">Please select a Backend Server for app to communicate</string>
+    <string name="switch_server">Switch Server</string>
+    <string name="type_server_url">Type Backend/Server URL</string>
+
+    <!--Server Error Messages-->
+    <!--#General-->
+    <string name="GE_FATAL">Server error</string>
+    <string name="VALIDATION_ERROR">Validation error</string>
+    <string name="ENCODE_DECODE_ERROR">Encode decode error</string>
+
+    <!--#Login-->
+    <string name="bad_credentials">Incorrect password ! No of attempts left: </string>
+    <string name="not_a_valid_user">We cannot find an account with that username</string>
+    <string name="no_privileges_assigned">User has not authorized</string>
+    <string name="request_method_not_supported">Request method not supported</string>
+    <string name="content_type_not_supported">Content type not supported</string>
+    <string name="not_a_valid_application_type">Application type is not valid</string>
+    <string name="user_account_locked">User account is locked</string>
+
+
+    <!--#Hmac Exception Messages-->
+    <string name="tkn_gen_fail">Key pair generation failed.</string>
+    <string name="not_a_valid_source_type">Source Type is not valid.</string>
+
+    <!--#Organization-->
+    <string name="GE_CSTMR_XST">Customer already exists with this company name</string>
+    <string name="GE_CSTMR_DNXST">Customer does not exist</string>
+    <string name="GE_CSTMR_PHN_XST">Customer already exists with this phone</string>
+    <string name="GE_CSTMR_ML_XST">Customer already exists with this email</string>
+    <string name="GE_PRTNR_XST">Partner already exists with this name</string>
+    <string name="GE_PRTNR_PHN_XST">Partner already exists with this phone</string>
+    <string name="GE_PRTNR_ML_XST">Partner already exists with this email</string>
+    <string name="GE_PRTNR_DNXST">Partner does not exist</string>
+    <string name="GE_MNDTRY_CNF_PNDNG">Please configure all the mandatory configurations</string>
+    <string name="CUSTOMER_TAXNUMBER_EXIST">Customer already exist with this tax number</string>
+    <string name="TXNM_XST">Tax name already exist</string>
+
+    <!--#User-->
+    <string name="GE_USR_DNXST">User does not exist</string>
+    <string name="GE_USR_XST">User already exists</string>
+    <string name="GE_USR_ML_XST">User email already exists</string>
+    <string name="GE_USR_MBL_XST">User mobile already exists</string>
+    <string name="GE_NVLD_LD_PSSWRD">Invalid old password</string>
+    <string name="GE_NVLD_MBL_ML">Invalid mobile or email</string>
+    <string name="GE_LRDY_PDTD">You are already updated</string>
+    <string name="GE_NVLD_OTP">Invalid OTP</string>
+    <string name="GE_NVLD_SRS">Invalid series</string>
+    <string name="GE_MBL_NT_FND">Mobile not found</string>
+    <string name="GE_EML_NT_FND">Email not found</string>
+    <string name="GE_NVLD_RL">Invalid role</string>
+    <string name="GE_EML_VRFCTN_FLD">Email verification failed</string>
+    <string name="GE_LGN_PRNCPL_RQRD">Login principal required</string>
+    <string name="GE_CSTMR_ID_RQRD">Customer id is required</string>
+    <string name="GE_NCTV_USR">User is inactive</string>
+    <string name="GE_EML_VRFD">Email is already verified</string>
+    <string name="GE_EML_NT_VRFD">Email is not yet verified</string>
+    <string name="GE_RL_NTXT">Role does not exist</string>
+    <string name="GE_RL_XT">Role already exists</string>
+    <string name="GE_PRVLG_NTXT">Privilege does not exist</string>
+    <string name="GE_PRVLG_XT">Privilege exists</string>
+    <string name="GE_MDL_NTXT">Module does not exist</string>
+    <string name="GE_MDL_XT">Module already exists</string>
+    <string name="GE_NVLD_RFRRL_CD">Invalid referral code</string>
+
+    <!--#Menu-->
+    <string name="GE_MENU_CF_NTFND">Menu configuration not found.</string>
+    <string name="GE_MENU_CF_MISG">Menu configuration is missing.</string>
+
+    <!--#Product-->
+    <string name="GE_PROD_MODEL_XST">{LABEL_FL_PRODUCTDETAILS} already exists with this {LABEL_FL_MODELNUMBER}.</string>
+    <string name="GE_PROD_MODEL_DNXST">{LABEL_FL_MODELNUMBER} does not exist.</string>
+    <string name="GE_PROD_MANDT_CF_MISG">{LABEL_FL_PRODUCTDETAILS} mandate attribute configuration is missing.</string>
+    <string name="GE_SRVC_PRDCT_SRVC_TYP_LRDY_XTS">{LABEL_FL_PRODUCTDETAILS} {LABEL_FL_SERVICETYPE} already exists.</string>
+
+    <!--#Batch & Scheduler-->
+    <string name="GE_BAT_INVD_JOB_NAME">Invalid Job name.</string>
+    <string name="GE_BAT_INVD_JOB_ID">Invalid Job id.</string>
+    <string name="GE_BAT_FILE_UPLD_FAIL">File upload failed.</string>
+    <string name="GE_BAT_LOG_NT_FND">Log file not found.</string>
+    <string name="GE_BAT_INVD_SERV_BEAN_CF">Invalid service bean configuration.</string>
+    <string name="GE_BAT_SCHD_FAIL">Job scheduling failed.</string>
+    <string name="GE_BAT_RE_SCHD_FAIL">Job rescheduling failed.</string>
+    <string name="GE_BAT_JOB_FAIL_TO_START">Job failed to start.</string>
+    <string name="GE_BAT_JOB_FAIL_TO_PAUSE">Failed to pause Job.</string>
+    <string name="GE_BAT_JOB_FAIL_TO_RESUM">Failed to resume Job.</string>
+    <string name="GE_BAT_JOB_FAIL_TO_DEL">Failed to delete Job.</string>
+
+    <!--#Mixpanel-->
+    <string name="GE_MIXPANEL_REQ_FAIL">Mixpanel request failed.</string>
+
+    <!--#ServiceRequest-->
+    <string name="GE_SR_SRH_DNXST">Service request history does not exist</string>
+    <string name="GE_SR_SR_DNXST">Service request does not exist</string>
+    <string name="GE_SR_INVLD_SR">Invalid {LABEL_FL_SERVICEREQUEST}</string>
+    <string name="GE_SR_SR_INV_DNXST">{LABEL_FL_SERVICEREQUEST} invoice does not exist</string>
+    <string name="GE_SR_SR_RSOLVD">{LABEL_FL_SERVICEREQUEST} resolved</string>
+    <string name="GE_SR_NSSGND_SR">Unassigned already</string>
+    <string name="GE_SR_NVC_GNRTD_SR">Invoice generated already</string>
+    <string name="GE_HLP_CFGURTN_LRDY_CNFGRD">Help configuration is already done</string>
+
+    <!--#DK Messages-->
+    <string name="GE_DGTLKT_DNXST">Digital Kit does not exist.</string>
+    <string name="GE_PRDCT_SRL_NMBR_XSTS">{LABEL_FL_PRODUCTDETAILS} {LABEL_FL_SLNUMBER} already exists.</string>
+    <string name="GE_DK_MANDT_ADTNL_INFO_MISSED">Mandatory additional info field is missing</string>
+
+    <!--#campaign-->
+    <string name="GE_CMPGN_DNXT">Campaign Does not Exist.</string>
+    <string name="GE_DSNT_RFRRL_EXST">Referral information does not exist</string>
+    <string name="GE_COUPN_CD_LRD_XST">Coupon code already exist.</string>
+    <string name="GE_CAMP_INVLD_COUPN">Invalid coupon</string>
+    <string name="GE_CAMP_COUPN_LMT_EXCEED">Coupon limit exceeded</string>
+    <string name="GE_CAMP_USER_LMT_EXCEED">User limit exceeded</string>
+
+    <!--#purchase-->
+    <string name="GE_PRCHS_PLN_DNXT">Purchase Plan does not exist.</string>
+    <string name="GE_PRCHS_SLB_DNXT">Purchase Slab does not exist.</string>
+    <string name="GE_PRCHS_LG_NTVLBLE">Unable to log the purchase request.</string>
+
+    <!--#Master data-->
+    <string name="GE_NVLD_PRD_SRVC_TYP">Invalid {LABEL_FL_SERVICETYPE}.</string>
+    <string name="GE_SRVC_FFRD_NT_FND">Service offered not found.</string>
+    <string name="GE_SRVC_FFRD_ALRDY_EXT">Service Offered already exist.</string>
+    <string name="GE_MNFCTR_NT_FND">{LABEL_FL_PRODUCTMANUFACTURER} not found.</string>
+    <string name="GE_SB_CTGRY_NT_FND">{LABEL_FL_PRODUCTSUBCATEGORY} not found.</string>
+    <string name="GE_CTGRY_NT_XST">{LABEL_FL_PRODUCTCATEGORY} does not exist.</string>
+
+    <!--#Product registration-->
+    <string name="GE_NVLD_NQ_CD">Invalid unique code</string>
+    <string name="GE_UNQ_CD_LRD_XST">Unique code already exist</string>
+    <string name="GE_PRDCT_RGSTRTN_DS_NT_XST">Product does not exist</string>
+    <string name="GE_UNQ_CD_LRD_RGSTRD">Unique code already registered</string>
+    <string name="GE_PRDCT_LKP_DSNT_XST">{LABEL_FL_PRODUCTDETAILS} lookup does not exist</string>
+
+    <!--#Document-->
+    <string name="GE_DCMNT_DNXST">Document does not exits</string>
+    <string name="GE_N_DCMNT_DT_FND">No file uploaded</string>
+    <string name="GE_DCMNT_WRTNG_RR">Could not Write Document. Try Again</string>
+    <string name="GE_N_DCMNT_URL_FND">No URL data found</string>
+    <string name="GE_DCMNT_CNNB_DLT">Document can not be deleted as uploaded by Brand</string>
+
+    <!--#Address-->
+    <string name="GE_ADDRSS_RQRD">Address is mandatory</string>
+
+    <!--#Adapter-->
+    <string name="GE_ACER_INVALID_SL_NO">Invalid serial number</string>
+    <!--Server Error Messages-->
+
+    <string-array name="languages">
+        <item>@string/english</item>
+        <item>@string/hindi</item>
+    </string-array>
+
+    <string name="production_in_rb_text">Production(IN) - (https://app-in.nhancenow.com/v2)</string>
+    <string name="production_ae_rb_text">Production(AE) - (https://app-me.nhancenow.com/v2)</string>
+    <string name="demo_in_rb_text">Demo - (https://demo2.nhancenow.com/v2)</string>
+    <string name="qa_in_rb_text">QA - (http://139.59.46.199/v2)</string>
+    <string name="staging_in_rb_text">Staging - (https://staging.nhancenow.com/v2)</string>
+    <string name="local_server">Local server</string>
+    <string name="url_error">URL error. Please try again.</string>
+    <string name="do_you_wish_to_go_with_server_changes">Do you really wish to go with Backend/Server URL changes?</string>
+    <string name="do_you_wish_reset_server_changes">Do you really wish to reset Backend/Server URL changes?</string>
+    <string name="reset_label">Reset</string>
+    <!--Industry Specific Label-->
+    <string name="service_charge">Service Charge</string>
+    <string name="industry_based_service_request">Service Request</string>
+    <string name="service_request_summary">Service Request Summary</string>
+    <string name="service_request_statics">Service Request Statistics</string>
+    <string name="warranty_period">Warranty Period</string>
+    <string name="is_discoverable">Is discoverable</string>
+    <string name="service_type">Service Type</string>
+    <string name="serial_number">Serial Number</string>
+    <string name="purchased_date">Purchased Date</string>
+    <string name="request_id">Request Id</string>
+    <string name="type">Type</string>
+    <string name="service_requested">Service Requested</string>
+    <string name="service_processed">Service Processed</string>
+    <string name="digital_kits_issued">Digital Kits Issued</string>
+    <string name="digital_kit_invoice">Digital Kit Invoice</string>
+    <string name="digital_kit_events_report">Digital Kit Events Report</string>
+    <string name="service_request_report">Service Request Report</string>
+    <string name="service_request_details_report">Service Request  Details Report</string>
+    <string name="spare_parts_consumption_report">Spare Parts Consumption Report</string>
+    <string name="purchase_renewals_report">Purchase Renewals Report</string>
+    <string name="purchase_accessories_report">Purchase Accessories Report</string>
+    <string name="inventory_report_spare_parts_and_accessories">Inventory Report - Spare Parts And Accessories</string>
+    <string name="purchase_report_others">Purchase Report - Others</string>
+    <string name="campaign_report">Campaign Report</string>
+    <string name="campaign_statistics_report">Campaign Statistics Report</string>
+    <string name="warranty_expires_on">Warranty Expires On</string>
+    <string name="course_details">Course Details</string>
+    <string name="institute_name">Institute Name</string>
+    <string name="course_name">Course Name</string>
+    <string name="course_duration">Course Duration</string>
+    <string name="course_id">Course ID</string>
+    <string name="course_starts_date">Course Starts Date</string>
+    <string name="course_expires_on">Course Expires On</string>
+    <string name="model_number">Model Number</string>
+    <string name="assign_service_engineer">Assign service engineer</string>
+    <string name="industry_based_product_details">Product Details</string>
+    <string name="warranty_expires_in">Warranty Expires In</string>
+    <string name="warranty_expired">Warranty Expired</string>
+    <string name="industry_based_product_category">Product Category</string>
+    <string name="product_subcategory">Product Subcategory</string>
+    <string name="product_manufacturer">Product Manufacturer</string>
+    <string name="industry_based_product_image">Product Image</string>
+    <string name="service_provider">Service Provider</string>
+    <string name="image">Image</string>
+
+    <!--AutomobilesIndustryLabelEnum-->
+    <string name="vehicle_details">Vehicle Details</string>
+    <string name="vehicle_category">Vehicle Category</string>
+    <string name="vehicle_subcategory">Vehicle Subcategory</string>
+    <string name="vehicle_manufacturer">Vehicle Manufacturer</string>
+    <string name="vehicle_image">Vehicle Image</string>
+    <!--AutomobilesIndustryLabelEnum-->
+
+    <!--DiagnosticsIndustryLabelEnum-->
+    <string name="service_details">Service Details</string>
+    <string name="service_category">Service Category</string>
+    <string name="service_subcategory">Service Subcategory</string>
+    <string name="service_name">Service Name</string>
+    <string name="assign_sample_collector">Assign Sample Collector</string>
+    <string name="test_expires_in">Test Expires In</string>
+    <string name="test_expired">Test Expired</string>
+    <!--DiagnosticsIndustryLabelEnum-->
+
+    <!--DrivingSchoolIndustryLabelEnum-->
+    <string name="driving_course_details">Driving Course Details</string>
+    <string name="category">Category</string>
+    <string name="sub_category">Sub Category</string>
+    <string name="course_image">Course Image</string>
+    <string name="course_starts_on">Course Starts On</string>
+    <string name="assign_trainer">Assign Trainer</string>
+    <string name="course_expires_in">Course Expires In</string>
+    <string name="course_expired">Course Expired</string>
+    <string name="course_upgradation_report">Course Upgradation Report</string>
+    <string name="course_upgradation_details_report">Course Upgradation Details Report</string>
+    <string name="vehicle_utilization_report">Vehicle Utilization Report</string>
+    <!--DrivingSchoolIndustryLabelEnum-->
+
+    <!--EducationIndustryLabelEnum-->
+    <string name="course_fee">Course Fee</string>
+    <string name="guidance_summary">Guidance Summary</string>
+    <string name="guidance_statistics">Guidance Statistics</string>
+    <string name="course_category">Course Category</string>
+    <string name="course_subcategory">Course Subcategory</string>
+    <string name="recommended_courses">Recommended Courses</string>
+    <string name="course_type">Course Type</string>
+    <string name="request_type">Request Type</string>
+    <string name="assign_counsellor">Assign Counsellor</string>
+    <string name="course_ends_in">Course Ends In</string>
+    <string name="course_end">Course End</string>
+    <string name="course_request_report">Course Request Report</string>
+    <string name="course_request_details_report">Course Request Details Report</string>
+    <string name="book_sold_report">Book Sold Report</string>
+    <string name="additional_purchase_report">Additional Purchase Report</string>
+    <string name="purchase_books_report">Purchase Books Report</string>
+    <string name="available_books_stock_report">Available Books Stock Report</string>
+    <!--EducationIndustryLabelEnum-->
+
+    <!--ElectricalAndElectronicsIndustryLabelEnum-->
+    <string name="industry_based_dashboard">Dashboard</string>
+    <string name="digital_kit_management">Digital Kit Management</string>
+    <string name="product_management">Product Management</string>
+    <string name="product_approval">Product Approval</string>
+    <string name="configure_uniquecode">Configure Uniquecode</string>
+    <string name="partner_and_service_offering">Partner &amp; Service Offering</string>
+    <string name="industry_based_purchase">Purchase</string>
+    <string name="industry_based_billing">Billing</string>
+    <string name="settings">Settings</string>
+    <string name="reports">Reports</string>
+    <string name="product_discovery">Product Discovery</string>
+    <string name="image_configuration">Image Configuration</string>
+    <string name="help_configuration">Help Configuration</string>
+    <!--ElectricalAndElectronicsIndustryLabelEnum-->
+
+    <!--FitnessIndustryLabelEnum-->
+
+    <!--FitnessIndustryLabelEnum-->
+
+    <!--FurnitureIndustryLabelEnum-->
+
+    <!--FurnitureIndustryLabelEnum-->
+
+    <!--GemsAndJewelleryIndustryLabelEnum-->
+    <string name="style_no">Style No</string>
+    <string name="product_code">Product Code</string>
+    <!--GemsAndJewelleryIndustryLabelEnum-->
+
+    <!--HomeAppliancesIndustryLabelEnum-->
+
+    <!--HomeAppliancesIndustryLabelEnum-->
+
+    <!--KitchenAppliancesIndustryLabelEnum-->
+
+    <!--KitchenAppliancesIndustryLabelEnum-->
+
+    <!--LeisureIndustryLabelEnum-->
+
+    <!--LeisureIndustryLabelEnum-->
+
+    <!--LifestyleIndustryLabelEnum-->
+
+    <!--LifestyleIndustryLabelEnum-->
+
+    <!--MediaIndustryLabelEnum-->
+    <string name="news_paper_name">News Paper Name</string>
+    <string name="other_charges">Other Charges</string>
+    <string name="other_request">Other Request</string>
+    <string name="other_request_summary">Other Request Summary</string>
+    <string name="other_service_request_statistics">Other Service Request Statistics</string>
+    <string name="news_paper_type">News Paper Type</string>
+    <string name="news_paper_subcategory">News Paper Subcategory</string>
+    <string name="published_by">Published By</string>
+    <string name="paper_name">Paper Name</string>
+    <string name="subscription_expires_in">Subscription Expires In</string>
+    <string name="publication_image">Publication Image</string>
+    <string name="other_subscription">Other Subscription</string>
+    <string name="addition_no">Addition No</string>
+    <string name="assign_to">Assign To</string>
+    <string name="other_service_requested">Other Service Requested</string>
+    <string name="other_service_processed">Other Service Processed</string>
+    <string name="subscription_details">Subscription Details</string>
+    <string name="subscription_expired">Subscription Expired</string>
+    <string name="request_report">Request Report</string>
+    <string name="other_request_details_report">Other Request Details Report</string>
+
+    <string name="subscription_consumption_report">Subscription Consumption Report</string>
+    <string name="subscription_purchase_renewal_report">Subscription Purchase Renewal Report</string>
+    <string name="purchase_subscription_report">Purchase Subscription Report</string>
+    <string name="complete_subscription_purchase_report">Complete Subscription Purchase Report</string>
+    <string name="subscription_expires_on">Subscription Expires On</string>
+    <!--MediaIndustryLabelEnum-->
+
+    <!--TravelAndTourismIndustryLabelEnum-->
+    <string name="package_details">Package Details</string>
+    <string name="package_category">Package Category</string>
+    <string name="package_subcategory">Package Subcategory</string>
+    <string name="package_name">Package Name</string>
+    <string name="assign_travel_agent">Assign Travel Agent</string>
+    <string name="travel_details">Travel Details</string>
+    <string name="product_details_all_caps">PRODUCT DETAILS</string>
+    <string name="we_are_fetching_product_details">We\'re Fetching Product Details...</string>
+    <string name="we_have_identified_your_product">We\'ve Identified Your Product as</string>
+    <string name="e_learning">e-Learning</string>
+    <string name="non_technical">Non Technical</string>
+    <string name="repair">Repair</string>
+    <string name="trade_in">Trade In</string>
+    <string name="recycle">Recycle</string>
+    <string name="test_drive">Test Drive</string>
+    <string name="preventive_maintenance">Preventive Maintenance</string>
+    <string name="water_maintenance">Water Maintenance</string>
+    <string name="general_service">General Service</string>
+    <string name="dismantle">Dismantle</string>
+    <string name="periodic_maintenance">Periodic Maintenance</string>
+    <string name="vehicle_detailing">Vehicle Detailing</string>
+    <string name="shop_come_back">Shop Come Back</string>
+    <string name="body_repair">Body Repair</string>
+    <string name="resizing">Resizing</string>
+    <string name="polishing">Polishing</string>
+    <string name="stone_setting">Stone Setting</string>
+    <string name="remaking">Remaking</string>
+    <string name="engraving">Engraving</string>
+    <string name="service">Service</string>
+    <string name="book_class">Book Class</string>
+    <string name="book_practical_class">Book Practical Class</string>
+    <string name="book_test">Book Test</string>
+    <string name="restringing">Restringing</string>
+    <string name="body_fixing">Body Fixing</string>
+    <string name="package_cancellation">Package Cancellation</string>
+    <string name="scan">Scan</string>
+    <string name="blood_test">Blood Test</string>
+    <string name="sample_collection">Sample Collection</string>
+    <string name="test_srt">Test</string>
+    <string name="book_my_test">Book My Test</string>
+    <string name="full_service">Full Service</string>
+    <string name="partial_service">Partial Service</string>
+    <string name="battery_replacement">Battery Replacement</string>
+    <string name="restoration">Restoration</string>
+    <string name="assemble">Assemble</string>
+    <string name="result">Result</string>
+    <string name="booking_details">Booking Details</string>
+    <string name="select_preferred_date_and_time">Select Preferred Date and Time</string>
+    <string name="select_preferred_location">Select Preferred Location</string>
+    <string name="preferred_location">Preferred Location</string>
+    <string name="comments_hint">Comments</string>
+    <string name="payment_details">Payment Details</string>
+    <string name="stage_description">Stage Description</string>
+    <string name="stage_fee">Stage fee</string>
+    <string name="paid">Paid</string>
+    <!--TravelAndTourismIndustryLabelEnum-->`
+
+    <!--Industry Specific Label-->
+
+
+    <string name="offer_expires_on_label">Offer Expires on :\u0020</string>
+    <string name="valid_till_label">Valid till :\u0020</string>
+    <string name="show_all_label">Show all\u0020</string>
+    <string name="goto_location">Goto Location</string>
+    <string name="fetching_transaction_ref_num">Fetching transaction reference number..</string>
+    <string name="please_select_preferred_date_time">Please select preferred date time</string>
+    <string name="please_select_preferred_location">Please select preferred location</string>
+    <string name="booking_sucessful_please_wait_for_confirmation">Booking sucessful, please wait for confirmation</string>
+    <string name="booking_class">Booking Class</string>
+    <string name="landmark">Landmark</string>
+    <string name="select_prefix">Select prefix</string>
+    <string name="hint_first_name">First Name</string>
+    <string name="hint_middle_name">Middle Name</string>
+    <string name="hint_last_name">Last Name</string>
+    <string name="marital_status">Marital Status</string>
+    <string name="select_marital_status">Select Marital Status</string>
+    <string name="nationality">Nationality</string>
+    <string name="select_nationality">Select Nationality</string>
+    <string name="religion">Religion</string>
+    <string name="select_religion">Select Religion</string>
+    <string name="hint_aadhaar_number">Aadhaar Number</string>
+    <string name="please_enter_first_name">Please enter first name</string>
+    <string name="please_enter_last_name">Please enter last name</string>
+    <string name="please_choose_gender">Please choose gender</string>
+    <string name="please_choose_marital_status">Please choose marital status</string>
+    <string name="please_choose_nationality">Please choose nationality</string>
+    <string name="please_choose_religion">Please choose religion</string>
+    <string name="please_select_date_of_birth">Please select date of birth</string>
+    <string name="please_enter_aadhaar_number">Please enter Aadhaar number</string>
+    <string name="signed_up_data_not_found">Signed up data not found.</string>
+    <string name="signup_successful">Signup successful.</string>
+    <string name="signed_up_data_not_found_by_mobile_try_with_email_id">Signed up data not found by mobile try with email ID.</string>
+    <string name="signed_up_data_not_found_by_email_id_try_doing_registration">Signed up data not found by email ID try doing registration</string>
+    <string name="sign_in_successful">Sign In Successful</string>
+    <string name="nav_title_upcoming">Upcoming</string>
+    <string name="nav_title_history">History</string>
+    <string name="book_appointment">Book Appointment</string>
+    <string name="select_enterprise">Select Hospital</string>
+    <string name="enterprise">Hospital</string>
+    <string name="specialization">Specialization</string>
+    <string name="select_specialization">Select Specialization</string>
+    <string name="doctor">Doctor</string>
+    <string name="select_doctor">Select Doctor</string>
+    <string name="select_appointment_date">Select Appointment Date</string>
+    <string name="appointment_date">Appointment Date</string>
+    <string name="select_appointment_time">Select Appointment Time</string>
+    <string name="appointment_time">Appointment Time</string>
+    <string name="book_button_label">Book</string>
+    <string name="select_slots">Select Slots</string>
+
+    <string-array name="prefix_array">
+        <item>Mr</item>
+        <item>Ms</item>
+        <item>Mrs</item>
+    </string-array>
+
+    <string-array name="marital_status_array">
+        <item>Single</item>
+        <item>Married</item>
+        <item>Widowed</item>
+        <item>Divorced / Separated</item>
+    </string-array>
+
+    <string-array name="nationality_array">
+        <item>Indian</item>
+    </string-array>
+
+    <string-array name="religion_array">
+        <item>Hinduism</item>
+        <item>Islam</item>
+        <item>Christianity</item>
+        <item>Sikhism</item>
+        <item>Buddhism</item>
+        <item>Jainism</item>
+        <item>Zoroastrianism</item>
+        <item>Others Religion</item>
+        <item>Religion not specified</item>
+    </string-array>
+
+    <string name="please_select_a_date_to_continue">Please select a date to continue</string>
+    <string name="please_select_preferred_date">Please select preferred date</string>
+    <string name="please_select_preferred_timings">Please select preferred timings</string>
+    <string name="please_select_a_time_slot_to_continue">Please select a time slot to continue</string>
+    <string name="time_slot_not_available_msg">Time slot not available</string>
+    <string name="select_country">Select Country</string>
+    <string name="country">Country</string>
+    <string name="select_state">Select State</string>
+    <string name="state">State</string>
+    <string name="select_city">Select City</string>
+    <string name="city">City</string>
+    <string name="select_location">Select Location</string>
+    <string name="search_hint">Search ...</string>
+    <string name="please_select_country">Please select country</string>
+    <string name="please_select_state">Please select state</string>
+    <string name="please_select_city">Please select city</string>
+    <string name="appointment_type">Appointment Type</string>
+    <string name="new_lbl">New</string>
+    <string name="follow_up_lbl">Follow up</string>
+    <string name="appointment_you_are_following_up">Appointment you are following up</string>
+    <string name="select_followup_appointment">Select follow up appointment</string>
+    <string name="short_note_about_appointment">Short note about appointment</string>
+    <string name="please_select_specialization">Please select specialization.</string>
+    <string name="please_select_enterprise">Please select hospital.</string>
+    <string name="please_select_appointment_date">Please select appointment date.</string>
+    <string name="please_select_doctor">Please select doctor.</string>
+    <string name="maximum_of">Maximum of</string>
+    <string name="slots_allowed">Slots allowed</string>
+    <string name="please_select_appointment_type">Please select appointment type.</string>
+    <string name="appointment_successfull">Appointment Booked Successfully</string>
+    <string name="no_data_found">No data found</string>
+
+</resources>

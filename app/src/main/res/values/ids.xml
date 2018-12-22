@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="menu_flash" type="id" />
+    <item name="menu_auto_focus" type="id" />
+    <item name="menu_formats" type="id" />
+    <item name="menu_camera_selector" type="id" />
+
+    <item name="warranty_price_rb" type="id" />
+
+    <item name="warranty_plan_tv" type="id" />
+
+    <item name="crop_image_menu_crop" type="drawable" />
+
+    <item name="wheel_text_view_configured_state" type="id" />
+
+    <item name="expandable_text" type="id" />
+    <item name="expand_collapse" type="id" />
+
+    <item name="item_click_support" type="id" />
+</resources>

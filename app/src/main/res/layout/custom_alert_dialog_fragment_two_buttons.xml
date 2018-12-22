@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_custom_alert_bg">
+
+        <RelativeLayout
+            android:id="@+id/alert_ll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!--<android.support.v7.widget.AppCompatTextView
+                android:id="@+id/alert_title"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/button_height"
+                android:fontFamily="sans-serif"
+                android:gravity="center"
+                android:paddingBottom="@dimen/card_view_content_padding"
+                android:paddingTop="@dimen/card_view_content_padding"
+                android:text="Alert Title"
+                android:textAllCaps="false"
+                android:textColor="@color/custom_alert_message"
+                android:textSize="@dimen/alert_title_dialog_size"
+                android:textStyle="bold"
+                android:visibility="gone" />
+
+            <View
+                android:id="@+id/title_strip_view"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_below="@+id/alert_title"
+                android:background="@color/custom_alert_title_strip_color"
+                android:visibility="gone" />
+-->
+
+            <LinearLayout
+                android:id="@+id/alert_message_ll"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:layout_marginTop="15dp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/image_view_status"
+                    android:layout_width="46dp"
+                    android:layout_height="46dp"
+                    android:layout_gravity="center"
+                    android:paddingTop="@dimen/activity_vertical_margin"
+                    android:src="@mipmap/alert_correct" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/alert_title"
+                    style="@style/semi_bold_16sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingTop="@dimen/padding_ten"
+                    android:text="Alert Title"
+                    android:textAllCaps="false"
+                    android:textColor="@color/dark_txt_color" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/alert_message"
+                    style="@style/regular_14sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:gravity="center"
+                    android:paddingTop="@dimen/padding_ten"
+                    android:text="Alert Message"
+                    android:textAllCaps="false"
+                    android:textColor="@color/md_grey_700" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/btn_ll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/alert_ll"
+            android:background="@drawable/rounded_custom_button_alert_bg">
+
+            <Button
+                android:id="@+id/positive_btn"
+                style="@style/semi_bold_12sp"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/alert_button_height"
+                android:layout_alignParentRight="true"
+                android:background="@color/transparent"
+                android:gravity="right|center_vertical"
+                android:lineSpacingExtra="6sp"
+                android:paddingRight="@dimen/padding_forty"
+                android:text="Ok"
+                android:textAllCaps="true"
+                android:textColor="@color/app_dark_color" />
+
+            <Button
+                android:id="@+id/negative_btn"
+                style="@style/semi_bold_12sp"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/alert_button_height"
+                android:layout_toLeftOf="@+id/positive_btn"
+                android:background="@color/transparent"
+                android:gravity="right|center_vertical"
+                android:lineSpacingExtra="6sp"
+                android:paddingRight="@dimen/padding_forty"
+                android:text="Cancel"
+                android:textAllCaps="true"
+                android:textColor="@color/app_dark_color" />
+
+            <!--<View
+                android:layout_width="1dp"
+                android:layout_height="25dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="3dp"
+                android:layout_marginTop="3dp"
+                android:background="@color/et_text_color" />-->
+
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+</RelativeLayout>

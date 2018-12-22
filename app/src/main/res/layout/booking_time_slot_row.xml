@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/transparent">
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/time_slot_btn"
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:paddingRight="5dp"
+        android:paddingLeft="5dp"
+        android:gravity="center"
+        android:background="@drawable/rounded_button_booking_time_slot_unselected"
+        android:stateListAnimator="@null"
+        android:text="09:00AM - 10:00AM"
+        android:textAllCaps="true"
+        android:textColor="@color/booking_time_slot_unselected_text"
+        style="@style/regular_12sp"
+        android:paddingEnd="5dp"
+        android:paddingStart="5dp" />
+
+</LinearLayout>

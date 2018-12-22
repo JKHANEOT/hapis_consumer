@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:id="@+id/main_layout">
+
+    <RelativeLayout
+        android:id="@+id/main_ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/dialog_title_ll"
+            android:layout_width="match_parent"
+            android:background="#eeeeee"
+            android:layout_height="?android:attr/actionBarSize"
+            android:weightSum="300">
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/cancel_address_tv"
+                android:layout_weight="70"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="@string/cancel"
+                android:textAllCaps="false"
+                android:textColor="#131c2e"
+                style="@style/regular_14sp"/>
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/title_address_tv"
+                android:layout_weight="160"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="@string/add_new_address"
+                android:textAllCaps="false"
+                android:textColor="#131c2e"
+                style="@style/regular_16sp"/>
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/submit_address_tv"
+                android:layout_weight="70"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="@string/submit_button_label"
+                android:textAllCaps="false"
+                android:textColor="#131c2e"
+                style="@style/semi_bold_14sp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/data_input_ll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_below="@+id/dialog_title_ll"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="1">
+
+                <com.hapis.customer.ui.custom.materialedittext.MaterialEditText
+                    android:id="@+id/pincode_edittext"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/pin_code_mandatory"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:textAllCaps="false"
+                    android:textColorHint="#616161"
+                    style="@style/semi_bold_14sp"
+                    app:met_baseColor="#616161"
+                    app:met_floatingLabel="normal"
+                    app:met_floatingLabelText="@string/pin_code"
+                    app:met_floatingLabelTextColor="#616161"
+                    app:met_primaryColor="#616161"
+                    app:met_textColor="@color/app_dark_color"
+                    app:met_textColorHint="#616161"
+                    app:met_underlineColor="#616161"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="1">
+
+                <com.hapis.customer.ui.custom.materialedittext.MaterialEditText
+                    android:id="@+id/city_edittext"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/city_mandatory_hint"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:textAllCaps="false"
+                    android:textColorHint="#616161"
+                    style="@style/semi_bold_14sp"
+                    app:met_baseColor="#616161"
+                    app:met_floatingLabel="normal"
+                    app:met_floatingLabelText="@string/city_hint"
+                    app:met_floatingLabelTextColor="#616161"
+                    app:met_primaryColor="#616161"
+                    app:met_textColor="@color/app_dark_color"
+                    app:met_textColorHint="#616161"
+                    app:met_underlineColor="#616161"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="1">
+
+                <com.hapis.customer.ui.custom.materialedittext.MaterialEditText
+                    android:id="@+id/state_edittext"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/state_mandatory_hint"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:textAllCaps="false"
+                    android:textColorHint="#616161"
+                    style="@style/semi_bold_14sp"
+                    app:met_baseColor="#616161"
+                    app:met_floatingLabel="normal"
+                    app:met_floatingLabelText="@string/state_hint"
+                    app:met_floatingLabelTextColor="#616161"
+                    app:met_primaryColor="#616161"
+                    app:met_textColor="@color/app_dark_color"
+                    app:met_textColorHint="#616161"
+                    app:met_underlineColor="#616161"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:weightSum="1">
+
+                <com.hapis.customer.ui.custom.materialedittext.MaterialEditText
+                    android:id="@+id/country_edittext"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/country_mandatory_hint"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:textAllCaps="false"
+                    android:textColorHint="#616161"
+                    style="@style/semi_bold_14sp"
+                    app:met_baseColor="#616161"
+                    app:met_floatingLabel="normal"
+                    app:met_floatingLabelText="@string/country_hint"
+                    app:met_floatingLabelTextColor="#616161"
+                    app:met_primaryColor="#616161"
+                    app:met_textColor="@color/app_dark_color"
+                    app:met_textColorHint="#616161"
+                    app:met_underlineColor="#616161"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="1">
+
+                <com.hapis.customer.ui.custom.materialedittext.MaterialEditText
+                    android:id="@+id/address_edittext"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/address_mandatory_hint"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:textAllCaps="false"
+                    android:textColorHint="#616161"
+                    style="@style/semi_bold_14sp"
+                    app:met_baseColor="#616161"
+                    app:met_floatingLabel="normal"
+                    app:met_floatingLabelText="@string/address_hint"
+                    app:met_floatingLabelTextColor="#616161"
+                    app:met_primaryColor="#616161"
+                    app:met_textColor="@color/app_dark_color"
+                    app:met_textColorHint="#616161"
+                    app:met_underlineColor="#616161"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="1">
+
+                <com.hapis.customer.ui.custom.materialedittext.MaterialEditText
+                    android:id="@+id/landmark_edittext"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/landmark"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:textAllCaps="false"
+                    android:textColorHint="#616161"
+                    style="@style/semi_bold_14sp"
+                    app:met_baseColor="#616161"
+                    app:met_floatingLabel="normal"
+                    app:met_floatingLabelText="@string/landmark"
+                    app:met_floatingLabelTextColor="#616161"
+                    app:met_primaryColor="#616161"
+                    app:met_textColor="@color/app_dark_color"
+                    app:met_textColorHint="#616161"
+                    app:met_underlineColor="#616161"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>

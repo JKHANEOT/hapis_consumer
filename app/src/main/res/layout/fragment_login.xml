@@ -1,0 +1,242 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_lay"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/screen_bg_white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="@drawable/signin_bg">
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="match_parent"
+                android:layout_height="76dp" />
+
+            <ImageView
+                android:id="@+id/logo_iv"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_below="@+id/view"
+                android:layout_centerHorizontal="true"
+                app:srcCompat="@mipmap/ic_launcher" />
+
+            <View
+                android:id="@+id/view1"
+                android:layout_width="match_parent"
+                android:layout_height="76dp"
+                android:layout_below="@+id/logo_iv" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="440dp">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:fillViewport="true"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:paddingBottom="@dimen/activity_vertical_margin"
+                    android:paddingLeft="@dimen/activity_horizontal_margin"
+                    android:paddingRight="@dimen/activity_horizontal_margin"
+                    android:paddingTop="@dimen/activity_vertical_margin">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:paddingRight="27dp"
+                        android:paddingTop="19dp">
+
+                        <android.support.design.widget.TextInputLayout
+                            android:id="@+id/input_lay_email_id_or_mobile_no"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColorHint="@color/et_text_color"
+                            app:hintAnimationEnabled="true"
+                            app:hintEnabled="true">
+
+                            <android.support.design.widget.TextInputEditText
+                                android:id="@+id/input_email_id_or_mobile_no"
+                                style="@style/regular_14sp"
+                                android:layout_width="match_parent"
+                                android:layout_height="40dp"
+                                android:gravity="center_vertical"
+                                android:hint="@string/mobile_or_email_hint"
+                                android:imeOptions="actionNext"
+                                android:inputType="textEmailAddress"
+                                android:longClickable="false"
+                                android:paddingLeft="100dp"
+                                android:textColor="@color/app_dark_color" />
+                        </android.support.design.widget.TextInputLayout>
+
+                        <LinearLayout
+                            android:id="@+id/mobile_lay"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:orientation="horizontal">
+
+                            <LinearLayout
+                                android:id="@+id/country_lay"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_marginBottom="2dp"
+                                android:layout_marginRight="12dp"
+                                android:layout_marginTop="2dp"
+                                android:gravity="center"
+                                android:orientation="horizontal"
+                                android:paddingLeft="3dp"
+                                android:paddingRight="3dp">
+
+                                <android.support.v7.widget.AppCompatTextView
+                                    android:id="@+id/flag_tv"
+                                    style="@style/regular_14sp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:lineSpacingExtra="22.7sp"
+                                    android:textColor="@color/app_dark_color"
+                                    android:visibility="gone" />
+
+                                <android.support.v7.widget.AppCompatImageView
+                                    android:id="@+id/flag_iv"
+                                    android:layout_width="25dp"
+                                    android:layout_height="25dp"
+                                    android:adjustViewBounds="true"
+                                    android:scaleType="centerCrop" />
+
+                                <android.support.v7.widget.AppCompatTextView
+                                    android:id="@+id/country_mobile_code_tv"
+                                    style="@style/regular_14sp"
+                                    android:layout_width="40dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="2dp"
+                                    android:layout_marginRight="3dp"
+                                    android:background="@color/transparent"
+                                    android:gravity="center"
+                                    android:lineSpacingExtra="22.7sp"
+                                    android:text="+ 888"
+                                    android:textAllCaps="true"
+                                    android:textColor="@color/app_dark_color" />
+
+                                <android.support.v7.widget.AppCompatImageView
+                                    android:layout_width="10dp"
+                                    android:layout_height="10dp"
+                                    android:adjustViewBounds="true"
+                                    android:scaleType="centerInside"
+                                    android:src="@drawable/drop_down_arrow" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </RelativeLayout>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/input_lay_pswd_et"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:hint="@string/password_hint"
+                        android:paddingLeft="20dp"
+                        android:paddingRight="20dp"
+                        android:textColorHint="@color/et_text_color"
+                        app:hintAnimationEnabled="true"
+                        app:hintEnabled="true">
+
+                        <com.hapis.customer.ui.custom.ShowHidePasswordEditText
+                            android:id="@+id/pswd_et"
+                            style="@style/regular_14sp"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:gravity="center_vertical"
+                            android:imeActionLabel="@string/login_label"
+                            android:imeOptions="actionDone"
+                            android:inputType="textPassword"
+                            android:longClickable="false"
+                            android:maxLength="@integer/PASSWORD_LENGTH_MAX"
+                            android:textColor="@color/app_dark_color"
+                            android:textColorHint="@color/et_text_color" />
+                    </android.support.design.widget.TextInputLayout>
+
+                    <android.support.v7.widget.AppCompatButton
+                        android:id="@+id/login_bttn"
+                        style="@style/semi_bold_14sp"
+                        android:layout_width="300dp"
+                        android:layout_height="@dimen/button_height"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginBottom="15dp"
+                        android:layout_marginTop="20dp"
+                        android:background="@drawable/rounded_button"
+                        android:stateListAnimator="@null"
+                        android:gravity="center"
+                        android:text="@string/login_label"
+                        android:textAllCaps="true"
+                        android:textColor="@color/button_text_color" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="8dp"
+                        android:paddingRight="8dp">
+
+                        <TextView
+                            android:id="@+id/frgt_pswd_tv"
+                            style="@style/regular_12sp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:gravity="right"
+                            android:lineSpacingExtra="24.7sp"
+                            android:paddingBottom="10dp"
+                            android:text="@string/frgt_pswd_text"
+                            android:textColor="@color/frg_psw_txt_color" />
+
+
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:id="@+id/sign_up_ll"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:paddingTop="33dp">
+
+                        <TextView
+                            android:id="@+id/sign_up_tv1"
+                            style="@style/regular_14sp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:lineSpacingExtra="-3.3sp"
+                            android:text="@string/new_user_sign_up_text"
+                            android:textColor="@color/dark_txt_color" />
+
+                        <TextView
+                            android:id="@+id/sign_up_tv2"
+                            style="@style/semi_bold_14sp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:lineSpacingExtra="-3.3sp"
+                            android:text="@string/sign_up_label"
+                            android:textColor="@color/app_color"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </LinearLayout>
+            </ScrollView>
+        </RelativeLayout>
+    </LinearLayout>
+</RelativeLayout>

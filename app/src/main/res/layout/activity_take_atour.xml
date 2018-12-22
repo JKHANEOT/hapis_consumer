@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_instructions_lay"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.TakeATourActivity">
+
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/bg_iv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"/>
+
+    <View
+        android:layout_above="@+id/bottom"
+        android:background="@drawable/translucent_gradient_grey_shape_landing_bg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/your_happiness_expert_tv"
+        android:layout_centerHorizontal="true"
+        android:scaleType="center"
+        android:visibility="invisible"
+        android:src="@mipmap/logo_splash"
+        android:layout_marginBottom="17dp"/>
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/your_happiness_expert_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/your_happiness_expert"
+        android:layout_above="@+id/bottom"
+        android:layout_centerHorizontal="true"
+        android:textAllCaps="false"
+        android:textColor="#8fffffff"
+        style="@style/regular_16sp"
+        android:layout_marginBottom="32.7dp"/>
+
+
+    <LinearLayout
+        android:id="@+id/bottom"
+        android:layout_width="match_parent"
+        android:layout_height="51.7dp"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:weightSum="1"
+        android:background="#E62d2d2d">
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/btn_signup"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight=".5"
+            android:background="@null"
+            android:textAllCaps="true"
+            android:text="@string/sign_up_label"
+            android:textColor="#ccffffff"
+            style="@style/regular_14sp"/>
+
+        <View
+            android:layout_width=".3dp"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"/>
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/btn_signin"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight=".5"
+            android:background="@null"
+            android:textAllCaps="true"
+            android:text="@string/login_label"
+            android:textColor="#ccffffff"
+            style="@style/regular_14sp"/>
+    </LinearLayout>
+</RelativeLayout>

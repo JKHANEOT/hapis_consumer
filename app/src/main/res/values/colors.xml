@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- ======================================== -->
+    <color name="app_dark_color">#131C2E</color>
+    <color name="button_bg_color">@color/app_dark_color</color>
+    <color name="soft_white">#fffafafa</color>
+    <color name="button_text_color">@color/soft_white</color>
+    <color name="frg_psw_txt_color">#ff616161</color>
+    <color name="dark_txt_color">@color/app_dark_color</color>
+    <color name="medium_grey">#ff9e9e9e</color>
+    <!-- ======================================== -->
+    <!-- /////////////////////////////////////// New UI Colors /////////////////////////////////////////////////// -->
+    <!-- A darker variant of the primary color, used for the status bar (on Android 5.0+) and contextual app bars -->
+    <color name="colorPrimaryDark">#E6000000</color>
+    <!-- Color for the app bar and other primary UI elements -->
+    <color name="colorPrimary">@color/app_dark_color</color>
+    <!--   a secondary color for controls like checkboxes and text fields -->
+    <color name="colorAccent">#F2015B</color>
+
+    <!-- ====Screen BG color==== -->
+    <color name="screen_bg_color">@color/md_grey_300</color>
+
+    <color name="menu_text_color_selected">@color/md_white_1000</color>
+    <color name="menu_text_color_normal">#8fffffff</color>
+
+    <color name="caption_text_color">@color/md_grey_500</color>
+
+    <!-- /////////////////////////////////////// New UI Colors /////////////////////////////////////////////////// -->
+    <color name="white_10">#1AFFFFFF</color>
+
+    <color name="primary">#b6094e</color>
+    <color name="primary_dark">#080808</color>
+    <!--1871d6-->
+    <color name="accent">@color/medium_grey</color>
+    <color name="primary_text">@color/app_dark_color</color>
+    <color name="secondary_text">@color/frg_psw_txt_color</color>
+    <color name="foreground_material_light">#ffffff</color>
+    <color name="dark_grey_color">#4a636f</color>
+    <color name="greyed_out_button">#8FFFFFFF</color>
+
+
+    <!--#191919--><!--#2c3238-->
+    <color name="toolbar_bg_color">#ff141414</color><!--#000000-->
+    <color name="tab_layout_bg_color">#801c1c1d</color><!--#0C0C0C-->
+    <!--#0C0C0C-->
+    <color name="view_separator">#ff29292a</color>
+    <color name="tab_layout_title_bar_bg_color">#991A1A1A</color>
+
+
+    <color name="card_shadow">#90d1d1d1</color>
+    <color name="black_overlay">#90000000</color>
+    <color name="hyper_link_style_text_color">#2196F3</color>
+    <color name="navigation_drawer_list_state_pressed_after">#80ffffff</color>
+    <color name="navigation_drawer_list_profile_pic_bg">#33FFffff</color>
+
+    <color name="black">#000000</color>
+    <color name="mp_push_notification_unread_text_color">#f5f5f5</color>
+    <color name="mp_push_notification_read_text_color">@color/white</color>
+
+    <!--<color name="app_color">#FF0080</color>--><!-- real color - #ffCD2451-->  <!--test color pink shade - #FF0080-->  <!-- Golden yellow - #FFDF00-->  <!--gold - #FFD700-->
+    <color name="app_color">#D53C64</color>
+    <color name="transparent">#00000000</color>
+    <color name="semi_transparent_black">#80000000</color>
+    <color name="dialog_plus_bg">#9F000000</color>
+    <color name="service_request_row_bg_top">#41000000</color>
+    <color name="service_request_row_bg_bottom">#23FFFFFF</color>
+    <color name="semi_transparent_white">#1Effffff</color>
+    <color name="et_white_border">#99FFFFFF</color>
+    <color name="text_color">#E0E0E0</color>
+
+    <color name="available_indicator_color">#4FBD4C</color>
+    <color name="unavailable_indicator_color">#FE2E2E</color>
+    <color name="et_text_color">#ff9e9e9e</color>
+    <color name="tab_selected">#33FFFFFF</color>
+    <color name="tab_unselected">#33000000</color>
+
+    <color name="black_color">#000000</color>
+    <color name="custom_alert_message">@color/white_80</color>
+    <color name="custom_alert_button_default_text">#ffffff</color>
+    <color name="custom_alert_title_strip_color">#33000000</color>
+    <color name="create_prof_hint_color">#D0D0D0</color>
+    <color name="create_prof_et_underline_color">#B1B9BE</color>
+
+    <!--Pincode OTP Input Field-->
+    <color name="underline_default_color">#CCCCCC</color>
+    <color name="underline_selected_color">#000</color>
+    <color name="hintColor">#CCCCCC</color>
+    <color name="textColor">#000</color>
+
+    <!--  Bottom Navigation Colors  -->
+    <color name="white">#ffffff</color>
+    <color name="gray">#95a5a6</color>
+    <!-- Space Bottom Navigation -->
+    <color name="space_background_color">#757575</color>
+    <color name="space_transparent">#00000000</color>
+    <color name="space_white">#ffffff</color>
+    <color name="space_default_color">@color/toolbar_bg_color</color>
+    <color name="centre_button_color">#4285F4</color>
+    <color name="default_inactive_item_color">#9e9e9e</color>
+    <color name="badge_background_color">#f44336</color>
+    <color name="colorBackgroundHighlightWhite">#8dffffff</color>
+
+    <color name="add_product_bg_color">@color/app_color</color>
+
+    <color name="rippelColor">#0099CC</color>
+    <color name="yellow">#FFBB33</color>
+
+    <color name="dark_cool_blue">#46000000</color>
+    <color name="softwhite">#c6c6c6</color>
+    <color name="softwhite_transparent">#99878385</color>
+    <color name="view_separator_color">#3d3f45</color>
+
+
+    <color name="data_content_bg">#151515</color>
+    <color name="data_content_bg_semi">#1C1C1E</color>
+    <color name="auto_complete_drop_down_bg">#1C1C1B</color>
+    <color name="helpdesk_item_bg">#88000000</color>
+    <color name="transparent_black">#E1000000</color>
+    <color name="dialog_box_bg">#494747</color>
+
+    <!-- =========================== SingleDateAndTimePicker =========================== -->
+    <color name="picker_background">#3F51B5</color>
+    <color name="picker_button_background_selected">#3F51B5</color>
+    <color name="picker_button_background">@android:color/white</color>
+    <color name="picker_button_background_innactive">#BDBDBD</color>
+    <color name="picker_default_text_color">#999</color>
+    <color name="picker_default_selected_text_color">@android:color/black</color>
+    <color name="picker_default_selector_color">#646464</color>
+    <!-- ============================================================================= -->
+
+    <!-- NHANCE Colors-->
+
+    <color name="white_50">#80FFFFFF</color>
+    <color name="white_80">#CCFFFFFF</color>
+    <color name="black_10">#1A000000</color>
+
+
+    <!-- =================================== Youtube Player ================================= -->
+    <color name="red">#F44336</color>
+    <color name="item_selected">#90FFFFFF</color>
+    <color name="drop_shadow">#66000000</color>
+
+    <color name="menu_icons">#757575</color>
+    <color name="menu_text">#222222</color>
+    <!-- ============================================================================= -->
+
+
+    <!-- ============================ Custom File Picker ============================= -->
+    <color name="no_image_bg_color">#e0e0e0</color>
+    <color name="warm_grey">#9e9e9e</color>
+
+    <color name="radio_button_selected">@color/app_dark_color</color>
+    <color name="radio_button_not_selected">#616161</color>
+    <color name="app_text_label_color">@color/app_dark_color</color>
+    <color name="training_card_text_color">#de131c2e</color>
+    <color name="new_ui_white">#eeeeee</color>
+    <color name="tab_selector_color">#f2015b</color>
+    <color name="tab_unselected_text_color">#8effffff</color>
+    <color name="textview_hint_color">@color/warm_grey</color>
+
+    <color name="row_active">#efefef</color>
+    <color name="bg_gray">#ecedef</color>
+    <color name="checkbox_color">@color/colorAccent</color>
+    <color name="checkbox_unchecked_color">#DFDFDF</color>
+    <color name="search_icon_color">@android:color/white</color>
+
+    <drawable name="tab_gray">@color/bg_gray</drawable>
+    <drawable name="tab_white">@android:color/white</drawable>
+    <!-- ============================================================================= -->
+
+    <color name="referral_top_layout_bg_color">#0e131d</color>
+    <color name="pinkish_grey">#bdbdbd</color>
+    <color name="srn_landing_page_rc_open_req_text_color">#31cd64</color>
+    <color name="srn_landing_page_rc_closed_req_text_color">#fd3e39</color>
+    <color name="data_not_available_txt_color">#de131c2e</color>
+
+    <color name="error">#FF4081</color>
+    <color name="hint_color">#131C2E</color>
+
+    <color name="booking_time_slot_unselected_bg">#ffffff</color>
+    <color name="booking_time_slot_unselected_text">#616161</color>
+    <color name="booking_time_slot_selected_bg">#37d6d6</color>
+    <color name="booking_time_slot_selected_date_cal_bg">#31cd64</color>
+    <color name="booking_time_slot_selected_text">#131c2e</color>
+
+</resources>

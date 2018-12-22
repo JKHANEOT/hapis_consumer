@@ -1,0 +1,3 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+<item android:drawable="@drawable/ic_dropdown_arrow_dummy"/>
+</layer-list>

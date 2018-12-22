@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright © EasOfTech 2015. All rights reserved.
+  ~
+  ~ This software is the confidential and proprietary information
+  ~  of EasOfTech. You shall not disclose such Confidential
+  ~  Information and shall use it only in accordance with the terms and
+  ~  conditions entered into with EasOfTech.
+  ~
+  -->
+
+<resources>
+    <integer name="application_type">1</integer>
+    <item type="id" name="refresh_menu_id"/>
+    <item type="id" name="notification_menu_id"/>
+
+    <!--Pincode OTP Input Field-->
+    <integer name="animation_duration">200</integer>
+
+    <integer name="animation_default_duration">300</integer>
+    <integer name="model_number_max_length">50</integer>
+
+</resources>

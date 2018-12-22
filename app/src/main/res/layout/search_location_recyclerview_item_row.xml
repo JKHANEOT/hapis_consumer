@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/location_name_tv"
+        android:textDirection="locale"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="start"
+        android:layout_marginLeft="20dp"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp"
+        android:text="@string/select_location"
+        android:textAllCaps="false"
+        android:textColor="#131c2e"
+        style="@style/regular_14sp"
+        android:layout_marginStart="20dp" />
+
+</RelativeLayout>

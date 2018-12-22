@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<integer name="PASSWORD_LENGTH_MAX">20</integer>
+	<integer name="PASSWORD_LENGTH_MIN">6</integer>
+	<integer name="MOBILE_NO_LENGTH">12</integer>
+	<integer name="MOBILE_NO_LENGTH_WITHOUT_ISD_CODE">10</integer>
+	<integer name="NAME_MIN_LENGTH">3</integer>
+	<integer name="NAME_MAX_LENGTH">30</integer>
+	<integer name="DOB_LENGTH">10</integer>
+	<integer name="PURCHASE_DATE_LENGTH">10</integer>
+	<integer name="PRODUCT_PRICE_LENGTH">10</integer>
+    <integer name = "OTP_LENGTH">6</integer>
+
+    <!-- Nhance Camera -->
+	<bool name="isTablet">false</bool>
+	<integer name="frontFaceCameraRotationShift">270</integer>
+	<integer name="rearCameraRotationShift">90</integer>
+
+</resources>

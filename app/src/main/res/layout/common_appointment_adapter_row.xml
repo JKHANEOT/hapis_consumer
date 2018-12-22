@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/item_card_lay"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        card_view:cardElevation="0dp"
+        card_view:cardBackgroundColor="@color/new_ui_white"
+        card_view:cardCornerRadius="8dp"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+        android:layout_marginStart="@dimen/activity_horizontal_margin">
+
+        <!--card_view:cardUseCompatPadding="true"
+        card_view:contentPadding="@dimen/card_view_content_padding"-->
+
+        <RelativeLayout
+            android:id="@+id/item_lay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="10dp"
+            android:paddingLeft="15dp"
+            android:paddingTop="10dp"
+            android:paddingStart="15dp">
+
+            <LinearLayout
+                android:id="@+id/hospital_icon_ll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:gravity="center"
+                android:layout_alignParentStart="true">
+
+                <ImageView
+                    android:id="@+id/hospital_icon"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    card_view:srcCompat="@drawable/ic_local_hospital_app_color_24dp" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/details_ll"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight=".8"
+                android:orientation="vertical"
+                android:layout_toRightOf="@+id/hospital_icon_ll"
+                android:paddingLeft="@dimen/event_details_hor_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:paddingStart="@dimen/event_details_hor_margin"
+                android:paddingEnd="@dimen/activity_horizontal_margin"
+                android:layout_toEndOf="@+id/hospital_icon_ll">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <android.support.v7.widget.AppCompatImageButton
+                        android:id="@+id/menu_over_flow_img_btn"
+                        android:layout_width="20dp"
+                        android:layout_height="30dp"
+                        android:src="@mipmap/menu_overflow"
+                        android:paddingLeft="8dp"
+                        android:paddingRight="8dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentEnd="true"
+                        android:background="@null"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="8dp" />
+
+                    <TextView
+                        android:id="@+id/hospital_title_tv"
+                        android:textDirection="locale"
+                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_toStartOf="@+id/menu_over_flow_img_btn"
+                        android:padding="5dp"
+                        android:minLines="1"
+                        android:text="Hospital Name"
+                        android:textColor="#131c2e"
+                        style="@style/semi_bold_12sp"/>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/doctor_title_tv"
+                        android:textDirection="locale"
+                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:padding="5dp"
+                        android:minLines="1"
+                        android:text="Doctor Name"
+                        android:textColor="#131c2e"
+                        style="@style/semi_bold_12sp"/>
+
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/appointment_date_tv"
+                    android:textDirection="locale"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:padding="5dp"
+                    android:minLines="1"
+                    android:textColor="#131c2e"
+                    style="@style/semi_bold_12sp"
+                    android:text="Appointment date" />
+
+                <TextView
+                    android:id="@+id/appointment_address_tv"
+                    android:textDirection="locale"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:padding="5dp"
+                    android:minLines="1"
+                    android:textColor="#131c2e"
+                    style="@style/semi_bold_12sp"
+                    android:text="Appointment Address" />
+            </LinearLayout>
+
+            <View
+                android:id="@+id/separator_line_view"
+                android:layout_width="1dp"
+                android:layout_height="1dp"
+                android:layout_alignBottom="@+id/details_ll"
+                android:layout_alignTop="@+id/details_ll"
+                android:background="@color/app_dark_color"
+                android:layout_toRightOf="@+id/hospital_icon_ll"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginStart="@dimen/activity_horizontal_margin"
+                android:layout_toEndOf="@+id/hospital_icon_ll" />
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+</RelativeLayout>

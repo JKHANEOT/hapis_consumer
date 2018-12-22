@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_lay"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#eeeeee"
+    tools:context=".ui.fragments.SelectBookingTimeSlotDialogFragment">
+
+    <RelativeLayout
+        android:id="@+id/title_bar_rl"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary">
+
+        <LinearLayout
+            android:id="@+id/close_dialog_ll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="5dp"
+            android:layout_alignParentLeft="true"
+
+            android:padding="7dp"
+            android:orientation="horizontal"
+            android:layout_alignParentStart="true"
+            android:layout_marginEnd="5dp"
+            android:layout_marginStart="10dp">
+
+            <android.support.v7.widget.AppCompatImageView
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                app:srcCompat="@drawable/ic_clear_white"/>
+
+        </LinearLayout>
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/select_timings_bttn"
+            style="@style/semi_bold_12sp"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/booking_button_height"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/rounded_button_booking"
+            android:text="@string/select_label"
+            android:textAllCaps="true"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="10dp"
+            android:textColor="@color/white"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="10dp"
+            android:layout_alignParentEnd="true" />
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/selected_timings_tv"
+            android:textDirection="locale"
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:gravity="center"
+            android:layout_centerVertical="true"
+            android:text="@string/select_time_label"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            style="@style/semi_bold_16sp"/>
+
+    </RelativeLayout>
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/time_slot_not_available_msg"
+        android:textDirection="locale"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/time_slot_not_available_msg"
+        android:gravity="center"
+        android:visibility="gone"
+        android:layout_below="@+id/title_bar_rl"
+        android:layout_marginTop="10dp"
+        android:textAllCaps="false"
+        android:textColor="#131c2e"
+        style="@style/bold_16sp"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/time_slot_grid_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:layout_below="@+id/title_bar_rl"
+        android:layout_margin="10dp"
+        android:overScrollMode="never"
+        android:scrollbars="none" />
+</RelativeLayout>
