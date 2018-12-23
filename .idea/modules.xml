@@ -3,7 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/hapis_customer.iml" filepath="$PROJECT_DIR$/hapis_customer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hapis_consumer.iml" filepath="$PROJECT_DIR$/hapis_consumer.iml" />
     </modules>
   </component>
 </project>
