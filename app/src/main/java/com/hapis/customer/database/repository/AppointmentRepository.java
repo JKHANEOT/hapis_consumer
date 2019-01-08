@@ -351,10 +351,10 @@ public class AppointmentRepository {
 
                 if(userProfileTable != null){
 
-                    if(userProfileTable.getDateOfBirth() > 0)
-                        appointmentRequest.setPatientAge(DateUtil.convertDobToAge(new Date(userProfileTable.getDateOfBirth())));
-                    if(userProfileTable.getGender() != null)
-                        appointmentRequest.setPatientGender(userProfileTable.getGender());
+//                    if(userProfileTable.getDateOfBirth() > 0)
+                        appointmentRequest.setPatientAge(31/*DateUtil.convertDobToAge(new Date(userProfileTable.getDateOfBirth()))*/);
+//                    if(userProfileTable.getGender() != null)
+                        appointmentRequest.setPatientGender("Male"/*userProfileTable.getGender()*/);
 
                     StringBuilder stringBuilder = new StringBuilder();
 

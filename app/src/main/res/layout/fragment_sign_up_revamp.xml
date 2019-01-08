@@ -1,0 +1,308 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/transparent"
+    android:fillViewport="true"
+    tools:context=".ui.fragments.SignUpFrag">
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginRight="7dp"
+                    android:orientation="vertical"
+                    android:paddingBottom="@dimen/activity_vertical_margin"
+                    android:paddingLeft="@dimen/activity_horizontal_margin"
+                    android:paddingRight="@dimen/activity_horizontal_margin"
+                    android:paddingTop="@dimen/activity_vertical_margin">
+
+                    <com.hapis.customer.ui.custom.materialedittext.MaterialEditText
+                        android:id="@+id/first_name_input_et"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:hint="@string/hint_first_name"
+                        android:maxLines="1"
+                        android:textAllCaps="false"
+                        android:textColorHint="@color/colorPrimary"
+                        android:textSize="16sp"
+                        android:imeOptions="actionNext"
+                        android:inputType="textPersonName"
+                        android:longClickable="false"
+                        android:maxLength="@integer/NAME_MAX_LENGTH"
+                        app:met_baseColor="#616161"
+                        app:met_floatingLabel="normal"
+                        app:met_floatingLabelText="@string/hint_first_name"
+                        app:met_floatingLabelTextColor="#9e9e9e"
+                        app:met_primaryColor="#616161"
+                        app:met_textColor="@color/app_dark_color"
+                        app:met_textColorHint="#9e9e9e"
+                        app:met_underlineColor="#616161"/>
+
+                    <com.hapis.customer.ui.custom.materialedittext.MaterialEditText
+                        android:id="@+id/last_name_input_et"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:hint="@string/hint_last_name"
+                        android:maxLines="1"
+                        android:textAllCaps="false"
+                        android:textColorHint="@color/colorPrimary"
+                        android:textSize="16sp"
+                        android:imeOptions="actionNext"
+                        android:inputType="textPersonName"
+                        android:longClickable="false"
+                        android:maxLength="@integer/NAME_MAX_LENGTH"
+                        app:met_baseColor="#616161"
+                        app:met_floatingLabel="normal"
+                        app:met_floatingLabelText="@string/hint_last_name"
+                        app:met_floatingLabelTextColor="#9e9e9e"
+                        app:met_primaryColor="#616161"
+                        app:met_textColor="@color/app_dark_color"
+                        app:met_textColorHint="#9e9e9e"
+                        app:met_underlineColor="#616161"/>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp">
+
+                        <com.hapis.customer.ui.custom.materialedittext.MaterialEditText
+                            android:id="@+id/mobile_et"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:maxLines="1"
+                            android:digits="0123456789"
+                            android:textAllCaps="false"
+                            android:textColorHint="@color/colorPrimary"
+                            android:textSize="16sp"
+                            android:hint="@string/mobile"
+                            android:imeOptions="actionNext"
+                            android:inputType="phone"
+                            android:longClickable="false"
+                            android:maxLength="@integer/MOBILE_NO_LENGTH"
+                            android:paddingLeft="100dp"
+                            app:met_baseColor="#616161"
+                            app:met_floatingLabel="normal"
+                            app:met_floatingLabelText="@string/hint_mobile"
+                            app:met_floatingLabelTextColor="#9e9e9e"
+                            app:met_primaryColor="#616161"
+                            app:met_textColor="@color/app_dark_color"
+                            app:met_textColorHint="#9e9e9e"
+                            app:met_underlineColor="#616161"/>
+
+                        <LinearLayout
+                            android:id="@+id/mobile_lay"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:orientation="horizontal">
+
+                            <LinearLayout
+                                android:id="@+id/country_lay"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_marginBottom="2dp"
+                                android:layout_marginRight="12dp"
+                                android:layout_marginTop="2dp"
+                                android:gravity="center"
+                                android:orientation="horizontal"
+                                android:paddingLeft="3dp"
+                                android:paddingRight="3dp">
+
+                                <android.support.v7.widget.AppCompatTextView
+                                    android:id="@+id/flag_tv"
+                                    style="@style/regular_16sp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:visibility="gone" />
+
+                                <android.support.v7.widget.AppCompatImageView
+                                    android:id="@+id/flag_iv"
+                                    android:layout_width="25dp"
+                                    android:layout_height="25dp"
+                                    android:adjustViewBounds="true"
+                                    android:scaleType="centerCrop" />
+
+                                <android.support.v7.widget.AppCompatTextView
+                                    android:id="@+id/country_mobile_code_tv"
+                                    style="@style/regular_14sp"
+                                    android:layout_width="40dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="3dp"
+                                    android:layout_marginRight="3dp"
+                                    android:background="@color/transparent"
+                                    android:gravity="center"
+                                    android:text="+ 888"
+                                    android:textAllCaps="true"
+                                    android:textColor="@color/app_dark_color" />
+
+                                <android.support.v7.widget.AppCompatImageView
+                                    android:layout_width="10dp"
+                                    android:layout_height="10dp"
+                                    android:adjustViewBounds="true"
+                                    android:scaleType="centerInside"
+                                    android:src="@drawable/drop_down_arrow" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </RelativeLayout>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/pswd_input_lay"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:hint="@string/password_hint"
+                        android:textColorHint="@color/et_text_color"
+                        app:hintAnimationEnabled="true"
+                        app:hintEnabled="true">
+
+                        <com.hapis.customer.ui.custom.ShowHidePasswordEditText
+                            android:id="@+id/pswd_et"
+                            style="@style/regular_14sp"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:gravity="center_vertical"
+                            android:imeActionLabel="@string/sign_up_label"
+                            android:imeOptions="actionDone"
+                            android:inputType="textPassword"
+                            android:longClickable="false"
+                            android:maxLength="@integer/PASSWORD_LENGTH_MAX"
+                            android:textColor="@color/app_dark_color"
+                            android:textColorHint="@color/et_text_color" />
+                    </android.support.design.widget.TextInputLayout>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/referral_code_input_lay"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColorHint="@color/et_text_color"
+                        app:hintAnimationEnabled="true"
+                        app:hintEnabled="true"
+                        >
+
+                        <android.support.design.widget.TextInputEditText
+                            android:id="@+id/referral_code_et"
+                            style="@style/regular_14sp"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:gravity="center_vertical"
+                            android:hint="@string/hint_referral_code"
+                            android:imeOptions="actionNext"
+                            android:inputType="textVisiblePassword"
+                            android:longClickable="false"
+                            android:maxLength="@integer/NAME_MAX_LENGTH"
+                            android:textColor="@color/app_dark_color" />
+                    </android.support.design.widget.TextInputLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:orientation="vertical">
+
+                        <!--<android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/terms_of_use_tv"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="right"
+                            android:paddingBottom="3dp"
+                            android:paddingLeft="5dp"
+                            android:paddingRight="20dp"
+                            android:paddingTop="3dp"
+                            android:text="@string/terms_of_use"
+                            android:textAllCaps="false"
+                            android:textColor="@color/hyper_link_style_text_color"
+                            android:textSize="@dimen/et_size" />-->
+
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/accept_terms_cb"
+                            style="@style/regular_12sp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:lineSpacingExtra="8sp"
+                            android:text="@string/i_accept"
+                            android:textColor="@color/et_text_color" />
+
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/terms_of_use_tv"
+                            style="@style/regular_12sp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:lineSpacingExtra="8sp"
+                            android:text="@string/terms_of_use"
+                            android:textAllCaps="false"
+                            android:textColor="@color/et_text_color" />
+
+
+                    </LinearLayout>
+
+                    <android.support.v7.widget.AppCompatButton
+                        android:id="@+id/sign_up_bttn"
+                        style="@style/regular_14sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/button_height"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/rounded_button"
+                        android:stateListAnimator="@null"
+                        android:text="@string/get_started"
+                        android:textAllCaps="true"
+                        android:textColor="@color/white" />
+
+                    <LinearLayout
+                        android:id="@+id/sign_in_ll"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:paddingTop="@dimen/padding_twenty"
+                        android:paddingBottom="@dimen/padding_twenty">
+
+                        <TextView
+                            android:id="@+id/sign_in_tv1"
+                            style="@style/regular_14sp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:lineSpacingExtra="-3.3sp"
+                            android:text="@string/already_hv_acnt_text"
+                            android:textColor="@color/dark_txt_color" />
+
+                        <TextView
+                            android:id="@+id/sign_in_tv2"
+                            style="@style/semi_bold_14sp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:lineSpacingExtra="-3.3sp"
+                            android:text="@string/sign_in"
+                            android:textColor="@color/app_color"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+
+                </LinearLayout>
+            </RelativeLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

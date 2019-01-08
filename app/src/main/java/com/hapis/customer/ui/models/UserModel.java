@@ -16,6 +16,7 @@ public class UserModel extends MessageModel {
     private String maritalStatus;
     private String middleName;
     private String mobileNumber;
+    private String mobileNo;
     private String namePrefix;
     private String nationality;
     private String password;
@@ -172,5 +173,13 @@ public class UserModel extends MessageModel {
 
     public void setState(Integer state) {
         this.state = state;
+    }
+
+    public String getMobileNo() {
+        return mobileNo;
+    }
+
+    public void setMobileNo(String mobileNo) {
+        this.mobileNo = mobileNo;
     }
 }

@@ -3,7 +3,7 @@
     <string name="google_api_key">AIzaSyBVs_89bipnMCNFf7u0vSPNsPzY7Tww38k</string><!--Debug Key-->
     <string name="google_maps_gecoding_api_key">AIzaSyCbnmr91ZShTHO_TJRMSDzKxaml4215334</string><!--google_maps_gecoding_api_key-->
 
-    <string name="backend_url">http://192.168.0.3:</string>
+    <string name="backend_url">http://115.99.196.11:</string>
 
     <string name="app_name">HAPIS Customer</string> <!--QA build app name-->
 

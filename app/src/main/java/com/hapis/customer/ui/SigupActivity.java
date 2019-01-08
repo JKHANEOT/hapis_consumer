@@ -4,7 +4,7 @@ import android.os.Bundle;
 
 import com.hapis.customer.R;
 import com.hapis.customer.ui.custom.dialogplus.OnClickListener;
-import com.hapis.customer.ui.fragments.SignUpFrag;
+import com.hapis.customer.ui.fragments.SignUpRevampFrag;
 import com.hapis.customer.ui.utils.AlertUtil;
 import com.hapis.customer.ui.utils.DialogIconCodes;
 import com.hapis.customer.ui.view.BaseView;
@@ -29,7 +29,7 @@ public class SigupActivity extends BaseFragmentActivity<SignUpViewModal> impleme
         setContentView(R.layout.activity_signup);
         setUpNavigationDrawer(getResources().getString(R.string.sign_up_label), null, true, null);
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.login_container, new SignUpFrag(), SignUpFrag.TAG).addToBackStack(null).commit();
+                .replace(R.id.login_container, new SignUpRevampFrag(), SignUpRevampFrag.TAG).addToBackStack(null).commit();
     }
 
     @Override

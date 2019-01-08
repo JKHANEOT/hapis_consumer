@@ -75,7 +75,7 @@
             android:layout_weight=".5"
             android:background="@null"
             android:textAllCaps="true"
-            android:text="@string/login_label"
+            android:text="@string/sign_in"
             android:textColor="#ccffffff"
             style="@style/regular_14sp"/>
     </LinearLayout>

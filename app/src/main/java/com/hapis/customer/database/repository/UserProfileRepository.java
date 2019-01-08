@@ -213,11 +213,12 @@ public class UserProfileRepository {
 
         if(userProfileTable != null){
             UserModel userModel = new UserModel();
-            if(userProfileTable.getAgentCode() != null)
-                userModel.setAgentCode(userProfileTable.getAgentCode());
-            userModel.setCustomerCode(userProfileTable.getUniqueId());
-            userModel.setState(userProfileTable.getState());
+//            if(userProfileTable.getAgentCode() != null)
+//                userModel.setAgentCode(userProfileTable.getAgentCode());
+//            userModel.setCustomerCode(userProfileTable.getUniqueId());
+//            userModel.setState(userProfileTable.getState());
 
+            userModel.setMobileNo(userName);
             userModel.setPassword(password);
 
             userModel.setCustomerType(HapisApplication.getApplication().getResources().getInteger(R.integer.application_type));
@@ -369,26 +370,43 @@ public class UserProfileRepository {
 
                                     UserProfileTable userProfileTable = new UserProfileTable();
 
-                                    userProfileTable.setUniqueId(signedUpResponse.getCustomerCode());
-                                    userProfileTable.setTitle(userModel.getNamePrefix());
-                                    userProfileTable.setFirstName(userModel.getFirstName());
-                                    userProfileTable.setMiddleName(userModel.getMiddleName());
-                                    userProfileTable.setLastName(userModel.getLastName());
-                                    userProfileTable.setGender(userModel.getGenderCode());
-                                    userProfileTable.setAadhaarNumber(userModel.getAadhaarNumber());
-                                    userProfileTable.setMaritalStatus(userModel.getMaritalStatus());
-                                    userProfileTable.setNationality(userModel.getNationality());
-                                    userProfileTable.setReligion(userModel.getReligionCode());
-                                    userProfileTable.setMobileNumber(userModel.getMobileNumber());
-                                    userProfileTable.setEmail(userModel.getEmailAddress());
-                                    userProfileTable.setPassword(userModel.getPassword());
-                                    userProfileTable.setDateOfBirth(DateUtil.getDateTimeInMillis(userModel.getDateOfBirth(), DateUtil.DATE_FORMAT_yyyy_MM_dd_T_HH_mm_ss_SSS_Z));
+                                    if(signedUpResponse.getCustomerCode() != null)
+                                        userProfileTable.setUniqueId(signedUpResponse.getCustomerCode());
+                                    if(signedUpResponse.getNamePrefix() != null)
+                                        userProfileTable.setTitle(userModel.getNamePrefix());
+                                    if(signedUpResponse.getFirstName() != null)
+                                        userProfileTable.setFirstName(userModel.getFirstName());
+                                    if(signedUpResponse.getMiddleName() != null)
+                                        userProfileTable.setMiddleName(userModel.getMiddleName());
+                                    if(signedUpResponse.getLastName() != null)
+                                        userProfileTable.setLastName(userModel.getLastName());
+                                    if(signedUpResponse.getGenderCode() != null)
+                                        userProfileTable.setGender(userModel.getGenderCode());
+                                    if(signedUpResponse.getAadhaarNumber() != null)
+                                        userProfileTable.setAadhaarNumber(userModel.getAadhaarNumber());
+                                    if(signedUpResponse.getMaritalStatus() != null)
+                                        userProfileTable.setMaritalStatus(userModel.getMaritalStatus());
+                                    if(signedUpResponse.getNationality() != null)
+                                        userProfileTable.setNationality(userModel.getNationality());
+                                    if(signedUpResponse.getReligionCode() != null)
+                                        userProfileTable.setReligion(userModel.getReligionCode());
+                                    if(signedUpResponse.getMobileNumber() != null)
+                                        userProfileTable.setMobileNumber(userModel.getMobileNumber());
+                                    if(signedUpResponse.getEmailAddress() != null)
+                                        userProfileTable.setEmail(userModel.getEmailAddress());
+                                    if(signedUpResponse.getPassword() != null)
+                                        userProfileTable.setPassword(userModel.getPassword());
+                                    if(signedUpResponse.getDateOfBirth() != null)
+                                        userProfileTable.setDateOfBirth(DateUtil.getDateTimeInMillis(userModel.getDateOfBirth(), DateUtil.DATE_FORMAT_yyyy_MM_dd_T_HH_mm_ss_SSS_Z));
 
                                     userProfileTable.setProfileUpdatedDate(new Date().getTime());
 
-                                    userProfileTable.setAgentCode(signedUpResponse.getAgentCode());
-                                    userProfileTable.setCustomerType(signedUpResponse.getCustomerType());
-                                    userProfileTable.setState(signedUpResponse.getState());
+                                    if(signedUpResponse.getAgentCode() != null)
+                                        userProfileTable.setAgentCode(signedUpResponse.getAgentCode());
+                                    if(signedUpResponse.getCustomerType() != null)
+                                        userProfileTable.setCustomerType(signedUpResponse.getCustomerType());
+                                    if(signedUpResponse.getState() != null)
+                                        userProfileTable.setState(signedUpResponse.getState());
 
                                     userProfileDao.insert(userProfileTable);
 

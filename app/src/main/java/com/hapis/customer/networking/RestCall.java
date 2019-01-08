@@ -344,7 +344,7 @@ public class RestCall implements RestConstants {
                     String bodyErrorMsg = response.body().string();
                     if (bodyErrorMsg != null && (response.code() == 401 || response.code() == 400)) {
                         restCallListener.onResponse(Result.FAILED, "",
-                                null, mActivity.getResources().getString(R.string.unable_to_process_request));
+                                null, HapisApplication.getApplication().getResources().getString(R.string.unable_to_process_request));
                     } else {
                         restCallListener.onResponse(Result.EXCEPTION, "", null, response.toString());
                         if (showProgress)
@@ -399,7 +399,7 @@ public class RestCall implements RestConstants {
                                         restCallListener.onResponse(Result.FAILED, "", errorMessages, errorMessage);
                                     } else {
                                         ErrorMessage msg = new ErrorMessage();
-                                        msg.setMessageDescription(mActivity != null ? mActivity.getResources().getString(R.string.unable_to_process_request) : "Something seems to have gone wrong. We appreciate your patience while we put it back together.");
+                                        msg.setMessageDescription(mActivity != null ? HapisApplication.getApplication().getResources().getString(R.string.unable_to_process_request) : "Something seems to have gone wrong. We appreciate your patience while we put it back together.");
                                         errorMessages = new ArrayList<>();
 
                                         errorMessages.add(msg);
@@ -415,7 +415,7 @@ public class RestCall implements RestConstants {
                                 restCallListener.onResponse(Result.SUCCESS, resStr, errorMessages, "");
                             } else {
                                 restCallListener.onResponse(Result.FAILED, "",
-                                        errorMessages, mActivity.getResources().getString(R.string.unable_to_process_request));
+                                        errorMessages, HapisApplication.getApplication().getResources().getString(R.string.unable_to_process_request));
                             }
                         } catch (HapisException ne) {
                             if (showProgress)
@@ -424,7 +424,7 @@ public class RestCall implements RestConstants {
                         }
                     } else {
                         restCallListener.onResponse(Result.FAILED, "",
-                                errorMessages, mActivity.getResources().getString(R.string.unable_to_process_request));
+                                errorMessages, HapisApplication.getApplication().getResources().getString(R.string.unable_to_process_request));
                     }
                 }
             }
