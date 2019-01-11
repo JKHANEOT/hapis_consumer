@@ -1748,5 +1748,30 @@
     <string name="please_select_appointment_type">Please select appointment type.</string>
     <string name="appointment_successfull">Appointment Booked Successfully</string>
     <string name="no_data_found">No data found</string>
+    <string name="booking_confirmation">Booking Confirmation</string>
+    <string name="appointment_details">Appointment Details</string>
+    <string name="book">Book</string>
+    <string name="book_now">Book Now</string>
+    <string name="booked_successfully">Booked Successfully</string>
+
+    <string-array name="ride_types_titles">
+        <item>Auto</item>
+        <item>Micro</item>
+        <item>Mini</item>
+        <item>Prime</item>
+        <item>Share</item>
+        <item>Rentals</item>
+        <item>Lux</item>
+    </string-array>
+
+    <integer-array name="ride_types_icons">
+        <item>@drawable/ic_auto</item>
+        <item>@drawable/ic_taxi</item>
+        <item>@drawable/ic_txi</item>
+        <item>@drawable/ic_prime</item>
+        <item>@drawable/ic_share_car</item>
+        <item>@drawable/ic_rentals</item>
+        <item>@drawable/ic_cab</item>
+    </integer-array>
 
 </resources>

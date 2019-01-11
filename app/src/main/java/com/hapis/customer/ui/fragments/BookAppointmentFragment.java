@@ -1,6 +1,5 @@
 package com.hapis.customer.ui.fragments;
 
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatButton;
@@ -17,12 +16,9 @@ import com.hapis.customer.HapisApplication;
 import com.hapis.customer.R;
 import com.hapis.customer.ui.BaseFragmentActivity;
 import com.hapis.customer.ui.BookAppointmentActivity;
-import com.hapis.customer.ui.DashboardActivity;
 import com.hapis.customer.ui.callback.CommonSearchCallBack;
 import com.hapis.customer.ui.callback.SelectDateAndTimeSlotCallBack;
 import com.hapis.customer.ui.callback.SelectPreferredLocationCallBack;
-import com.hapis.customer.ui.custom.dialogplus.DialogPlus;
-import com.hapis.customer.ui.custom.dialogplus.OnClickListener;
 import com.hapis.customer.ui.custom.materialedittext.MaterialEditText;
 import com.hapis.customer.ui.fragments.search.enterprise.doctor.DoctorSearchByEnterpriseCallBack;
 import com.hapis.customer.ui.fragments.search.enterprise.doctor.DoctorSearchByEnterpriseDialogFragment;
@@ -30,11 +26,9 @@ import com.hapis.customer.ui.fragments.search.enterprise.enterprises.EnterpriseS
 import com.hapis.customer.ui.fragments.search.enterprise.enterprises.EnterpriseSearchDialogFragment;
 import com.hapis.customer.ui.fragments.timeslot.TimeSlotDialogFragment;
 import com.hapis.customer.ui.models.appointments.DoctorDetails;
-import com.hapis.customer.ui.models.enterprise.EnterpriseAddressRequest;
 import com.hapis.customer.ui.models.enterprise.EnterpriseRequest;
 import com.hapis.customer.ui.models.enums.EnterpriseTypeEnum;
 import com.hapis.customer.ui.models.enums.MasterDataUtils;
-import com.hapis.customer.ui.utils.AlertUtil;
 import com.hapis.customer.ui.utils.DialogIconCodes;
 import com.hapis.customer.ui.utils.EditTextUtils;
 import com.hapis.customer.ui.view.BaseView;
@@ -370,7 +364,9 @@ public class BookAppointmentFragment extends BaseAbstractFragment<BookAppointmen
     @Override
     public void createAppointment(String msg) {
         ((BookAppointmentActivity)getActivity()).dismissProgressDialog();
-        if(msg != null && msg.length() > 0){
+        AppointmentBookingDetailsDialogFrag dialog = AppointmentBookingDetailsDialogFrag.newInstance(selectedDoctorDetails, selectedEnterpriseRequest, EditTextUtils.getText(select_time_slot_edittext), EditTextUtils.getText(select_date_edittext));
+        dialog.show(getActivity().getSupportFragmentManager(), AppointmentBookingDetailsDialogFrag.TAG);
+        /*if(msg != null && msg.length() > 0){
 
             OnClickListener onClickListener = new OnClickListener() {
                 @Override
@@ -420,7 +416,7 @@ public class BookAppointmentFragment extends BaseAbstractFragment<BookAppointmen
 
 //            ((BookAppointmentActivity)getActivity()).showError(msg, onClickListener, getResources().getString(R.string.ok), null, );
             AlertUtil.showAlert(getActivity(), msg, stringBuilder.toString(), "Yes", "No", onClickListener, DialogIconCodes.DIALOG_SUCCESS.getIconCode());
-        }
+        }*/
     }
 
     private List<String> mSelectedLocation;

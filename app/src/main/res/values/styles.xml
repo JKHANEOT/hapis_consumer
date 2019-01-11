@@ -121,6 +121,11 @@
         <item name="android:textSize">16sp</item>
     </style>
 
+    <style name="bold_20sp" parent="TextAppearance.AppCompat">
+        <item name="android:fontFamily">@font/opensans_bold</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
     <style name="CrashReporter.Theme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
