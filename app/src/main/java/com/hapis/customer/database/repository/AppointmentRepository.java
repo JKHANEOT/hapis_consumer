@@ -26,11 +26,8 @@ import com.hapis.customer.ui.models.users.UserResponse;
 import com.hapis.customer.ui.utils.AccessPreferences;
 import com.hapis.customer.ui.utils.ApplicationConstants;
 import com.hapis.customer.ui.utils.EditTextUtils;
-import com.hapis.customer.ui.view.UpComingSchedulesFragmentViewModal;
-import com.hapis.customer.utils.DateUtil;
 
 import java.io.IOException;
-import java.util.Date;
 import java.util.List;
 
 import okhttp3.Call;
@@ -352,9 +349,9 @@ public class AppointmentRepository {
                 if(userProfileTable != null){
 
 //                    if(userProfileTable.getDateOfBirth() > 0)
-                        appointmentRequest.setPatientAge(31/*DateUtil.convertDobToAge(new Date(userProfileTable.getDateOfBirth()))*/);
+                    appointmentRequest.setPatientAge(31/*DateUtil.convertDobToAge(new Date(userProfileTable.getDateOfBirth()))*/);
 //                    if(userProfileTable.getGender() != null)
-                        appointmentRequest.setPatientGender("Male"/*userProfileTable.getGender()*/);
+                    appointmentRequest.setPatientGender("Male"/*userProfileTable.getGender()*/);
 
                     StringBuilder stringBuilder = new StringBuilder();
 
@@ -365,7 +362,10 @@ public class AppointmentRepository {
                     if(!EditTextUtils.isEmpty(userProfileTable.getLastName()))
                         stringBuilder.append(userProfileTable.getLastName());
 
-                    appointmentRequest.setPatientName(stringBuilder.toString());
+                    if(stringBuilder.toString().length() > 0)
+                        appointmentRequest.setPatientName(stringBuilder.toString());
+                    else
+                        appointmentRequest.setPatientName("Self");
                     appointmentRequest.setPatientRelation("Self");
 
                     appointmentRequest.setCustomerCode(userProfileTable.getUniqueId());
