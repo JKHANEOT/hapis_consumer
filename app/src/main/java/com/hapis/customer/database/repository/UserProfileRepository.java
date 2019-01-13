@@ -250,7 +250,18 @@ public class UserProfileRepository {
                         mutableLiveData.postValue(userModelResponse);
                     } else {
                         try {
-                            applicationProfileDao.setAppProfileStatus(ApplicationConstants.USER_LOGGED_IN);
+                            ApplicationProfileTable applicationProfileTable = null;
+                            List<ApplicationProfileTable> applicationProfileTables = applicationProfileDao.getAllApplicationProfileWithout();
+                            if(applicationProfileTables != null && applicationProfileTables.size() > 0){
+                                applicationProfileTable = applicationProfileTables.get(0);
+                                applicationProfileTable.setAppStatus(ApplicationConstants.USER_LOGGED_IN);
+                                applicationProfileDao.update(applicationProfileTable);
+                            }else{
+                                applicationProfileTable = new ApplicationProfileTable();
+                                applicationProfileTable.setAppStatus(ApplicationConstants.USER_LOGGED_IN);
+                                applicationProfileDao.insert(applicationProfileTable);
+                            }
+
                             AccessPreferences.put(HapisApplication.getApplication(), ApplicationConstants.LOGGED_IN_USER_GUID, userProfileTable.getUniqueId());
 
                             userProfileTable.setLastLoginDate(new Date().getTime());

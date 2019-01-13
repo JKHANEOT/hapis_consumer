@@ -29,6 +29,9 @@ public interface ApplicationProfileDao {
     @Query("SELECT * FROM application_profile")
     LiveData<List<ApplicationProfileTable>> getAllApplicationProfile();
 
+    @Query("SELECT * FROM application_profile")
+    List<ApplicationProfileTable> getAllApplicationProfileWithout();
+
     @Query("SELECT (appStatus) FROM application_profile")
     int getAppProfileStatus();
 
