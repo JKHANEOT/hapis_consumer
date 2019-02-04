@@ -12,6 +12,7 @@ import com.hapis.customer.ui.callback.GetAppointmentDoctorDetailsCallBack;
 import com.hapis.customer.ui.callback.GetAppointmentEnterpriseDetailsCallBack;
 import com.hapis.customer.ui.models.HapisModel;
 import com.hapis.customer.ui.models.ResponseStatus;
+import com.hapis.customer.ui.models.appointments.AppointmentBaseResponse;
 import com.hapis.customer.ui.models.appointments.AppointmentRequest;
 import com.hapis.customer.ui.models.appointments.AppointmentResponseList;
 import com.hapis.customer.ui.models.enterprise.EnterpriseRequest;
@@ -111,5 +112,28 @@ public class UpComingSchedulesFragmentViewModal extends BaseViewModal<UpComingSc
             };
             appointmentRepository.getEnterpriseDetails(appointmentRequest.getHospitalCode(), getAppointmentEnterpriseDetailsCallBack);
         }
+    }
+
+    public void cancelAppointment(final AppointmentRequest appointmentRequest, final int selectedIndex){
+
+        MutableLiveData<AppointmentBaseResponse> mutableLiveData = new MutableLiveData<>();
+
+        appointmentRequest.setState(AppointmentStatusEnum.CANCEL.code());
+
+        appointmentRepository.new UpdateAppointmentTask(mutableLiveData).execute(appointmentRequest);
+        mutableLiveData.observe(mOwner, new Observer<AppointmentBaseResponse>() {
+            @Override
+            public void onChanged(@Nullable AppointmentBaseResponse userModelResponse) {
+                if(userModelResponse != null){
+                    if(userModelResponse.getStatus() != null && userModelResponse.getStatus().getStatusCode() != null && userModelResponse.getStatus().getStatusCode().intValue() == ResponseStatus.SUCCESS){
+                        mView.cancelAppointmentSuccess(appointmentRequest, selectedIndex);
+                    }else{
+                        mView.failedToProcess(((userModelResponse.getStatus().getErrorMessages() != null && userModelResponse.getStatus().getErrorMessages().size() > 0) ? userModelResponse.getStatus().getErrorMessages().get(0).getMessageDescription() : HapisApplication.getApplication().getResources().getString(R.string.unable_to_process_request)));
+                    }
+                }else{
+                    mView.failedToProcess(HapisApplication.getApplication().getResources().getString(R.string.unable_to_process_request));
+                }
+            }
+        });
     }
 }

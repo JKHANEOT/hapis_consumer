@@ -13,16 +13,19 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.hapis.customer.R;
+import com.hapis.customer.networking.json.JSONAdaptor;
 import com.hapis.customer.ui.BookAppointmentActivity;
 import com.hapis.customer.ui.DashboardActivity;
 import com.hapis.customer.ui.adapters.UpComingSchedulesRecyclerViewAdapter;
 import com.hapis.customer.ui.adapters.datamodels.DateItem;
 import com.hapis.customer.ui.adapters.datamodels.GroupDataGeneralItem;
 import com.hapis.customer.ui.adapters.datamodels.GroupDataListItem;
+import com.hapis.customer.ui.custom.dialogplus.DialogPlus;
 import com.hapis.customer.ui.custom.dialogplus.OnClickListener;
 import com.hapis.customer.ui.custom.recyclerviewanimations.RecyclerviewClickListeners;
 import com.hapis.customer.ui.custom.recyclerviewanimations.animators.SlideInUpAnimator;
 import com.hapis.customer.ui.models.appointments.AppointmentRequest;
+import com.hapis.customer.ui.utils.DialogIconCodes;
 import com.hapis.customer.ui.view.BaseView;
 import com.hapis.customer.ui.view.UpComingSchedulesFragmentView;
 import com.hapis.customer.ui.view.UpComingSchedulesFragmentViewModal;
@@ -113,6 +116,25 @@ public class UpComingSchedulesFrag extends BaseAbstractFragment<UpComingSchedule
         new RefreshDataToGroupedHashmap().execute(appointmentRequests);
     }
 
+    @Override
+    public void cancelAppointmentSuccess(final AppointmentRequest appointmentRequest, final int selectedIndex) {
+        OnClickListener onClickListener = new OnClickListener() {
+            @Override
+            public void onClick(DialogPlus dialog, View view) {
+                switch (view.getId()){
+                    case R.id.positive_btn:{
+                        dialog.dismiss();
+                        GroupDataGeneralItem generalItem = new GroupDataGeneralItem();
+                        generalItem.setHapisModel(appointmentRequest);
+                        mAdapter.updateAppointment(generalItem, selectedIndex);
+                        break;
+                    }
+                }
+            }
+        };
+        showError(getResources().getString(R.string.appointment_cancelled), onClickListener, getResources().getString(R.string.cancelled), null, DialogIconCodes.DIALOG_SUCCESS.getIconCode());
+    }
+
     class RefreshDataToGroupedHashmap extends AsyncTask<List<AppointmentRequest>, Void, List<GroupDataListItem>> {
 
         @Override
@@ -180,12 +202,44 @@ public class UpComingSchedulesFrag extends BaseAbstractFragment<UpComingSchedule
     }
 
     @Override
+    public void viewAppointmentDetails(AppointmentRequest appointmentRequest, int selectedIndex) {
+        Intent intent = new Intent(getActivity(), BookAppointmentActivity.class);
+        try {
+            String appointmentRequestJson = JSONAdaptor.toJSON(appointmentRequest);
+            if(appointmentRequestJson != null && appointmentRequestJson.length() > 0){
+                intent.putExtra(BookAppointmentActivity.APPOINTMENT_DETAILS_TAG, appointmentRequestJson);
+                startActivity(intent);
+            }else
+                showError(getResources().getString(R.string.details_not_available), null, null, null, DialogIconCodes.DIALOG_NOT_AVAILABLE.getIconCode());
+        } catch (Exception e) {
+            e.printStackTrace();
+            showError(getResources().getString(R.string.details_not_available), null, null, null, DialogIconCodes.DIALOG_NOT_AVAILABLE.getIconCode());
+        }
+    }
+
+    @Override
     public void rescheduleAppointment(AppointmentRequest appointmentRequest, int selectedIndex) {
         Toast.makeText(getActivity(), "Clicked to reschedule", Toast.LENGTH_SHORT).show();
     }
 
     @Override
-    public void cancelAppointment(AppointmentRequest appointmentRequest, int selectedIndex) {
-        Toast.makeText(getActivity(), "Clicked to cancel", Toast.LENGTH_SHORT).show();
+    public void cancelAppointment(final AppointmentRequest appointmentRequest, final int selectedIndex) {
+        OnClickListener onClickListener = new OnClickListener() {
+            @Override
+            public void onClick(DialogPlus dialog, View view) {
+                switch (view.getId()){
+                    case R.id.positive_btn:{
+                        dialog.dismiss();
+                        mViewModal.cancelAppointment(appointmentRequest, selectedIndex);
+                        break;
+                    }
+                    case R.id.negative_btn:{
+                        dialog.dismiss();
+                        break;
+                    }
+                }
+            }
+        };
+        showError(getResources().getString(R.string.would_you_like_to_cancel_appointment), onClickListener, getResources().getString(R.string.confirm), getResources().getString(R.string.cancel), DialogIconCodes.DIALOG_DK_UPDATE.getIconCode());
     }
 }

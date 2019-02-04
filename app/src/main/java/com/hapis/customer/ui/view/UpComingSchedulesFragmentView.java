@@ -14,4 +14,6 @@ public interface UpComingSchedulesFragmentView extends BaseView {
     void fetchEnterpriseDetails(List<AppointmentRequest> appointmentRequests);
 
     void showUpComingAppointments(List<AppointmentRequest> appointmentRequests);
+
+    void cancelAppointmentSuccess(final AppointmentRequest appointmentRequest, final int selectedIndex);
 }

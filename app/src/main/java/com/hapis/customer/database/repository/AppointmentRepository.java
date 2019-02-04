@@ -636,6 +636,41 @@ public class AppointmentRepository {
         }
     }
 
+    public class UpdateAppointmentTask extends AsyncTask<AppointmentRequest, Void, AppointmentRequest> {
+
+        private MutableLiveData<AppointmentBaseResponse> mutableLiveData;
+
+        public UpdateAppointmentTask(final MutableLiveData<AppointmentBaseResponse> mutableLiveData){
+            this.mutableLiveData = mutableLiveData;
+        }
+
+        @Override
+        protected AppointmentRequest doInBackground(AppointmentRequest... appointmentRequests) {
+
+            AppointmentRequest appointmentRequest = appointmentRequests[0];
+
+            String loggedInUser = AccessPreferences.get(HapisApplication.getApplication(), ApplicationConstants.LOGGED_IN_USER_GUID, null);
+            UserProfileTable userProfileTable = null;
+
+            if(loggedInUser != null){
+                userProfileTable = userProfileDao.getUserProfileByUniqueId(loggedInUser);
+
+                if(userProfileTable != null){
+                    appointmentRequest.setCustomerCode(userProfileTable.getUniqueId());
+                }
+            }
+
+            return appointmentRequest;
+        }
+
+        @Override
+        protected void onPostExecute(AppointmentRequest appointmentRequest) {
+            super.onPostExecute(appointmentRequest);
+
+            updateAppointment(mutableLiveData, appointmentRequest);
+        }
+    }
+
     public void updateAppointment(final MutableLiveData<AppointmentBaseResponse> mutableLiveData, AppointmentRequest appointmentRequest) {
 
         RestCall restCall = new RestCall();

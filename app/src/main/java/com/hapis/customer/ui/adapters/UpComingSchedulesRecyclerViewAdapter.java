@@ -2,6 +2,7 @@ package com.hapis.customer.ui.adapters;
 
 import android.support.v7.widget.AppCompatImageButton;
 import android.support.v7.widget.AppCompatTextView;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -10,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.hapis.customer.R;
@@ -17,6 +19,7 @@ import com.hapis.customer.ui.adapters.datamodels.DateItem;
 import com.hapis.customer.ui.adapters.datamodels.GroupDataGeneralItem;
 import com.hapis.customer.ui.adapters.datamodels.GroupDataListItem;
 import com.hapis.customer.ui.models.appointments.AppointmentRequest;
+import com.hapis.customer.ui.models.enums.AppointmentStatusEnum;
 import com.hapis.customer.ui.utils.HapisSlotUtils;
 import com.hapis.customer.utils.Util;
 
@@ -71,7 +74,7 @@ public class UpComingSchedulesRecyclerViewAdapter extends RecyclerView.Adapter<R
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int position) {
+    public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, final int position) {
 
         switch (viewHolder.getItemViewType()) {
 
@@ -81,7 +84,7 @@ public class UpComingSchedulesRecyclerViewAdapter extends RecyclerView.Adapter<R
                 final GeneralViewHolder generalViewHolder
                         = (GeneralViewHolder) viewHolder;
 
-                AppointmentRequest appointmentRequest = (AppointmentRequest)generalItem.getHapisModel();
+                final AppointmentRequest appointmentRequest = (AppointmentRequest)generalItem.getHapisModel();
 
                 if(appointmentRequest.getDoctorDetails() != null){
                     generalViewHolder.doctor_title_tv.setText(appointmentRequest.getDoctorDetails().getUserName());
@@ -101,11 +104,25 @@ public class UpComingSchedulesRecyclerViewAdapter extends RecyclerView.Adapter<R
                 }
 
                 generalViewHolder.appointment_date_tv.setText(stringBuilder.toString());
+                generalViewHolder.menu_over_flow_img_btn.setVisibility(View.VISIBLE);
+                generalViewHolder.item_card_lay.setCardBackgroundColor(generalViewHolder.item_card_lay.getResources().getColor(R.color.new_ui_white));
+                if(appointmentRequest.getState() != null && appointmentRequest.getState().intValue() != AppointmentStatusEnum.CANCEL.code()) {
 
-                generalViewHolder.menu_over_flow_img_btn.setOnClickListener(new View.OnClickListener() {
+                    generalViewHolder.menu_over_flow_img_btn.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            showPopupMenu(view, position, appointmentRequest);
+                        }
+                    });
+                }else{
+                    generalViewHolder.menu_over_flow_img_btn.setVisibility(View.GONE);
+                    generalViewHolder.item_card_lay.setCardBackgroundColor(generalViewHolder.item_card_lay.getResources().getColor(R.color.semi_transparent_black));
+                }
+
+                generalViewHolder.view_appointment_details_rl.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onClick(View view) {
-                        showPopupMenu(view, position, appointmentRequest);
+                    public void onClick(View v) {
+                        mUpComingScheduleAdapterListeners.viewAppointmentDetails(appointmentRequest, position);
                     }
                 });
 
@@ -177,6 +194,8 @@ public class UpComingSchedulesRecyclerViewAdapter extends RecyclerView.Adapter<R
     // View holder for general row item
     class GeneralViewHolder extends RecyclerView.ViewHolder {
 
+        private RelativeLayout view_appointment_details_rl;
+        private CardView item_card_lay;
         private ImageView hospital_icon;
         private AppCompatImageButton menu_over_flow_img_btn;
         private TextView hospital_title_tv,doctor_title_tv, appointment_date_tv,appointment_address_tv;
@@ -184,6 +203,8 @@ public class UpComingSchedulesRecyclerViewAdapter extends RecyclerView.Adapter<R
         public GeneralViewHolder(View v) {
             super(v);
 
+            view_appointment_details_rl = v.findViewById(R.id.view_appointment_details_rl);
+            item_card_lay = v.findViewById(R.id.item_card_lay);
             hospital_icon = v.findViewById(R.id.hospital_icon);
             menu_over_flow_img_btn = v.findViewById(R.id.menu_over_flow_img_btn);
             hospital_title_tv = v.findViewById(R.id.hospital_title_tv);
@@ -196,7 +217,13 @@ public class UpComingSchedulesRecyclerViewAdapter extends RecyclerView.Adapter<R
     private UpComingScheduleAdapterListeners mUpComingScheduleAdapterListeners;
 
     public interface UpComingScheduleAdapterListeners {
+        void viewAppointmentDetails(final AppointmentRequest appointmentRequest, int selectedIndex);
         void rescheduleAppointment(final AppointmentRequest appointmentRequest, int selectedIndex);
         void cancelAppointment(final AppointmentRequest appointmentRequest, int selectedIndex);
+    }
+
+    public void updateAppointment(final GroupDataGeneralItem groupDataGeneralItem, final int selectedIndex){
+        mConsolidatedList.set(selectedIndex, groupDataGeneralItem);
+        notifyItemChanged(selectedIndex);
     }
 }

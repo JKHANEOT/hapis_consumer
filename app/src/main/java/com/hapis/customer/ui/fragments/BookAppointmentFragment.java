@@ -2,6 +2,7 @@ package com.hapis.customer.ui.fragments;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.design.widget.TextInputEditText;
 import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.AppCompatTextView;
 import android.util.Log;
@@ -25,12 +26,16 @@ import com.hapis.customer.ui.fragments.search.enterprise.doctor.DoctorSearchByEn
 import com.hapis.customer.ui.fragments.search.enterprise.enterprises.EnterpriseSearchCallBack;
 import com.hapis.customer.ui.fragments.search.enterprise.enterprises.EnterpriseSearchDialogFragment;
 import com.hapis.customer.ui.fragments.timeslot.TimeSlotDialogFragment;
+import com.hapis.customer.ui.models.appointments.AppointmentRequest;
 import com.hapis.customer.ui.models.appointments.DoctorDetails;
+import com.hapis.customer.ui.models.enterprise.EnterpriseAddressRequest;
 import com.hapis.customer.ui.models.enterprise.EnterpriseRequest;
 import com.hapis.customer.ui.models.enums.EnterpriseTypeEnum;
 import com.hapis.customer.ui.models.enums.MasterDataUtils;
+import com.hapis.customer.ui.models.users.UserRequest;
 import com.hapis.customer.ui.utils.DialogIconCodes;
 import com.hapis.customer.ui.utils.EditTextUtils;
+import com.hapis.customer.ui.utils.HapisSlotUtils;
 import com.hapis.customer.ui.view.BaseView;
 import com.hapis.customer.ui.view.BaseViewModal;
 import com.hapis.customer.ui.view.BookAppointmentFragmentView;
@@ -59,7 +64,9 @@ public class BookAppointmentFragment extends BaseAbstractFragment<BookAppointmen
     private MaterialEditText select_preferred_location_edittext, select_enterprise_edittext, select_specialization_edittext, select_doctor_edittext, select_date_edittext, select_time_slot_edittext, appointment_you_are_following_up_edittext;
 
     private AppCompatButton reset_button, book_button, new_appointment_type_button, followup_appointment_type_button;
-    private LinearLayout new_appointment_type_ll,followup_appointment_type_ll;
+    private LinearLayout new_appointment_type_ll,followup_appointment_type_ll, bottom_button_ll;
+
+    private TextInputEditText input_sr_message;
 
     private int appointmentTypeId;
 
@@ -148,7 +155,7 @@ public class BookAppointmentFragment extends BaseAbstractFragment<BookAppointmen
     View.OnClickListener resetButtonOnClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            //TODO:
+            reset();
         }
     };
 
@@ -277,7 +284,15 @@ public class BookAppointmentFragment extends BaseAbstractFragment<BookAppointmen
             }
         });
 
+        input_sr_message = v.findViewById(R.id.input_sr_message);
+
+        bottom_button_ll = v.findViewById(R.id.bottom_button_ll);
+
         updateAppointmentType(R.id.new_appointment_type_button);
+
+        if(((BookAppointmentActivity)getActivity()).getAppointmentRequest() != null){
+            new LoadAppointmentDetails().execute(((BookAppointmentActivity)getActivity()).getAppointmentRequest());
+        }
 
         return v;
     }
@@ -505,5 +520,86 @@ public class BookAppointmentFragment extends BaseAbstractFragment<BookAppointmen
         Log.e("data", json);
         return json;
 
+    }
+
+    class LoadAppointmentDetails extends AsyncTask<AppointmentRequest, Void, Void> {
+
+        @Override
+        protected Void doInBackground(AppointmentRequest... appointmentRequests) {
+            updateData(appointmentRequests[0]);
+            return null;
+        }
+    }
+
+    private void updateData(final AppointmentRequest appointmentRequest){
+        if(getActivity() != null){
+            getActivity().runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    if(appointmentRequest != null){
+                        EnterpriseRequest selectedEnterpriseRequest = appointmentRequest.getEnterpriseRequest();
+                        if(selectedEnterpriseRequest != null){
+                            if(selectedEnterpriseRequest.getAddresses() != null && selectedEnterpriseRequest.getAddresses().size() > 0){
+                                EnterpriseAddressRequest enterpriseAddressRequest = (EnterpriseAddressRequest)selectedEnterpriseRequest.getAddresses().toArray()[0];
+                                if(enterpriseAddressRequest != null){
+                                    StringBuilder stringBuilder = new StringBuilder();
+                                    stringBuilder.append(enterpriseAddressRequest.getCity()+"-");
+                                    stringBuilder.append(enterpriseAddressRequest.getStateCode()+"-");
+                                    stringBuilder.append(enterpriseAddressRequest.getCountryCode());
+
+                                    select_preferred_location_edittext.setText(stringBuilder.toString());
+                                    select_preferred_location_edittext.setEnabled(false);
+                                }
+                            }
+
+                            select_enterprise_edittext.setText(selectedEnterpriseRequest.getEnterpriseName());
+                            select_enterprise_edittext.setEnabled(false);
+
+                        }
+                        UserRequest selectedDoctorDetails = appointmentRequest.getDoctorDetails();
+                        if(selectedDoctorDetails != null){
+                            select_specialization_edittext.setText(selectedDoctorDetails.getRoles().toLowerCase());
+                            select_specialization_edittext.setEnabled(false);
+
+                            StringBuilder stringBuilder = new StringBuilder();
+
+                            if(selectedDoctorDetails.getFirstName() != null)
+                                stringBuilder.append(selectedDoctorDetails.getFirstName()+" ");
+                            if(selectedDoctorDetails.getMiddleName() != null)
+                                stringBuilder.append(selectedDoctorDetails.getMiddleName()+" ");
+                            if(selectedDoctorDetails.getLastName() != null)
+                                stringBuilder.append(selectedDoctorDetails.getLastName());
+
+                            select_doctor_edittext.setText(stringBuilder.toString());
+                            select_doctor_edittext.setEnabled(false);
+                        }
+
+                        if(appointmentRequest.getAppointmentDate() != null) {
+                            select_date_edittext.setText(appointmentRequest.getAppointmentDate());
+                            select_date_edittext.setEnabled(false);
+                        }
+                        if(appointmentRequest.getSlotBooked() != null){
+                            select_time_slot_edittext.setText(HapisSlotUtils.getSlotName(appointmentRequest.getSlotBooked()));
+                            select_time_slot_edittext.setEnabled(false);
+                        }
+                        input_sr_message.setEnabled(false);
+
+                        bottom_button_ll.setVisibility(View.GONE);
+                    }
+                }
+            });
+        }
+    }
+
+    private void reset(){
+        select_preferred_location_edittext.setText("");
+        selectedEnterpriseRequest = null;
+        select_enterprise_edittext.setText("");
+        selectedDoctorDetails = null;
+        select_specialization_edittext.setText("");
+        select_doctor_edittext.setText("");
+        select_date_edittext.setText("");
+        select_time_slot_edittext.setText("");
+        input_sr_message.setText("");
     }
 }

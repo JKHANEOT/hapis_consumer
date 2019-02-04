@@ -40,6 +40,8 @@ public class AppointmentRequest extends AppointmentBaseRequest {
 	
 	private String patientRelation;
 
+	private Integer state;
+
 	public String getCustomerCode() {
 		return customerCode;
 	}
@@ -142,5 +144,13 @@ public class AppointmentRequest extends AppointmentBaseRequest {
 
 	public void setEnterpriseRequest(EnterpriseRequest enterpriseRequest) {
 		this.enterpriseRequest = enterpriseRequest;
+	}
+
+	public Integer getState() {
+		return state;
+	}
+
+	public void setState(Integer state) {
+		this.state = state;
 	}
 }

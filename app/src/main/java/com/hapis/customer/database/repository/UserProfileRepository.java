@@ -496,4 +496,41 @@ public class UserProfileRepository {
             mutableLiveData.postValue(userModelResponse);
         }
     }
+
+    public class LogoutAsyncTask extends AsyncTask<Void, Void, Boolean> {
+
+        private MutableLiveData<Boolean> mutableLiveData;
+
+        public LogoutAsyncTask(final MutableLiveData<Boolean> mutableLiveData){
+            this.mutableLiveData = mutableLiveData;
+        }
+
+        @Override
+        protected Boolean doInBackground(Void... voids) {
+
+            Boolean aBoolean = new Boolean(false);
+
+            ApplicationProfileTable applicationProfileTable = null;
+            List<ApplicationProfileTable> applicationProfileTables = applicationProfileDao.getAllApplicationProfileWithout();
+            if(applicationProfileTables != null && applicationProfileTables.size() > 0){
+                applicationProfileTable = applicationProfileTables.get(0);
+                applicationProfileTable.setAppStatus(ApplicationConstants.USER_LOGGED_OUT);
+                applicationProfileDao.update(applicationProfileTable);
+
+                AccessPreferences.put(HapisApplication.getApplication(), ApplicationConstants.LOGGED_IN_USER_GUID, "");
+                aBoolean = new Boolean(true);
+                HapisDatabase database = HapisDatabase.getInstance(HapisApplication.getApplication());
+                database.clearAllTables();
+            }
+
+            return aBoolean;
+        }
+
+        @Override
+        protected void onPostExecute(Boolean aBoolean) {
+            super.onPostExecute(aBoolean);
+
+            mutableLiveData.postValue(aBoolean);
+        }
+    }
 }

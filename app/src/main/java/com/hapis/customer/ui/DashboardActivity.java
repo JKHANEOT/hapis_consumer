@@ -1,6 +1,7 @@
 package com.hapis.customer.ui;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -22,11 +23,13 @@ import com.hapis.customer.R;
 import com.hapis.customer.ui.custom.BottomNavigationViewHelper;
 import com.hapis.customer.ui.custom.badges.Badge;
 import com.hapis.customer.ui.custom.badges.BadgeView;
+import com.hapis.customer.ui.custom.dialogplus.DialogPlus;
 import com.hapis.customer.ui.custom.dialogplus.OnClickListener;
 import com.hapis.customer.ui.fragments.ExpiredSchedulesSchedulesFrag;
 import com.hapis.customer.ui.fragments.MenuMoreDialogFragment;
 import com.hapis.customer.ui.fragments.UpComingSchedulesFrag;
 import com.hapis.customer.ui.utils.AlertUtil;
+import com.hapis.customer.ui.utils.DialogIconCodes;
 import com.hapis.customer.ui.view.BaseView;
 import com.hapis.customer.ui.view.DashboardView;
 import com.hapis.customer.ui.view.DashboardViewModal;
@@ -194,7 +197,26 @@ public class DashboardActivity extends BaseFragmentActivity<DashboardViewModal> 
 
     @Override
     public void onOptionSelected(Dialog dialog, int selectedIndex) {
-
+        dialog.dismiss();
+        if(selectedIndex == 8){
+            OnClickListener onClickListener = new OnClickListener() {
+                @Override
+                public void onClick(DialogPlus dialog, View view) {
+                    switch (view.getId()){
+                        case R.id.positive_btn:{
+                            dialog.dismiss();
+                            mViewModal.proceedWithLogout();
+                            break;
+                        }
+                        case R.id.negative_btn:{
+                            dialog.dismiss();
+                            break;
+                        }
+                    }
+                }
+            };
+            showError(getResources().getString(R.string.do_you_wish_to_logout), onClickListener, getResources().getString(R.string.logout), getResources().getString(R.string.cancel), DialogIconCodes.DIALOG_LOGOUT.getIconCode());
+        }
     }
 
     @Override
@@ -209,6 +231,50 @@ public class DashboardActivity extends BaseFragmentActivity<DashboardViewModal> 
     @Override
     public void showError(String errorMsg, OnClickListener onClickListener, String positiveLbl, String negativeLbl, String status) {
         AlertUtil.showAlert(DashboardActivity.this, getResources().getString(R.string.app_name), errorMsg, positiveLbl, negativeLbl, onClickListener, status);
+    }
+
+    @Override
+    public void logoutStatus(boolean isLoggedOut) {
+        if(isLoggedOut){
+            OnClickListener onClickListener = new OnClickListener() {
+                @Override
+                public void onClick(DialogPlus dialog, View view) {
+                    switch (view.getId()){
+                        case R.id.positive_btn:{
+                            dialog.dismiss();
+                            showLoginScreen();
+                            break;
+                        }
+                    }
+                }
+            };
+            showError(getResources().getString(R.string.user_logout_message), onClickListener, getResources().getString(R.string.logged_out), null, DialogIconCodes.DIALOG_SUCCESS.getIconCode());
+        }else{
+            OnClickListener onClickListener = new OnClickListener() {
+                @Override
+                public void onClick(DialogPlus dialog, View view) {
+                    switch (view.getId()){
+                        case R.id.positive_btn:{
+                            dialog.dismiss();
+                            break;
+                        }
+                    }
+                }
+            };
+            showError(getResources().getString(R.string.user_logout_not_possible_please_try_later), onClickListener, getResources().getString(R.string.ok_label), null, DialogIconCodes.DIALOG_FAILED.getIconCode());
+        }
+    }
+
+    private void showLoginScreen() {
+
+        Intent intent = new Intent(DashboardActivity.this, LoginActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+        try {
+            finishAffinity();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

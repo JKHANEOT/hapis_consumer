@@ -1753,6 +1753,13 @@
     <string name="book">Book</string>
     <string name="book_now">Book Now</string>
     <string name="booked_successfully">Booked Successfully</string>
+    <string name="do_you_wish_to_logout">Do you wish to logout ?</string>
+    <string name="logged_out">Logged Out</string>
+    <string name="user_logout_not_possible_please_try_later">User logout not possible, please try later.</string>
+    <string name="would_you_like_to_cancel_appointment">Would you like to cancel appointment ?</string>
+    <string name="confirm">Confirm</string>
+    <string name="cancelled">Cancelled</string>
+    <string name="appointment_cancelled">Appointment cancelled.</string>
 
     <string-array name="ride_types_titles">
         <item>Auto</item>
