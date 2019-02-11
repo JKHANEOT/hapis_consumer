@@ -412,6 +412,108 @@
 
                     </RelativeLayout>
 
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/payment_mode_tv"
+                        android:textDirection="locale"
+                        android:layout_width="match_parent"
+                        android:layout_height="32dp"
+                        android:gravity="start|center_vertical"
+                        android:text="@string/payment_mode"
+                        android:textAllCaps="false"
+                        android:textColor="@color/app_dark_color"
+                        style="@style/semi_bold_12sp"/>
+
+                    <RadioGroup
+                        android:id="@+id/payment_mode_rg"
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <RadioButton
+                            android:id="@+id/payment_mode_online_rb"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/online"
+                            android:enabled="false"
+                            android:checked="false"/>
+
+                        <RadioButton
+                            android:id="@+id/payment_mode_wallet_account_rb"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/wallet_account"
+                            android:checked="false"/>
+
+                        <RadioButton
+                            android:id="@+id/payment_mode_coc_rb"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/cash_on_consultation"
+                            android:checked="false"/>
+
+                    </RadioGroup>
+
+                    <LinearLayout
+                        android:id="@+id/wallet_account_balance_ll"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/wallet_account_balance_tv"
+                            android:textDirection="locale"
+                            android:layout_width="wrap_content"
+                            android:layout_height="32dp"
+                            android:gravity="start|center_vertical"
+                            android:text="@string/wallet_account_balance"
+                            android:textAllCaps="false"
+                            android:textColor="@color/app_dark_color"
+                            style="@style/regular_14sp"/>
+
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/wallet_account_balance_value_tv"
+                            android:textDirection="locale"
+                            android:layout_marginStart="10dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="32dp"
+                            android:gravity="start|center_vertical"
+                            android:text="0.0"
+                            android:textAllCaps="false"
+                            android:textColor="@color/app_dark_color"
+                            style="@style/bold_14sp"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/consultation_fee_tv"
+                            android:textDirection="locale"
+                            android:layout_width="wrap_content"
+                            android:layout_height="32dp"
+                            android:gravity="start|center_vertical"
+                            android:text="@string/consultation_fee"
+                            android:textAllCaps="false"
+                            android:textColor="@color/app_dark_color"
+                            style="@style/regular_14sp"/>
+
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/consultation_fee__value_tv"
+                            android:textDirection="locale"
+                            android:layout_marginStart="10dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="32dp"
+                            android:gravity="start|center_vertical"
+                            android:text="0.0"
+                            android:textAllCaps="false"
+                            android:textColor="@color/app_dark_color"
+                            style="@style/bold_14sp"/>
+
+                    </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"

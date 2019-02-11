@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/available_balance_ll"
+                android:background="#eeeeee"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/available_balance_tv"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:textDirection="locale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="32dp"
+                    android:gravity="start"
+                    android:text="@string/available_balance"
+                    android:textAllCaps="false"
+                    android:textColor="@color/app_dark_color"
+                    style="@style/semi_bold_14sp"/>
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/available_balance_value_tv"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginStart="10dp"
+                    android:textDirection="locale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="32dp"
+                    android:gravity="start"
+                    android:text="0.0"
+                    android:textAllCaps="false"
+                    android:textColor="@color/app_dark_color"
+                    style="@style/bold_14sp"/>
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/enter_amount_rl"
+                android:layout_marginTop="50dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_below="@+id/available_balance_ll"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.hapis.customer.ui.custom.materialedittext.MaterialEditText
+                    android:id="@+id/enter_amount_edittext"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textDirection="locale"
+                    android:hint="@string/enter_amount"
+                    android:cursorVisible="true"
+                    android:textAllCaps="false"
+                    android:textColorHint="@color/et_text_color"
+                    android:lines="1"
+                    android:inputType="numberDecimal"
+                    android:scrollHorizontally="true"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    style="@style/semi_bold_14sp"
+                    app:met_floatingLabelText="@string/amount"
+                    app:met_baseColor="@color/textview_hint_color"
+                    app:met_floatingLabel="highlight"
+                    app:met_floatingLabelTextColor="@color/app_dark_color"
+                    app:met_primaryColor="@color/textview_hint_color"
+                    app:met_textColor="@color/app_dark_color"
+                    app:met_textColorHint="#616161"
+                    app:met_underlineColor="@color/pinkish_grey"/>
+
+            </RelativeLayout>
+
+            <HorizontalScrollView
+                android:id="@+id/predefined_wallet_amount_nsv"
+                android:layout_marginTop="30dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:scrollbars="none"
+                android:layout_below="@+id/enter_amount_rl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/amount_one_thousand_tv"
+                        android:textDirection="locale"
+                        android:background="@drawable/square_button_amount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="start"
+                        android:layout_marginEnd="20dp"
+                        android:textAllCaps="false"
+                        android:textColor="@color/app_dark_color"
+                        style="@style/semi_bold_14sp"/>
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/amount_one_thousand_five_hundred_tv"
+                        android:textDirection="locale"
+                        android:background="@drawable/square_button_amount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="start"
+                        android:layout_marginEnd="20dp"
+                        android:textAllCaps="false"
+                        android:textColor="@color/app_dark_color"
+                        style="@style/semi_bold_14sp"/>
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/amount_two_thousand_tv"
+                        android:textDirection="locale"
+                        android:background="@drawable/square_button_amount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="start"
+                        android:layout_marginEnd="20dp"
+                        android:textAllCaps="false"
+                        android:textColor="@color/app_dark_color"
+                        style="@style/semi_bold_14sp"/>
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/amount_two_thousand_five_hundred_tv"
+                        android:textDirection="locale"
+                        android:background="@drawable/square_button_amount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="start"
+                        android:layout_marginEnd="20dp"
+                        android:textAllCaps="false"
+                        android:textColor="@color/app_dark_color"
+                        style="@style/semi_bold_14sp"/>
+
+                </LinearLayout>
+
+            </HorizontalScrollView>
+
+            <LinearLayout
+                android:id="@+id/add_wallet_money_bttn"
+                android:layout_below="@+id/predefined_wallet_amount_nsv"
+                android:background="@drawable/ten_dp_rounded_button_app_dark"
+                android:layout_height="50dp"
+                android:clickable="true"
+                android:gravity="center"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginTop="40dp"
+                android:layout_width="match_parent"
+                android:orientation="horizontal">
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:layout_marginStart="10dp"
+                    android:textDirection="locale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:text="@string/add_money"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    style="@style/semi_bold_20sp"/>
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/profile_pic_iv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:scaleType="centerCrop"
+                    app:srcCompat="@drawable/ic_add_money"/>
+
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

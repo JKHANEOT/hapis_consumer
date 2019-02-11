@@ -175,5 +175,7 @@
     <dimen name="booking_button_height">26.7dp</dimen>
 
     <dimen name="select_booking_time_slot_grid_spacing">10dp</dimen>
+    <dimen name="country_flag">20dp</dimen>
+    <dimen name="menu_item_icon_size">24dp</dimen>
 </resources>
 

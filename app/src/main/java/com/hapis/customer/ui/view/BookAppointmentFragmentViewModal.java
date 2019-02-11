@@ -8,6 +8,7 @@ import android.support.annotation.Nullable;
 import com.hapis.customer.HapisApplication;
 import com.hapis.customer.R;
 import com.hapis.customer.database.repository.AppointmentRepository;
+import com.hapis.customer.database.repository.UserWalletRepository;
 import com.hapis.customer.ui.models.HapisModel;
 import com.hapis.customer.ui.models.ResponseStatus;
 import com.hapis.customer.ui.models.appointments.AppointmentBaseResponse;
@@ -19,11 +20,13 @@ public class BookAppointmentFragmentViewModal extends BaseViewModal<BookAppointm
     private String TAG = BookAppointmentFragmentViewModal.class.getName();
 
     private AppointmentRepository appointmentRepository;
+    private UserWalletRepository userWalletRepository;
 
     public BookAppointmentFragmentViewModal(LifecycleOwner owner) {
         super(owner);
 
         appointmentRepository = new AppointmentRepository();
+        userWalletRepository = new UserWalletRepository();
     }
 
     @Override
@@ -101,7 +104,7 @@ public class BookAppointmentFragmentViewModal extends BaseViewModal<BookAppointm
             @Override
             public void onChanged(@Nullable SearchEnterpriseDoctorResponseList enterpriseResponseList) {
                 if(enterpriseResponseList != null && enterpriseResponseList.getMessage() != null && enterpriseResponseList.getMessage().getAvailableSlots() != null && enterpriseResponseList.getMessage().getAvailableSlots().size() > 0){
-                    mView.updateDoctorAvailableTimeSlot(enterpriseResponseList.getMessage().getAvailableSlots());
+                    mView.updateDoctorAvailableTimeSlot(enterpriseResponseList.getMessage().getAvailableSlots(), enterpriseResponseList.getMessage().getFee());
                 }else{
                     enterpriseResponseListMutableLiveData.removeObserver(new Observer<SearchEnterpriseDoctorResponseList>() {
                         @Override
@@ -115,11 +118,12 @@ public class BookAppointmentFragmentViewModal extends BaseViewModal<BookAppointm
         });
     }
 
-    public void createAppointment(String appointmentDate, String doctorCode, String hospitalCode, int slotBooked) {
+    public void createAppointment(String appointmentDate, String doctorCode, String hospitalCode, int slotBooked, Integer paymentMode,
+                                  double consultationFee, Integer paymentStatus,  String notes) {
 
         MutableLiveData<AppointmentBaseResponse> mutableLiveData = new MutableLiveData<>();
 
-        appointmentRepository.new CreateAppointmentTask(mutableLiveData, appointmentDate, doctorCode, hospitalCode, slotBooked).execute();
+        appointmentRepository.new CreateAppointmentTask(mutableLiveData, appointmentDate, doctorCode, hospitalCode, slotBooked, paymentMode, consultationFee, paymentStatus, notes).execute();
         mutableLiveData.observe(mOwner, new Observer<AppointmentBaseResponse>() {
             @Override
             public void onChanged(@Nullable AppointmentBaseResponse userModelResponse) {
@@ -132,6 +136,19 @@ public class BookAppointmentFragmentViewModal extends BaseViewModal<BookAppointm
                 }else{
                     mView.failedToProcess(HapisApplication.getApplication().getResources().getString(R.string.unable_to_process_request));
                 }
+            }
+        });
+    }
+
+    public void getAvailableWalletBalance() {
+
+        MutableLiveData<Double> mutableLiveData = new MutableLiveData<>();
+
+        userWalletRepository.new GetAvailableWalletBalance(mutableLiveData).execute();
+        mutableLiveData.observe(mOwner, new Observer<Double>() {
+            @Override
+            public void onChanged(@Nullable Double walletAccountBalance) {
+                mView.updateAvailableBalance(walletAccountBalance);
             }
         });
     }

@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <ScrollView
+        android:id="@+id/fragment_add_money_to_wallet_sv"
+        android:layout_above="@+id/add_wallet_money_bttn"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:id="@+id/entered_amount_ll"
+                android:background="#eeeeee"
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/entered_amount_tv"
+                    android:textDirection="locale"
+                    android:layout_marginStart="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:text="@string/add_money_to_wallet"
+                    android:textAllCaps="false"
+                    android:textColor="@color/app_dark_color"
+                    style="@style/semi_bold_20sp"/>
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/entered_amount_value_tv"
+                    android:layout_toEndOf="@+id/entered_amount_tv"
+                    android:textDirection="locale"
+                    android:layout_marginEnd="20dp"
+                    android:gravity="end"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0.0"
+                    android:textAllCaps="false"
+                    android:textColor="@color/app_dark_color"
+                    style="@style/semi_bold_20sp"/>
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_below="@+id/entered_amount_ll"
+                android:layout_margin="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:id="@+id/net_banking_rl"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <RadioButton
+                        android:id="@+id/net_banking_rb"
+                        android:enabled="false"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/net_banking"
+                        android:checked="false"/>
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/net_banking_rv"
+                        android:visibility="gone"
+                        android:layout_below="@+id/net_banking_rb"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/debit_card_rl"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <RadioButton
+                        android:id="@+id/debit_card_rb"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/debit_card"
+                        android:checked="false"/>
+
+                    <LinearLayout
+                        android:id="@+id/debit_card_ll"
+                        android:visibility="gone"
+                        android:layout_below="@+id/debit_card_rb"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:background="@drawable/square_bg_no_stroke">
+
+                        <LinearLayout
+                            android:id="@+id/enter_your_debit_card_details_ll"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="10dp"
+                            android:orientation="vertical">
+
+                            <android.support.v7.widget.AppCompatTextView
+                                android:id="@+id/enter_your_debit_card_details_tv"
+                                android:textDirection="locale"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/enter_your_card_details"
+                                android:textAllCaps="true"
+                                android:lines="1"
+                                android:ellipsize="end"
+                                android:textColor="@color/app_dark_color"
+                                style="@style/regular_12sp"/>
+
+                            <android.support.v7.widget.AppCompatEditText
+                                android:id="@+id/enter_your_debit_card_details_et"
+                                android:textCursorDrawable="@drawable/cursor_black"
+                                android:layout_marginTop="5dp"
+                                android:inputType="number"
+                                android:maxLength="16"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/square_edittext"
+                                style="@style/regular_12sp"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:weightSum="100">
+
+                            <LinearLayout
+                                android:id="@+id/expiry_or_validity_date_debit_card_ll"
+                                android:layout_width="0dp"
+                                android:layout_weight="50"
+                                android:layout_height="wrap_content"
+                                android:padding="10dp"
+                                android:orientation="vertical">
+
+                                <android.support.v7.widget.AppCompatTextView
+                                    android:id="@+id/expiry_or_validity_date_debit_card_tv"
+                                    android:textDirection="locale"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/expiry_or_validity_date"
+                                    android:textAllCaps="true"
+                                    android:lines="1"
+                                    android:ellipsize="end"
+                                    android:textColor="@color/app_dark_color"
+                                    style="@style/regular_12sp"/>
+
+                                <android.support.v7.widget.AppCompatEditText
+                                    android:id="@+id/expiry_or_validity_date_debit_card_et"
+                                    android:textCursorDrawable="@drawable/cursor_black"
+                                    android:layout_marginTop="5dp"
+                                    android:inputType="number"
+                                    android:hint="@string/card_validity_hint"
+                                    android:maxLength="4"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:background="@drawable/square_edittext"
+                                    style="@style/regular_12sp"/>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/enter_cvv_debit_card_ll"
+                                android:layout_width="0dp"
+                                android:layout_weight="50"
+                                android:layout_height="wrap_content"
+                                android:padding="10dp"
+                                android:orientation="vertical">
+
+                                <android.support.v7.widget.AppCompatTextView
+                                    android:id="@+id/enter_cvv_debit_card_tv"
+                                    android:textDirection="locale"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/cvv"
+                                    android:lines="1"
+                                    android:ellipsize="end"
+                                    android:textAllCaps="true"
+                                    android:textColor="@color/app_dark_color"
+                                    style="@style/regular_12sp"/>
+
+                                <android.support.v7.widget.AppCompatEditText
+                                    android:id="@+id/enter_cvv_debit_card_et"
+                                    android:textCursorDrawable="@drawable/cursor_black"
+                                    android:layout_marginTop="5dp"
+                                    android:inputType="number"
+                                    android:maxLength="3"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:background="@drawable/square_edittext"
+                                    style="@style/regular_12sp"/>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/credit_card_rl"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <RadioButton
+                        android:id="@+id/credit_card_rb"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/credit_card"
+                        android:checked="false"/>
+
+                    <LinearLayout
+                        android:id="@+id/credit_card_ll"
+                        android:visibility="gone"
+                        android:layout_below="@+id/credit_card_rb"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:background="@drawable/square_bg_no_stroke">
+
+                        <LinearLayout
+                            android:id="@+id/enter_your_credit_card_details_ll"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="10dp"
+                            android:orientation="vertical">
+
+                            <android.support.v7.widget.AppCompatTextView
+                                android:id="@+id/enter_your_credit_card_details_tv"
+                                android:textDirection="locale"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/enter_your_card_details"
+                                android:textAllCaps="true"
+                                android:lines="1"
+                                android:ellipsize="end"
+                                android:textColor="@color/app_dark_color"
+                                style="@style/regular_12sp"/>
+
+                            <android.support.v7.widget.AppCompatEditText
+                                android:id="@+id/enter_your_credit_card_details_et"
+                                android:textCursorDrawable="@drawable/cursor_black"
+                                android:layout_marginTop="5dp"
+                                android:inputType="number"
+                                android:maxLength="16"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/square_edittext"
+                                style="@style/regular_12sp"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:weightSum="100">
+
+                            <LinearLayout
+                                android:id="@+id/expiry_or_validity_date_credit_card_ll"
+                                android:layout_width="0dp"
+                                android:layout_weight="50"
+                                android:layout_height="wrap_content"
+                                android:padding="10dp"
+                                android:orientation="vertical">
+
+                                <android.support.v7.widget.AppCompatTextView
+                                    android:id="@+id/expiry_or_validity_date_credit_card_tv"
+                                    android:textDirection="locale"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/expiry_or_validity_date"
+                                    android:textAllCaps="true"
+                                    android:lines="1"
+                                    android:ellipsize="end"
+                                    android:textColor="@color/app_dark_color"
+                                    style="@style/regular_12sp"/>
+
+                                <android.support.v7.widget.AppCompatEditText
+                                    android:id="@+id/expiry_or_validity_date_credit_card_et"
+                                    android:textCursorDrawable="@drawable/cursor_black"
+                                    android:layout_marginTop="5dp"
+                                    android:inputType="number"
+                                    android:hint="@string/card_validity_hint"
+                                    android:maxLength="4"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:background="@drawable/square_edittext"
+                                    style="@style/regular_12sp"/>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/enter_cvv_credit_card_ll"
+                                android:layout_width="0dp"
+                                android:layout_weight="50"
+                                android:layout_height="wrap_content"
+                                android:padding="10dp"
+                                android:orientation="vertical">
+
+                                <android.support.v7.widget.AppCompatTextView
+                                    android:id="@+id/enter_cvv_credit_card_tv"
+                                    android:textDirection="locale"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/cvv"
+                                    android:lines="1"
+                                    android:ellipsize="end"
+                                    android:textAllCaps="true"
+                                    android:textColor="@color/app_dark_color"
+                                    style="@style/regular_12sp"/>
+
+                                <android.support.v7.widget.AppCompatEditText
+                                    android:id="@+id/enter_cvv_credit_card_et"
+                                    android:textCursorDrawable="@drawable/cursor_black"
+                                    android:layout_marginTop="5dp"
+                                    android:inputType="number"
+                                    android:maxLength="3"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:background="@drawable/square_edittext"
+                                    style="@style/regular_12sp"/>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/add_wallet_money_bttn"
+        android:background="@drawable/ten_dp_rounded_button_app_dark"
+        android:visibility="invisible"
+        android:layout_alignParentBottom="true"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:layout_margin="20dp"
+        android:layout_width="match_parent"
+        android:orientation="horizontal">
+
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_marginStart="10dp"
+            android:textDirection="locale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            android:text="@string/proceed_securely"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            style="@style/semi_bold_20sp"/>
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/profile_pic_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/ic_security"/>
+
+
+    </LinearLayout>
+
+</RelativeLayout>

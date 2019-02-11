@@ -8,4 +8,5 @@ public interface DashboardView extends BaseView {
 
     void logoutStatus(boolean isLoggedOut);
 
+    void updateAvailableBalance(Double balance);
 }

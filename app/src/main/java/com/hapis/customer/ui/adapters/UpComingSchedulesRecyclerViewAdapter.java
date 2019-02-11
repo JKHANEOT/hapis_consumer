@@ -1,5 +1,6 @@
 package com.hapis.customer.ui.adapters;
 
+import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.AppCompatImageButton;
 import android.support.v7.widget.AppCompatTextView;
 import android.support.v7.widget.CardView;
@@ -11,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -20,6 +22,7 @@ import com.hapis.customer.ui.adapters.datamodels.GroupDataGeneralItem;
 import com.hapis.customer.ui.adapters.datamodels.GroupDataListItem;
 import com.hapis.customer.ui.models.appointments.AppointmentRequest;
 import com.hapis.customer.ui.models.enums.AppointmentStatusEnum;
+import com.hapis.customer.ui.models.enums.PaymentStatus;
 import com.hapis.customer.ui.utils.HapisSlotUtils;
 import com.hapis.customer.utils.Util;
 
@@ -125,6 +128,28 @@ public class UpComingSchedulesRecyclerViewAdapter extends RecyclerView.Adapter<R
                         mUpComingScheduleAdapterListeners.viewAppointmentDetails(appointmentRequest, position);
                     }
                 });
+                if(appointmentRequest.getFee() != null && appointmentRequest.getFee().doubleValue() > 0) {
+                    generalViewHolder.fee_val_tv.setText(generalViewHolder.fee_val_tv.getResources().getString(R.string.rs_currency) + " " + Util.getFormattedAmount(appointmentRequest.getFee().doubleValue()));
+                    generalViewHolder.payment_details1_ll.setVisibility(View.VISIBLE);
+                }
+                else {
+                    generalViewHolder.fee_val_tv.setText(generalViewHolder.fee_val_tv.getResources().getString(R.string.rs_currency) + " " + Util.getFormattedAmount(0.0));
+                    generalViewHolder.payment_details1_ll.setVisibility(View.GONE);
+                }
+
+                if(appointmentRequest.getPaymentStatus() != null && appointmentRequest.getPaymentStatus().intValue() > 0){
+                    if(appointmentRequest.getPaymentStatus().intValue() == PaymentStatus.PAID.code().intValue()){
+                        generalViewHolder.payment_status_button.setBackgroundDrawable(generalViewHolder.payment_status_button.getResources().getDrawable(R.drawable.payment_paid_rounded_button));
+                        generalViewHolder.payment_status_button.setText(generalViewHolder.payment_status_button.getResources().getString(R.string.payment_paid));
+                        generalViewHolder.payment_details2_ll.setVisibility(View.VISIBLE);
+                    }else if(appointmentRequest.getPaymentStatus().intValue() == PaymentStatus.PENDING.code().intValue()){
+                        generalViewHolder.payment_status_button.setBackgroundDrawable(generalViewHolder.payment_status_button.getResources().getDrawable(R.drawable.payment_pending_rounded_button));
+                        generalViewHolder.payment_status_button.setText(generalViewHolder.payment_status_button.getResources().getString(R.string.payment_pending));
+                        generalViewHolder.payment_details2_ll.setVisibility(View.VISIBLE);
+                    }else{
+                        generalViewHolder.payment_details2_ll.setVisibility(View.GONE);
+                    }
+                }
 
                 break;
             }
@@ -199,6 +224,9 @@ public class UpComingSchedulesRecyclerViewAdapter extends RecyclerView.Adapter<R
         private ImageView hospital_icon;
         private AppCompatImageButton menu_over_flow_img_btn;
         private TextView hospital_title_tv,doctor_title_tv, appointment_date_tv,appointment_address_tv;
+        private AppCompatTextView fee_val_tv;
+        private AppCompatButton payment_status_button;
+        private LinearLayout payment_details1_ll, payment_details2_ll;
 
         public GeneralViewHolder(View v) {
             super(v);
@@ -211,6 +239,10 @@ public class UpComingSchedulesRecyclerViewAdapter extends RecyclerView.Adapter<R
             doctor_title_tv = v.findViewById(R.id.doctor_title_tv);
             appointment_date_tv = v.findViewById(R.id.appointment_date_tv);
             appointment_address_tv = v.findViewById(R.id.appointment_address_tv);
+            fee_val_tv = v.findViewById(R.id.fee_val_tv);
+            payment_status_button = v.findViewById(R.id.payment_status_button);
+            payment_details1_ll = v.findViewById(R.id.payment_details1_ll);
+            payment_details2_ll = v.findViewById(R.id.payment_details2_ll);
         }
     }
 

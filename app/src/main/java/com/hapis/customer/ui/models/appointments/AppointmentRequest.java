@@ -42,6 +42,14 @@ public class AppointmentRequest extends AppointmentBaseRequest {
 
 	private Integer state;
 
+	private Integer paymentStatus;
+
+	private Integer paymentMode;
+
+	private String notes;
+
+	private Double fee;
+
 	public String getCustomerCode() {
 		return customerCode;
 	}
@@ -152,5 +160,37 @@ public class AppointmentRequest extends AppointmentBaseRequest {
 
 	public void setState(Integer state) {
 		this.state = state;
+	}
+
+	public Integer getPaymentStatus() {
+		return paymentStatus;
+	}
+
+	public void setPaymentStatus(Integer paymentStatus) {
+		this.paymentStatus = paymentStatus;
+	}
+
+	public Integer getPaymentMode() {
+		return paymentMode;
+	}
+
+	public void setPaymentMode(Integer paymentMode) {
+		this.paymentMode = paymentMode;
+	}
+
+	public String getNotes() {
+		return notes;
+	}
+
+	public void setNotes(String notes) {
+		this.notes = notes;
+	}
+
+	public Double getFee() {
+		return fee;
+	}
+
+	public void setFee(Double fee) {
+		this.fee = fee;
 	}
 }

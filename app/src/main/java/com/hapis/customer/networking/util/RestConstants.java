@@ -39,4 +39,9 @@ public interface RestConstants {
     String updateAppointment                            = "/appointments/updateAppointment";
     String getEnterpriseByEnterpriseCode                = "/enterprises/";/*{enterpriseCode}*/
     String getUserByCode                                = "/users/";/*{userCode}*/
+
+    String recharge_wallet_account                      = "/customers/recharge";
+    String getRechargesByCustomer_for_wallet_account    = "/customers/getRecharges/";//{customerCode}
+    String getCustomerBalance_for_wallet_account        = "/customers/getCustomerBalance/";//{customerCode}
+    String checkCustomerBalance_from_wallet_account     = "/customers/checkBalance/";//{customerCode}/{txnAmount}
 }

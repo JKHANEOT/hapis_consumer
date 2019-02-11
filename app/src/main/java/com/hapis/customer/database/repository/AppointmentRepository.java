@@ -320,13 +320,21 @@ public class AppointmentRepository {
 
         private MutableLiveData<AppointmentBaseResponse> mutableLiveData;
         private String appointmentDate; private String doctorCode; private String hospitalCode; private int slotBooked;
+        private Integer paymentMode, paymentStatus;
+        private double consultationFee;
+        private String notes;
 
-        public CreateAppointmentTask(final MutableLiveData<AppointmentBaseResponse> mutableLiveData, final String appointmentDate, final String doctorCode, final String hospitalCode, final int slotBooked){
+        public CreateAppointmentTask(final MutableLiveData<AppointmentBaseResponse> mutableLiveData, final String appointmentDate, final String doctorCode,
+                                     final String hospitalCode, final int slotBooked, Integer paymentMode, double consultationFee, Integer paymentStatus, String notes){
             this.mutableLiveData = mutableLiveData;
             this.appointmentDate = appointmentDate;
             this.doctorCode = doctorCode;
             this.hospitalCode = hospitalCode;
             this.slotBooked = slotBooked;
+            this.paymentMode = paymentMode;
+            this.consultationFee = consultationFee;
+            this.paymentStatus = paymentStatus;
+            this.notes = notes;
         }
 
         @Override
@@ -345,6 +353,10 @@ public class AppointmentRepository {
                 appointmentRequest.setDoctorCode(doctorCode);
                 appointmentRequest.setHospitalCode(hospitalCode);
                 appointmentRequest.setSlotBooked(slotBooked);
+                appointmentRequest.setPaymentMode(paymentMode);
+                appointmentRequest.setFee(consultationFee);
+                appointmentRequest.setPaymentStatus(paymentStatus);
+                appointmentRequest.setNotes(notes);
 
                 if(userProfileTable != null){
 

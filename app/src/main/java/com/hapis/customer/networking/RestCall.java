@@ -369,53 +369,57 @@ public class RestCall implements RestConstants {
                         String resStr = response.body().string();
                         Log.d(TAG, resStr);
                         try {
-                            CustomResponseModel responseModel = JSONAdaptor.fromJSON(resStr, CustomResponseModel.class);
-                            ResponseStatus responseStatus = responseModel.getStatus();
-                            if (responseStatus != null && responseStatus.getStatusCode() != null) {
-                                status = responseStatus.getStatusCode();
-                            }
-                            if (status != 1) {
-                                if (showProgress)
-                                    ((BaseFragmentActivity) mActivity).dismissProgressDialog();
-                                if (status == 2) {
-                                    ((BaseFragmentActivity) mActivity).dismissProgressDialog();
-//                                    Util.showAppForceUpdateDialog(mActivity);
-                                } else if (status == 1) {
-
-                                    String errorMessage = responseStatus.getMessageDescription();
-                                    String errorCode = responseStatus.getErrorCode();
-
-                                    if (errorCode != null && errorMessage != null) {
-
-                                        ErrorMessage msg = new ErrorMessage();
-                                        msg.setMessageDescription(errorMessage);
-                                        msg.setErrorCode(errorCode);
-
-                                        errorMessages = new ArrayList<>();
-                                        errorMessages.add(msg);
-
-                                        exception = new HapisException(HapisException.SERVER_EXCEPTION, errorMessage);
-                                        exception.printStackTrace();
-                                        restCallListener.onResponse(Result.FAILED, "", errorMessages, errorMessage);
-                                    } else {
-                                        ErrorMessage msg = new ErrorMessage();
-                                        msg.setMessageDescription(mActivity != null ? HapisApplication.getApplication().getResources().getString(R.string.unable_to_process_request) : "Something seems to have gone wrong. We appreciate your patience while we put it back together.");
-                                        errorMessages = new ArrayList<>();
-
-                                        errorMessages.add(msg);
-                                        restCallListener.onResponse(Result.EXCEPTION, "", errorMessages, response.toString());
-                                        if (showProgress)
-                                            ((BaseFragmentActivity) mActivity).dismissProgressDialog();
-                                        throw new IOException("Unexpected code " + response);
-                                    }
-                                }
-                            } else if (status == 1) {
-                                if (showProgress)
-                                    ((BaseFragmentActivity) mActivity).dismissProgressDialog();
+                            if (resStr != null && resStr.endsWith(".00")) {
                                 restCallListener.onResponse(Result.SUCCESS, resStr, errorMessages, "");
                             } else {
-                                restCallListener.onResponse(Result.FAILED, "",
-                                        errorMessages, HapisApplication.getApplication().getResources().getString(R.string.unable_to_process_request));
+                                CustomResponseModel responseModel = JSONAdaptor.fromJSON(resStr, CustomResponseModel.class);
+                                ResponseStatus responseStatus = responseModel.getStatus();
+                                if (responseStatus != null && responseStatus.getStatusCode() != null) {
+                                    status = responseStatus.getStatusCode();
+                                }
+                                if (status != 1) {
+                                    if (showProgress)
+                                        ((BaseFragmentActivity) mActivity).dismissProgressDialog();
+                                    if (status == 2) {
+                                        ((BaseFragmentActivity) mActivity).dismissProgressDialog();
+//                                    Util.showAppForceUpdateDialog(mActivity);
+                                    } else if (status == 1) {
+
+                                        String errorMessage = responseStatus.getMessageDescription();
+                                        String errorCode = responseStatus.getErrorCode();
+
+                                        if (errorCode != null && errorMessage != null) {
+
+                                            ErrorMessage msg = new ErrorMessage();
+                                            msg.setMessageDescription(errorMessage);
+                                            msg.setErrorCode(errorCode);
+
+                                            errorMessages = new ArrayList<>();
+                                            errorMessages.add(msg);
+
+                                            exception = new HapisException(HapisException.SERVER_EXCEPTION, errorMessage);
+                                            exception.printStackTrace();
+                                            restCallListener.onResponse(Result.FAILED, "", errorMessages, errorMessage);
+                                        } else {
+                                            ErrorMessage msg = new ErrorMessage();
+                                            msg.setMessageDescription(mActivity != null ? HapisApplication.getApplication().getResources().getString(R.string.unable_to_process_request) : "Something seems to have gone wrong. We appreciate your patience while we put it back together.");
+                                            errorMessages = new ArrayList<>();
+
+                                            errorMessages.add(msg);
+                                            restCallListener.onResponse(Result.EXCEPTION, "", errorMessages, response.toString());
+                                            if (showProgress)
+                                                ((BaseFragmentActivity) mActivity).dismissProgressDialog();
+                                            throw new IOException("Unexpected code " + response);
+                                        }
+                                    }
+                                } else if (status == 1) {
+                                    if (showProgress)
+                                        ((BaseFragmentActivity) mActivity).dismissProgressDialog();
+                                    restCallListener.onResponse(Result.SUCCESS, resStr, errorMessages, "");
+                                } else {
+                                    restCallListener.onResponse(Result.FAILED, "",
+                                            errorMessages, HapisApplication.getApplication().getResources().getString(R.string.unable_to_process_request));
+                                }
                             }
                         } catch (HapisException ne) {
                             if (showProgress)

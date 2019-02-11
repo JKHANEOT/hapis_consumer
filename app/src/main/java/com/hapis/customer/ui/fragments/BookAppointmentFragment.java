@@ -10,6 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
@@ -32,6 +34,8 @@ import com.hapis.customer.ui.models.enterprise.EnterpriseAddressRequest;
 import com.hapis.customer.ui.models.enterprise.EnterpriseRequest;
 import com.hapis.customer.ui.models.enums.EnterpriseTypeEnum;
 import com.hapis.customer.ui.models.enums.MasterDataUtils;
+import com.hapis.customer.ui.models.enums.PaymentMode;
+import com.hapis.customer.ui.models.enums.PaymentStatus;
 import com.hapis.customer.ui.models.users.UserRequest;
 import com.hapis.customer.ui.utils.DialogIconCodes;
 import com.hapis.customer.ui.utils.EditTextUtils;
@@ -41,6 +45,7 @@ import com.hapis.customer.ui.view.BaseViewModal;
 import com.hapis.customer.ui.view.BookAppointmentFragmentView;
 import com.hapis.customer.ui.view.BookAppointmentFragmentViewModal;
 import com.hapis.customer.utils.DateUtil;
+import com.hapis.customer.utils.Util;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -64,9 +69,14 @@ public class BookAppointmentFragment extends BaseAbstractFragment<BookAppointmen
     private MaterialEditText select_preferred_location_edittext, select_enterprise_edittext, select_specialization_edittext, select_doctor_edittext, select_date_edittext, select_time_slot_edittext, appointment_you_are_following_up_edittext;
 
     private AppCompatButton reset_button, book_button, new_appointment_type_button, followup_appointment_type_button;
-    private LinearLayout new_appointment_type_ll,followup_appointment_type_ll, bottom_button_ll;
+    private LinearLayout new_appointment_type_ll,followup_appointment_type_ll, bottom_button_ll, wallet_account_balance_ll;
 
     private TextInputEditText input_sr_message;
+
+    private RadioGroup payment_mode_rg;
+    private RadioButton payment_mode_coc_rb, payment_mode_online_rb, payment_mode_wallet_account_rb;
+
+    private AppCompatTextView consultation_fee__value_tv, wallet_account_balance_value_tv;
 
     private int appointmentTypeId;
 
@@ -139,15 +149,26 @@ public class BookAppointmentFragment extends BaseAbstractFragment<BookAppointmen
                 Toast.makeText(getActivity(), getActivity().getResources().getString(R.string.please_select_appointment_date), Toast.LENGTH_SHORT).show();
             else if(mSelectedTimeSlot != null && mSelectedTimeSlot.size() == 0)
                 Toast.makeText(getActivity(), getActivity().getResources().getString(R.string.please_select_a_time_slot_to_continue), Toast.LENGTH_SHORT).show();
+            else if(!((payment_mode_rg.getCheckedRadioButtonId() == R.id.payment_mode_wallet_account_rb) || (payment_mode_rg.getCheckedRadioButtonId() == R.id.payment_mode_coc_rb)))
+                Toast.makeText(getActivity(), getActivity().getResources().getString(R.string.please_select_payment_mode), Toast.LENGTH_SHORT).show();
+            else if(payment_mode_rg.getCheckedRadioButtonId() == R.id.payment_mode_wallet_account_rb && walletBalance < consultationFee)
+                Toast.makeText(getActivity(), getActivity().getResources().getString(R.string.insufficient_wallet_balance_plz_recharge_to_continue), Toast.LENGTH_SHORT).show();
             else{
                 String appointmentDate = EditTextUtils.getText(select_date_edittext);
                 String doctorCode = selectedDoctorDetails.getDoctorCode();
                 String hospitalCode = selectedEnterpriseRequest.getEnterpriseCode();
                 int slotBooked = selectedIndex;
+                String notes = EditTextUtils.getText(input_sr_message);
+
+                Integer paymentMode = (payment_mode_rg.getCheckedRadioButtonId() == R.id.payment_mode_wallet_account_rb) ? PaymentMode.WALLET.code() : null;
+                Integer paymentStatus = PaymentStatus.PENDING.code();
+
+                if(paymentMode != null)
+                    paymentStatus = PaymentStatus.PAID.code();
 
                 ((BookAppointmentActivity)getActivity()).showProgressDialog(getActivity(), getResources().getString(R.string.please_wait));
 
-                mViewModal.createAppointment(appointmentDate, doctorCode, hospitalCode, slotBooked);
+                mViewModal.createAppointment(appointmentDate, doctorCode, hospitalCode, slotBooked, paymentMode, consultationFee, paymentStatus, notes);
             }
         }
     };
@@ -284,6 +305,25 @@ public class BookAppointmentFragment extends BaseAbstractFragment<BookAppointmen
             }
         });
 
+        consultation_fee__value_tv = v.findViewById(R.id.consultation_fee__value_tv);
+        consultation_fee__value_tv.setText(getResources().getString(R.string.rs_currency)+" "+Util.getFormattedAmount(0));
+
+        wallet_account_balance_ll = v.findViewById(R.id.wallet_account_balance_ll);
+        wallet_account_balance_ll.setVisibility(View.GONE);
+
+        wallet_account_balance_value_tv = v.findViewById(R.id.wallet_account_balance_value_tv);
+
+        payment_mode_rg = v.findViewById(R.id.payment_mode_rg);
+        payment_mode_rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                updateConsultationFee(checkedId);
+            }
+        });
+        payment_mode_coc_rb = v.findViewById(R.id.payment_mode_coc_rb);
+        payment_mode_online_rb = v.findViewById(R.id.payment_mode_online_rb);
+        payment_mode_wallet_account_rb = v.findViewById(R.id.payment_mode_wallet_account_rb);
+
         input_sr_message = v.findViewById(R.id.input_sr_message);
 
         bottom_button_ll = v.findViewById(R.id.bottom_button_ll);
@@ -295,6 +335,30 @@ public class BookAppointmentFragment extends BaseAbstractFragment<BookAppointmen
         }
 
         return v;
+    }
+
+    private void updateConsultationFee(int checkedId){
+        switch (checkedId){
+            case R.id.payment_mode_online_rb:
+            {
+                wallet_account_balance_ll.setVisibility(View.GONE);
+                wallet_account_balance_value_tv.setText(Util.getFormattedAmount(0));
+                break;
+            }
+            case R.id.payment_mode_wallet_account_rb:
+            {
+                wallet_account_balance_ll.setVisibility(View.VISIBLE);
+                wallet_account_balance_value_tv.setText(Util.getFormattedAmount(0));
+                mViewModal.getAvailableWalletBalance();
+                break;
+            }
+            case R.id.payment_mode_coc_rb:
+            {
+                wallet_account_balance_ll.setVisibility(View.GONE);
+                wallet_account_balance_value_tv.setText(Util.getFormattedAmount(0));
+                break;
+            }
+        }
     }
 
     private EnterpriseRequest selectedEnterpriseRequest;
@@ -352,9 +416,17 @@ public class BookAppointmentFragment extends BaseAbstractFragment<BookAppointmen
 
     private List<String> mSelectedTimeSlot;
     private int selectedIndex;
+    private double consultationFee;
 
     @Override
-    public void updateDoctorAvailableTimeSlot(List<String> availableTimeSlot) {
+    public void updateDoctorAvailableTimeSlot(List<String> availableTimeSlot, Double fee) {
+        if(fee != null && fee.doubleValue() > 0){
+            consultationFee = fee.doubleValue();
+            consultation_fee__value_tv.setText(getResources().getString(R.string.rs_currency)+" "+Util.getFormattedAmount(consultationFee));
+        }else{
+            consultationFee = 0.0;
+            consultation_fee__value_tv.setText(getResources().getString(R.string.rs_currency)+" "+Util.getFormattedAmount(consultationFee));
+        }
         TimeSlotDialogFragment dialog = TimeSlotDialogFragment.newInstance((BaseFragmentActivity)getActivity(), new SelectDateAndTimeSlotCallBack() {
             @Override
             public void updateSelectedDate(List<String> selectedDate) {
@@ -432,6 +504,17 @@ public class BookAppointmentFragment extends BaseAbstractFragment<BookAppointmen
 //            ((BookAppointmentActivity)getActivity()).showError(msg, onClickListener, getResources().getString(R.string.ok), null, );
             AlertUtil.showAlert(getActivity(), msg, stringBuilder.toString(), "Yes", "No", onClickListener, DialogIconCodes.DIALOG_SUCCESS.getIconCode());
         }*/
+    }
+
+    private double walletBalance = 0.0;
+
+    @Override
+    public void updateAvailableBalance(Double balance) {
+        if(balance != null && balance.doubleValue() > 0){
+            walletBalance = balance.doubleValue();
+            wallet_account_balance_value_tv.setText(getResources().getString(R.string.rs_currency)+" "+Util.getFormattedAmount(walletBalance));
+        }else
+            walletBalance = 0.0;
     }
 
     private List<String> mSelectedLocation;
@@ -581,6 +664,32 @@ public class BookAppointmentFragment extends BaseAbstractFragment<BookAppointmen
                         if(appointmentRequest.getSlotBooked() != null){
                             select_time_slot_edittext.setText(HapisSlotUtils.getSlotName(appointmentRequest.getSlotBooked()));
                             select_time_slot_edittext.setEnabled(false);
+                        }
+                        if(appointmentRequest.getPaymentMode() != null && appointmentRequest.getPaymentMode().intValue() > 0){
+                            payment_mode_coc_rb.setEnabled(false);
+                            payment_mode_online_rb.setEnabled(false);
+                            payment_mode_wallet_account_rb.setEnabled(false);
+
+                            switch (appointmentRequest.getPaymentMode().intValue()){
+                                case 1:{
+                                    payment_mode_rg.check(R.id.payment_mode_coc_rb);
+                                    break;
+                                }
+                                case 4:
+                                case 2:{
+                                    payment_mode_rg.check(R.id.payment_mode_online_rb);
+                                    break;
+                                }
+                                case 3:{
+                                    payment_mode_rg.check(R.id.payment_mode_wallet_account_rb);
+                                    break;
+                                }
+                            }
+                        }
+                        if(appointmentRequest.getFee() != null && appointmentRequest.getFee().doubleValue() > 0){
+                            consultation_fee__value_tv.setText(getResources().getString(R.string.rs_currency)+" "+Util.getFormattedAmount(appointmentRequest.getFee().doubleValue()));
+                        }else{
+                            consultation_fee__value_tv.setText(getResources().getString(R.string.rs_currency)+" "+Util.getFormattedAmount(0.0));
                         }
                         input_sr_message.setEnabled(false);
 

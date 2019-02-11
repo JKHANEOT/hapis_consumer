@@ -1,0 +1,12 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_wallet"
+        android:orderInCategory="100"
+        android:title="@string/action_wallet"
+        app:actionLayout="@layout/dashboard_wallet_custom_menu"
+        app:showAsAction="always"
+        android:visible="true"/>
+
+</menu>

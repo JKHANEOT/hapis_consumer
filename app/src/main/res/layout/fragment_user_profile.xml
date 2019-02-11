@@ -1,0 +1,494 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#eeeeee">
+
+    <com.hapis.customer.ui.custom.observableview.ObservableScrollView
+        android:id="@+id/scroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/appbar_lay"
+        android:fillViewport="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:id="@+id/photo_main_ll"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:background="@color/colorPrimary">
+
+                <RelativeLayout
+                    android:id="@+id/photo_ll"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp">
+
+                    <!--android:src="@mipmap/default_profile_pic"-->
+
+                    <android.support.v7.widget.AppCompatImageView
+                        android:id="@+id/profile_pic_iv"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:scaleType="centerCrop" />
+
+                    <ImageView
+                        android:id="@+id/edit_pic_iv"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_alignEnd="@+id/profile_pic_iv"
+                        android:layout_alignRight="@+id/profile_pic_iv"
+                        android:layout_alignBottom="@+id/profile_pic_iv"
+                        android:adjustViewBounds="true"
+                        android:background="@drawable/circle_button_clicked"
+                        android:scaleType="centerInside"
+                        android:src="@mipmap/photo_icon"
+                        android:visibility="gone" />
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_toEndOf="@+id/photo_ll"
+                    android:layout_toRightOf="@+id/photo_ll"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/greeting_tv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/welcome"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white_50"
+                        android:textDirection="locale"
+                        android:textSize="16sp"
+                        android:visibility="gone" />
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/consumer_name_tv"
+                        style="@style/semi_bold_16sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:textDirection="locale" />
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <View
+                android:id="@+id/dummy_view"
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:layout_below="@+id/photo_main_ll"
+                android:background="@color/colorPrimary">
+
+            </View>
+
+            <LinearLayout
+                android:id="@+id/content_ll"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/photo_main_ll"
+                android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="30dp"
+                android:background="@drawable/rounded_profile_data_bg"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/customer_type_tv"
+                    style="@style/semi_bold_14sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/customer_type"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorPrimary"
+                    android:textDirection="locale"
+                    android:visibility="gone" />
+
+                <RadioGroup
+                    android:id="@+id/customer_type_rg"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <android.support.v7.widget.AppCompatRadioButton
+                        android:id="@+id/rb_individual"
+                        style="@style/semi_bold_14sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="15dp"
+                        android:layout_marginRight="15dp"
+                        android:buttonTint="@color/colorPrimary"
+                        android:text="@string/individual"
+                        android:textColor="@color/colorPrimary"
+                        android:textDirection="locale" />
+
+                    <android.support.v7.widget.AppCompatRadioButton
+                        android:id="@+id/rb_organisation"
+                        style="@style/semi_bold_14sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="@color/colorPrimary"
+                        android:text="@string/organisation"
+                        android:textColor="@color/colorPrimary"
+                        android:textDirection="locale" />
+                </RadioGroup>
+
+                <com.hapis.customer.ui.custom.materialedittext.MaterialEditText
+                    android:id="@+id/name_et"
+                    style="@style/semi_bold_14sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:hint="@string/name"
+                    android:inputType="textNoSuggestions"
+                    android:maxLines="1"
+                    android:textAllCaps="false"
+                    android:textColorHint="#9e9e9e"
+                    android:textDirection="locale"
+                    app:met_baseColor="#616161"
+                    app:met_floatingLabel="normal"
+                    app:met_floatingLabelText="@string/name"
+                    app:met_floatingLabelTextColor="#9e9e9e"
+                    app:met_primaryColor="#616161"
+                    app:met_textColor="@color/app_dark_color"
+                    app:met_textColorHint="#9e9e9e"
+                    app:met_underlineColor="#616161" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/gender_tv"
+                    style="@style/semi_bold_14sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="@string/gender"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorPrimary"
+                    android:textDirection="locale" />
+
+                <RadioGroup
+                    android:id="@+id/gender_rg"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <android.support.v7.widget.AppCompatRadioButton
+                        android:id="@+id/rb_male"
+                        style="@style/semi_bold_14sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="15dp"
+                        android:layout_marginRight="15dp"
+                        android:buttonTint="@color/colorPrimary"
+                        android:text="@string/male"
+                        android:textColor="@color/colorPrimary"
+                        android:textDirection="locale" />
+
+                    <android.support.v7.widget.AppCompatRadioButton
+                        android:id="@+id/rb_female"
+                        style="@style/semi_bold_14sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="@color/colorPrimary"
+                        android:text="@string/female"
+                        android:textColor="@color/colorPrimary"
+                        android:textDirection="locale" />
+                </RadioGroup>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <com.hapis.customer.ui.custom.materialedittext.MaterialEditText
+                            android:id="@+id/dob_et"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:drawableEnd="@drawable/ic_calendar"
+                            android:drawableRight="@drawable/ic_calendar"
+                            android:drawablePadding="5dp"
+                            android:hint="@string/birthday"
+                            android:maxLines="1"
+                            android:textAllCaps="false"
+                            android:textColorHint="@color/colorPrimary"
+                            android:textDirection="locale"
+                            android:textSize="16sp"
+                            app:met_baseColor="#616161"
+                            app:met_floatingLabel="normal"
+                            app:met_floatingLabelText="@string/birthday"
+                            app:met_floatingLabelTextColor="#9e9e9e"
+                            app:met_primaryColor="#616161"
+                            app:met_textColor="@color/app_dark_color"
+                            app:met_textColorHint="#9e9e9e"
+                            app:met_underlineColor="#616161" />
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="-30dp"
+                            android:layout_marginLeft="-30dp"
+                            android:layout_marginTop="10dp"
+                            android:visibility="gone">
+
+                            <ImageButton
+                                android:id="@+id/clear_dob_edittext"
+                                style="?android:buttonBarButtonStyle"
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
+                                android:textDirection="locale"
+                                android:visibility="gone"
+                                app:srcCompat="@drawable/ic_clear" />
+
+                            <ImageButton
+                                android:id="@+id/calendar_edittext"
+                                style="?android:buttonBarButtonStyle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textDirection="locale"
+                                android:visibility="visible"
+                                app:srcCompat="@drawable/ic_calendar" />
+
+                        </RelativeLayout>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:id="@+id/country_lay"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="3dp"
+                        android:layout_marginEnd="5dp"
+                        android:layout_marginRight="5dp"
+                        android:background="@drawable/bottom_underline_stroke"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:paddingStart="3dp"
+                        android:paddingLeft="3dp"
+                        android:paddingEnd="3dp"
+                        android:paddingRight="3dp">
+
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/flag_tv"
+                            style="@style/regular_14sp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:lineSpacingExtra="22.7sp"
+                            android:textColor="@color/app_dark_color"
+                            android:textDirection="locale"
+                            android:visibility="gone" />
+
+                        <!--<android.support.v7.widget.CardView
+                            android:layout_width="26dp"
+                            android:layout_height="26dp"
+                            android:layout_centerHorizontal="true"
+                            android:shape="ring"
+                            app:cardBackgroundColor="@color/transparent"
+                            app:cardCornerRadius="13dp"
+                            app:cardElevation="0dp">
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">-->
+
+                                <android.support.v7.widget.AppCompatImageView
+                                    android:id="@+id/flag_iv"
+                                    android:layout_width="@dimen/country_flag"
+                                    android:layout_height="@dimen/country_flag"
+                                    android:adjustViewBounds="true"/>
+                            <!--</RelativeLayout>
+                        </android.support.v7.widget.CardView>-->
+
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/country_mobile_code_tv"
+                            style="@style/regular_14sp"
+                            android:layout_width="40dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="2dp"
+                            android:layout_marginLeft="2dp"
+                            android:layout_marginEnd="3dp"
+                            android:layout_marginRight="3dp"
+                            android:background="@color/transparent"
+                            android:gravity="center"
+                            android:lineSpacingExtra="22.7sp"
+                            android:text="+ 888"
+                            android:textAllCaps="true"
+                            android:textColor="@color/app_dark_color"
+                            android:textDirection="locale" />
+
+                        <android.support.v7.widget.AppCompatImageView
+                            android:layout_width="10dp"
+                            android:layout_height="10dp"
+                            android:adjustViewBounds="true"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/drop_down_arrow" />
+                    </LinearLayout>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/input_lay_mobile_no"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@+id/country_lay"
+                        android:layout_toRightOf="@+id/country_lay"
+                        android:textColorHint="@color/md_grey_500"
+                        android:textDirection="locale"
+                        app:hintAnimationEnabled="true"
+                        app:hintEnabled="true">
+
+                        <android.support.design.widget.TextInputEditText
+                            android:id="@+id/input_mobile_no"
+                            style="@style/regular_14sp"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:gravity="center_vertical"
+                            android:imeOptions="actionNext"
+                            android:inputType="textEmailAddress"
+                            android:longClickable="false"
+                            android:paddingStart="@dimen/_6dp"
+                            android:paddingLeft="@dimen/_6dp"
+                            android:paddingEnd="32dp"
+                            android:paddingRight="32dp"
+                            android:textColor="@color/app_dark_color"
+                            android:textDirection="locale" />
+                    </android.support.design.widget.TextInputLayout>
+
+                    <android.support.v7.widget.AppCompatImageView
+                        android:id="@+id/mobile_edit_iv"
+                        android:layout_width="23dp"
+                        android:layout_height="23dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="5dp"
+                        android:layout_marginRight="5dp"
+                        app:srcCompat="@drawable/ic_edit_address_place_new_sr" />
+
+                </RelativeLayout>
+
+                <com.hapis.customer.ui.custom.materialedittext.MaterialEditText
+                    android:id="@+id/email_et"
+                    style="@style/regular_14sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:hint="@string/email_hint"
+                    android:maxLines="1"
+                    android:textAllCaps="false"
+                    android:textColorHint="#9e9e9e"
+                    android:textDirection="locale"
+                    app:met_baseColor="#616161"
+                    app:met_floatingLabel="normal"
+                    app:met_floatingLabelText="@string/email_hint"
+                    app:met_floatingLabelTextColor="#9e9e9e"
+                    app:met_primaryColor="#616161"
+                    app:met_textColor="@color/app_dark_color"
+                    app:met_textColorHint="#9e9e9e"
+                    app:met_underlineColor="#616161" />
+
+                <LinearLayout
+                    android:id="@+id/profile_address_ll"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:orientation="vertical">
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/profile_address_label_tv"
+                        style="@style/semi_bold_12sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/profile_address"
+                        android:textAllCaps="false"
+                        android:textColor="@color/colorPrimary"
+                        android:textDirection="locale" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp">
+
+                        <android.support.v7.widget.AppCompatImageView
+                            android:id="@+id/edit_profile_address_iv"
+                            android:layout_width="23dp"
+                            android:layout_height="23dp"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginEnd="5dp"
+                            android:layout_marginRight="5dp"
+                            android:scaleType="center"
+                            app:srcCompat="@drawable/ic_edit_address_place_new_sr" />
+
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/profile_default_address_tv"
+                            style="@style/regular_14sp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_toStartOf="@+id/edit_profile_address_iv"
+                            android:layout_toLeftOf="@+id/edit_profile_address_iv"
+                            android:ellipsize="end"
+                            android:lines="2"
+                            android:text="@string/default_address"
+                            android:textColor="#616161"
+                            android:textDirection="locale" />
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <android.support.v7.widget.AppCompatButton
+                    android:id="@+id/edit_profile_bttn"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/button_height"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/rounded_button_new"
+                    android:text="@string/submit"
+                    android:textAllCaps="true"
+                    android:textColor="@color/white"
+                    android:textDirection="locale"
+                    android:textSize="@dimen/button_text_size" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+    </com.hapis.customer.ui.custom.observableview.ObservableScrollView>
+
+</RelativeLayout>

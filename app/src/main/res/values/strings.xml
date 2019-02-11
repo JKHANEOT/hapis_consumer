@@ -240,7 +240,7 @@
         <item>@string/nav_item_logout</item>
     </string-array>
 
-    <!--<string name="rs">\u20B9</string>--> <!--ruppee-->
+    <string name="rs_currency">\u20B9</string> <!--ruppee-->
     <string name="rs">&#36;</string> <!--dollar-->
 
     <string name="Rs1">\u20B9\u00204000</string>
@@ -1760,6 +1760,31 @@
     <string name="confirm">Confirm</string>
     <string name="cancelled">Cancelled</string>
     <string name="appointment_cancelled">Appointment cancelled.</string>
+    <string name="action_wallet">Wallet</string>
+    <string name="wallet_account">Wallet Account</string>
+    <string name="wallet_balance">Wallet Balance</string>
+    <string name="add_money">Add Money</string>
+    <string name="enter_amount">Enter Amount</string>
+    <string name="amount">Amount</string>
+    <string name="available_balance">Available Balance:</string>
+    <string name="add_money_to_wallet">Add money to wallet</string>
+    <string name="proceed_securely">Proceed Securely</string>
+    <string name="enter_your_card_details">Enter Your Card Details</string>
+    <string name="expiry_or_validity_date">Expiry / Validity Date</string>
+    <string name="cvv">CVV</string>
+    <string name="card_validity_hint">MM / YY</string>
+    <string name="net_banking">Net Banking</string>
+    <string name="debit_card">Debit Card</string>
+    <string name="credit_card">Credit Card</string>
+    <string name="payment_mode">Payment Mode</string>
+    <string name="online">Online</string>
+    <string name="cash_on_consultation">Cash On Consultation</string>
+    <string name="consultation_fee">Consultation Fee :</string>
+    <string name="wallet_account_balance">Wallet Account Balance :</string>
+    <string name="please_select_payment_mode">Please select payment mode.</string>
+    <string name="please_enter_amount">Please enter amount.</string>
+    <string name="please_enter_card_details">Please enter card details.</string>
+    <string name="recharge_failed_please_try_again_later">Recharge failed, please try again later.</string>
 
     <string-array name="ride_types_titles">
         <item>Auto</item>
@@ -1780,5 +1805,10 @@
         <item>@drawable/ic_rentals</item>
         <item>@drawable/ic_cab</item>
     </integer-array>
+
+    <string name="payment_paid">Paid</string>
+    <string name="payment_pending">Pending</string>
+    <string name="insufficient_wallet_balance_plz_recharge_to_continue">Insufficient wallet account balance, please recharge to continue.</string>
+    <string name="past_recharges"><u>Past Recharges:</u></string>
 
 </resources>

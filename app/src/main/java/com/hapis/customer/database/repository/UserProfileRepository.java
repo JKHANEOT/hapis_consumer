@@ -533,4 +533,36 @@ public class UserProfileRepository {
             mutableLiveData.postValue(aBoolean);
         }
     }
+
+    public void loadUserProfileDetails(MutableLiveData<UserProfileTable> userProfileTableMutableLiveData) {
+        new GetUserProfileAsyncTask(userProfileTableMutableLiveData, userProfileDao).execute();
+    }
+
+    private static class GetUserProfileAsyncTask extends AsyncTask<Void, Void, UserProfileTable> {
+
+        private MutableLiveData<UserProfileTable> mUserProfileMutableLiveData;
+        private UserProfileDao mUserProfileDao;
+
+        private GetUserProfileAsyncTask(MutableLiveData<UserProfileTable> userProfileMutableLiveData, UserProfileDao userProfileDao){
+            mUserProfileDao = userProfileDao;
+            mUserProfileMutableLiveData = userProfileMutableLiveData;
+        }
+
+        @Override
+        protected UserProfileTable doInBackground(Void... notes) {
+
+            UserProfileTable userProfileTable = mUserProfileDao.getUserProfileByUniqueId(AccessPreferences.get(HapisApplication.getApplication(), ApplicationConstants.LOGGED_IN_USER_GUID, null));
+
+            return userProfileTable;
+        }
+
+        @Override
+        protected void onPostExecute(UserProfileTable userProfileTable) {
+            super.onPostExecute(userProfileTable);
+
+            if(userProfileTable != null){
+                mUserProfileMutableLiveData.postValue(userProfileTable);
+            }
+        }
+    }
 }

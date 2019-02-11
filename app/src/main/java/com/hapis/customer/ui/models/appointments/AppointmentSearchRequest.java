@@ -24,6 +24,8 @@ public class AppointmentSearchRequest extends AppointmentBaseRequest {
 	private List<String> availableSlots;
 	
 	private List<DoctorDetails> doctors;
+
+	private Double fee;
 	
 	public String getDoctorCode() {
 		return doctorCode;
@@ -63,5 +65,13 @@ public class AppointmentSearchRequest extends AppointmentBaseRequest {
 
 	public void setDoctors(List<DoctorDetails> doctors) {
 		this.doctors = doctors;
+	}
+
+	public Double getFee() {
+		return fee;
+	}
+
+	public void setFee(Double fee) {
+		this.fee = fee;
 	}
 }

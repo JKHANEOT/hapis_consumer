@@ -9,6 +9,7 @@ import android.support.design.internal.BottomNavigationMenuView;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v7.widget.AppCompatTextView;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.Menu;
@@ -17,6 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.hapis.customer.R;
@@ -33,6 +35,7 @@ import com.hapis.customer.ui.utils.DialogIconCodes;
 import com.hapis.customer.ui.view.BaseView;
 import com.hapis.customer.ui.view.DashboardView;
 import com.hapis.customer.ui.view.DashboardViewModal;
+import com.hapis.customer.utils.Util;
 
 public class DashboardActivity extends BaseFragmentActivity<DashboardViewModal> implements DashboardView, MenuMoreDialogFragment.MenuMoreOnCallBackListener {
 
@@ -198,7 +201,10 @@ public class DashboardActivity extends BaseFragmentActivity<DashboardViewModal> 
     @Override
     public void onOptionSelected(Dialog dialog, int selectedIndex) {
         dialog.dismiss();
-        if(selectedIndex == 8){
+        if(selectedIndex == 0){
+            Intent intent = new Intent(DashboardActivity.this, UserProfileActivity.class);
+            startActivity(intent);
+        }else if(selectedIndex == 8){
             OnClickListener onClickListener = new OnClickListener() {
                 @Override
                 public void onClick(DialogPlus dialog, View view) {
@@ -321,5 +327,59 @@ public class DashboardActivity extends BaseFragmentActivity<DashboardViewModal> 
             }
         });
     }*/
+
+    private AppCompatTextView wallet_account_balance_tv;
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_dashboard, menu);
+
+        final MenuItem alertMenuItem = menu.findItem(R.id.action_wallet);
+        RelativeLayout rootView = (RelativeLayout) alertMenuItem.getActionView();
+        wallet_account_balance_tv = (AppCompatTextView) rootView.findViewById(R.id.wallet_account_balance_tv);
+
+        wallet_account_balance_tv.setText(getResources().getString(R.string.rs_currency)+" "+Util.getFormattedAmount(0.0));
+        rootView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                moveToUserWallet();
+            }
+        });
+
+        return true;
+    }
+
+    private void moveToUserWallet(){
+        Intent intent = new Intent(DashboardActivity.this, UserWalletActivity.class);
+        startActivity(intent);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        switch (id) {
+            case R.id.action_wallet: {
+                moveToUserWallet();
+                break;
+            }
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void updateAvailableBalance(Double balance) {
+        if(balance != null && balance.doubleValue() > 0){
+            wallet_account_balance_tv.setText(getResources().getString(R.string.rs_currency)+" "+Util.getFormattedAmount(balance.doubleValue()));
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        mViewModal.getAvailableWalletBalance();
+    }
 }
 

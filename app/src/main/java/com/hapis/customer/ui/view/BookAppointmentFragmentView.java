@@ -13,8 +13,10 @@ public interface BookAppointmentFragmentView extends BaseView {
 
     void updateDoctorsByEnterpriseAndSpecialization(List<DoctorDetails> doctorDetailsList);
 
-    void updateDoctorAvailableTimeSlot(List<String> availableTimeSlot);
+    void updateDoctorAvailableTimeSlot(List<String> availableTimeSlot, Double fee);
 
     void createAppointment(String msg);
+
+    void updateAvailableBalance(Double balance);
 
 }
