@@ -2,13 +2,13 @@ package com.hapis.customer.database.tables;
 
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
+import android.support.annotation.NonNull;
 
 @Entity(tableName = "user_profile")
 public class UserProfileTable {
 
-    @PrimaryKey(autoGenerate = true)
-    private int id;
-
+    @NonNull
+    @PrimaryKey
     private String uniqueId;
 
     private String title;
@@ -54,14 +54,6 @@ public class UserProfileTable {
     private int customerType;
 
     private int state;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getUniqueId() {
         return uniqueId;

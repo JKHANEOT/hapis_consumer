@@ -8,10 +8,13 @@ import android.support.annotation.Nullable;
 import com.hapis.customer.HapisApplication;
 import com.hapis.customer.R;
 import com.hapis.customer.database.repository.UserProfileRepository;
+import com.hapis.customer.ui.models.CustomerResponse;
 import com.hapis.customer.ui.models.HapisModel;
 import com.hapis.customer.ui.models.ResponseStatus;
 import com.hapis.customer.ui.models.UserModel;
 import com.hapis.customer.ui.models.UserModelResponse;
+import com.hapis.customer.ui.utils.AccessPreferences;
+import com.hapis.customer.ui.utils.ApplicationConstants;
 import com.hapis.customer.ui.utils.EditTextUtils;
 
 public class LoginFragmentViewModal extends BaseViewModal<LoginFragmentView> {
@@ -68,7 +71,15 @@ public class LoginFragmentViewModal extends BaseViewModal<LoginFragmentView> {
             public void onChanged(@Nullable UserModelResponse userModelResponse) {
                 if(userModelResponse != null){
                     if(userModelResponse.getStatus() != null && userModelResponse.getStatus().getStatusCode() != null && userModelResponse.getStatus().getStatusCode().intValue() == ResponseStatus.SUCCESS){
-                        mView.SigninRequestSuccess(HapisApplication.getApplication().getResources().getString(R.string.sign_in_successful));
+
+                        MutableLiveData<CustomerResponse> customerResponseMutableLiveData = new MutableLiveData<>();
+                        userProfileRepository.getUserDetailsByCustomerCode(customerResponseMutableLiveData, AccessPreferences.get(HapisApplication.getApplication(), ApplicationConstants.LOGGED_IN_USER_GUID, null));
+                        customerResponseMutableLiveData.observe(mOwner, new Observer<CustomerResponse>() {
+                            @Override
+                            public void onChanged(@Nullable CustomerResponse customerResponse) {
+                                mView.SigninRequestSuccess(HapisApplication.getApplication().getResources().getString(R.string.sign_in_successful));
+                            }
+                        });
                     }else{
                         mView.SigninRequestFailed(((userModelResponse.getStatus().getErrorMessages() != null && userModelResponse.getStatus().getErrorMessages().size() > 0) ? userModelResponse.getStatus().getErrorMessages().get(0).getMessageDescription() : HapisApplication.getApplication().getResources().getString(R.string.unable_to_process_request)));
                     }

@@ -26,8 +26,10 @@ import com.hapis.customer.ui.models.users.UserResponse;
 import com.hapis.customer.ui.utils.AccessPreferences;
 import com.hapis.customer.ui.utils.ApplicationConstants;
 import com.hapis.customer.ui.utils.EditTextUtils;
+import com.hapis.customer.utils.DateUtil;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 
 import okhttp3.Call;
@@ -360,10 +362,14 @@ public class AppointmentRepository {
 
                 if(userProfileTable != null){
 
-//                    if(userProfileTable.getDateOfBirth() > 0)
-                    appointmentRequest.setPatientAge(31/*DateUtil.convertDobToAge(new Date(userProfileTable.getDateOfBirth()))*/);
-//                    if(userProfileTable.getGender() != null)
-                    appointmentRequest.setPatientGender("Male"/*userProfileTable.getGender()*/);
+                    if(userProfileTable.getDateOfBirth() > 0)
+                        appointmentRequest.setPatientAge(DateUtil.convertDobToAge(new Date(userProfileTable.getDateOfBirth())));
+                    else
+                        appointmentRequest.setPatientAge(31);
+
+                    if(userProfileTable.getGender() != null)
+                        appointmentRequest.setPatientGender(userProfileTable.getGender());
+                    else appointmentRequest.setPatientGender("Male");
 
                     StringBuilder stringBuilder = new StringBuilder();
 

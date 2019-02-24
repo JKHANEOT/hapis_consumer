@@ -24,7 +24,6 @@ import com.hapis.customer.ui.models.NavDrawerItem;
 import com.hapis.customer.utils.Util;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 public class MenuMoreDialogFragment extends DialogFragment {
@@ -129,7 +128,10 @@ public class MenuMoreDialogFragment extends DialogFragment {
         recyclerView.addOnItemTouchListener(new RecyclerTouchListener(baseFragmentActivity, recyclerView, new RecyclerTouchListener.ClickListener() {
             @Override
             public void onClick(View view, int position) {
-                menuMoreOnCallBackListener.onOptionSelected(getDialog(), position);
+                if(menuMoreOnCallBackListener != null) {
+                    menuMoreOnCallBackListener.onOptionSelected(getDialog(), position);
+                    menuMoreOnCallBackListener = null;
+                }
             }
 
             @Override

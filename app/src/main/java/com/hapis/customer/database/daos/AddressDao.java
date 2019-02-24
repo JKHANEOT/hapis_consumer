@@ -38,4 +38,7 @@ public interface AddressDao {
     @Query("SELECT * FROM address WHERE fk_uniqueId=:fk_uniqueId")
     LiveData<AddressTable> getAddressByUniqueId(String fk_uniqueId);
 
+    @Query("SELECT * FROM address WHERE fk_uniqueId=:fk_uniqueId")
+    AddressTable getAddressByUniqueIdWithout(String fk_uniqueId);
+
 }

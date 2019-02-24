@@ -2,13 +2,13 @@ package com.hapis.customer.database.tables;
 
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
+import android.support.annotation.NonNull;
 
 @Entity(tableName = "address")
 public class AddressTable {
 
-    @PrimaryKey(autoGenerate = true)
-    private int id;
-
+    @NonNull
+    @PrimaryKey
     private String fk_uniqueId;
 
     private String pinCode;
@@ -24,14 +24,6 @@ public class AddressTable {
     private String landmark;
 
     private int addressType;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getFk_uniqueId() {
         return fk_uniqueId;

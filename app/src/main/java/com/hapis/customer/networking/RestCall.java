@@ -369,7 +369,7 @@ public class RestCall implements RestConstants {
                         String resStr = response.body().string();
                         Log.d(TAG, resStr);
                         try {
-                            if (resStr != null && resStr.endsWith(".00")) {
+                            if (resStr != null && resStr.endsWith(".00") || resStr.startsWith("0")) {
                                 restCallListener.onResponse(Result.SUCCESS, resStr, errorMessages, "");
                             } else {
                                 CustomResponseModel responseModel = JSONAdaptor.fromJSON(resStr, CustomResponseModel.class);

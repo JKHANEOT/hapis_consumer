@@ -1,7 +1,6 @@
 package com.hapis.customer.ui.fragments;
 
 import android.annotation.SuppressLint;
-import android.content.res.ColorStateList;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -9,24 +8,23 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.widget.AppCompatButton;
-import android.support.v7.widget.AppCompatEditText;
 import android.support.v7.widget.AppCompatImageView;
 import android.support.v7.widget.AppCompatRadioButton;
 import android.support.v7.widget.AppCompatTextView;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.signature.ObjectKey;
 import com.hapis.customer.R;
@@ -35,38 +33,38 @@ import com.hapis.customer.logger.LOG;
 import com.hapis.customer.ui.BaseFragmentActivity;
 import com.hapis.customer.ui.UserProfileActivity;
 import com.hapis.customer.ui.adapters.CountriesAdap;
+import com.hapis.customer.ui.custom.AddEditAddressDialog;
+import com.hapis.customer.ui.custom.InstantAutoCompleteTextView;
+import com.hapis.customer.ui.custom.MaterialSpinner;
 import com.hapis.customer.ui.custom.dialogplus.DialogPlus;
-import com.hapis.customer.ui.custom.dialogplus.OnBackPressListener;
-import com.hapis.customer.ui.custom.dialogplus.ViewHolder;
+import com.hapis.customer.ui.custom.dialogplus.OnClickListener;
 import com.hapis.customer.ui.custom.materialedittext.MaterialEditText;
 import com.hapis.customer.ui.custom.observableview.ObservableScrollView;
 import com.hapis.customer.ui.custom.observableview.ObservableScrollViewCallbacks;
 import com.hapis.customer.ui.custom.observableview.ScrollState;
 import com.hapis.customer.ui.models.AddressModel;
 import com.hapis.customer.ui.utils.DeviceScreenResolutionUtil;
+import com.hapis.customer.ui.utils.DialogIconCodes;
 import com.hapis.customer.ui.utils.EditTextUtils;
+import com.hapis.customer.ui.utils.EmailAccount;
+import com.hapis.customer.ui.utils.GetDeviceEmailAccounts;
 import com.hapis.customer.ui.view.BaseView;
-import com.hapis.customer.ui.view.BaseViewModal;
 import com.hapis.customer.ui.view.UserProfileFragmentView;
 import com.hapis.customer.ui.view.UserProfileFragmentViewModal;
+import com.hapis.customer.utils.DateUtil;
 import com.hapis.customer.utils.Util;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class UserProfileFragment extends BaseAbstractFragment<UserProfileFragmentViewModal> implements UserProfileFragmentView, ObservableScrollViewCallbacks {
+public class UserProfileFragment extends BaseAbstractFragment<UserProfileFragmentViewModal> implements UserProfileFragmentView, ObservableScrollViewCallbacks, GetDeviceEmailAccounts.FetchEmailAccounts {
 
     public static final String TAG = UserProfileFragment.class.getName();
 
     private AppCompatImageView profileIV, flagIV;
 
-    private TextInputLayout inputLayMobileNumber;
-    private AppCompatEditText inputMobileNumber;
 
-    private MaterialEditText nameEt, dobEt, emailEt;
-    private AppCompatTextView countryCodeTv;
-    private RadioGroup genderRG, customerTypeRG;
-    private AppCompatRadioButton maleRB, femaleRB, individualRB, organisationRB;
     private AppCompatButton createProfileBttn;
     private LinearLayout prefixLL;
 
@@ -79,17 +77,37 @@ public class UserProfileFragment extends BaseAbstractFragment<UserProfileFragmen
     private ImageView editProfilePicIV;
     private Resources res;
     private Bitmap defaultProfilePic;
-    private CountriesAdap adapter;
+
+    private MaterialSpinner prefix_spinner,marital_status_spinner,nationality_spinner,religion_spinner;
+    private MaterialEditText first_name_input_et,middle_name_input_et,last_name_input_et,mobile_et,dob_et,aadhaar_number_et;
+    private RadioGroup gender_rg;
+    private AppCompatRadioButton rb_male,rb_female;
+
+
     private List<String> countryCodesList;
-    private static int DEFAULT_LOCATION_ID = 0;
-    private LinearLayout profileDetailsLay2;
+    private CountriesAdap adapter;
+    private AppCompatTextView countryFlagTv, countryISDCodeTv,profile_default_address_tv;
+    private AppCompatImageView countryFlagIv,edit_profile_address_iv;
+    private LinearLayout countryCodeLay;
+    private TextInputLayout emailInputLay;
+    private InstantAutoCompleteTextView emailEt;
 
-    private AppCompatTextView greeting_tv, consumer_name_tv;
-    private AppCompatImageView mobileNumberEditIv;
+    private List<String> emailAccountList;
+//    private AppCompatTextView versionTv, copyrightTv;
 
-    private LinearLayout profile_address_ll;
-    private AppCompatTextView profile_address_label_tv, profile_default_address_tv;
-    private AppCompatImageView edit_profile_address_iv;
+    private String countryIsdCode = "";
+
+    @Override
+    public void onFetchingEmailAccounts(List<EmailAccount> emailAccounts) {
+        if (emailAccountList == null) {
+            emailAccountList = new ArrayList<>();
+        }
+        for (EmailAccount account : emailAccounts) {
+            emailAccountList.add(account.getName());
+        }
+        final ArrayAdapter<String> emailAdapter = new ArrayAdapter(getActivity(), R.layout.row_spn, emailAccountList);
+        emailEt.setAdapter(emailAdapter);
+    }
 
     @SuppressLint("RestrictedApi")
     @Override
@@ -97,225 +115,189 @@ public class UserProfileFragment extends BaseAbstractFragment<UserProfileFragmen
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_user_profile, container, false);
 
-        profile_address_ll = v.findViewById(R.id.profile_address_ll);
-        profile_address_label_tv = v.findViewById(R.id.profile_address_label_tv);
-        profile_default_address_tv = v.findViewById(R.id.profile_default_address_tv);
-        edit_profile_address_iv = v.findViewById(R.id.edit_profile_address_iv);
+        initViews(v);
 
-        edit_profile_address_iv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-            }
-        });
+        return v;
+    }
 
-        greeting_tv = v.findViewById(R.id.greeting_tv);
-        greeting_tv.setText(getUserGreetingMsg());
-        consumer_name_tv = v.findViewById(R.id.consumer_name_tv);
+    private String selectedPrefix,selectedNationality,selectedReligion,selectedMaritalStatus;
 
-        AppCompatTextView customer_type_tv = v.findViewById(R.id.customer_type_tv);
-        AppCompatTextView gender_tv = v.findViewById(R.id.gender_tv);
+    AdapterView.OnItemSelectedListener prefixItemSelectedListener = new AdapterView.OnItemSelectedListener() {
+        @Override
+        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+            if(position != -1)
+                selectedPrefix = parent.getItemAtPosition(position).toString();
+            else
+                selectedPrefix = null;
+        }
 
-        profileDetailsLay2 = v.findViewById(R.id.content_ll);
+        @Override
+        public void onNothingSelected(AdapterView<?> parent) {
+
+        }
+    };
+
+    AdapterView.OnItemSelectedListener nationalityItemSelectedListener = new AdapterView.OnItemSelectedListener() {
+        @Override
+        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+            if(position != -1)
+                selectedNationality = parent.getItemAtPosition(position).toString();
+            else
+                selectedNationality = null;
+        }
+
+        @Override
+        public void onNothingSelected(AdapterView<?> parent) {
+
+        }
+    };
+
+    AdapterView.OnItemSelectedListener religionItemSelectedListener = new AdapterView.OnItemSelectedListener() {
+        @Override
+        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+            if(position != -1)
+                selectedReligion = parent.getItemAtPosition(position).toString();
+            else
+                selectedReligion = null;
+        }
+
+        @Override
+        public void onNothingSelected(AdapterView<?> parent) {
+
+        }
+    };
+
+    AdapterView.OnItemSelectedListener maritalStatusItemSelectedListener = new AdapterView.OnItemSelectedListener() {
+        @Override
+        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+            if(position != -1)
+                selectedMaritalStatus = parent.getItemAtPosition(position).toString();
+            else
+                selectedMaritalStatus = null;
+        }
+
+        @Override
+        public void onNothingSelected(AdapterView<?> parent) {
+
+        }
+    };
+
+    @Override
+    public void validateScreenFields(String errorMsg) {
+        if(errorMsg == null || (errorMsg != null && errorMsg.length() == 0)){
+            ((UserProfileActivity)getActivity()).showProgressDialog(getActivity(), getResources().getString(R.string.please_wait_progress_msg));
+            mViewModal.updateUserProfile(selectedPrefix, EditTextUtils.getText(first_name_input_et), EditTextUtils.getText(middle_name_input_et),
+                    EditTextUtils.getText(last_name_input_et), gender_rg.getCheckedRadioButtonId() == R.id.rb_male ? "MALE" : "FEMALE",
+                    EditTextUtils.getText(aadhaar_number_et), selectedMaritalStatus, selectedNationality, selectedReligion, EditTextUtils.getText(mobile_et),
+                    EditTextUtils.getText(emailEt), DateUtil.dateFormater(EditTextUtils.getText(dob_et) ,
+                            DateUtil.DATE_FORMAT_yyyy_MM_dd_T_HH_mm_ss_SSS_Z , DateUtil.DATE_FORMAT_dd_MM_yyyy_SEP_HIPHEN),visibleCurrentLocation);
+        }else{
+            ((UserProfileActivity)getActivity()).showError(errorMsg, null, null, null, DialogIconCodes.DIALOG_FAILED.getIconCode());
+        }
+    }
+
+    @SuppressLint("RestrictedApi")
+    private void initViews(View v) {
 
         profileIV = v.findViewById(R.id.profile_pic_iv);
         res = getResources();
         setDefaultProfilePic();
-        countryCodesList = Arrays.asList(getResources().getStringArray(R.array.CountryCodes));
         editProfilePicIV = v.findViewById(R.id.edit_pic_iv);
-
-//        todosTv = (AppCompatTextView) fragmentView.findViewById(R.id.to_dos_count_tv);
-        nameEt = v.findViewById(R.id.name_et);
-
-        ColorStateList colorStateList = new ColorStateList(
-                new int[][]{
-                        new int[]{-android.R.attr.state_checked},
-                        new int[]{android.R.attr.state_checked}
-                },
-                new int[]{getResources().getColor(R.color.radio_button_not_selected)
-                        , getResources().getColor(R.color.radio_button_selected),
-                }
-        );
-
-        customerTypeRG = v.findViewById(R.id.customer_type_rg);
-
-        individualRB = v.findViewById(R.id.rb_individual);
-        organisationRB = v.findViewById(R.id.rb_organisation);
-        individualRB.setSupportButtonTintList(colorStateList);
-        organisationRB.setSupportButtonTintList(colorStateList);
-
-        customerTypeRG.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                switch (checkedId) {
-                    case R.id.rb_individual: {
-                        individualRB.setTextColor(getResources().getColor(R.color.radio_button_selected));
-                        organisationRB.setTextColor(getResources().getColor(R.color.radio_button_not_selected));
-                        break;
-                    }
-                    case R.id.rb_organisation: {
-                        individualRB.setTextColor(getResources().getColor(R.color.radio_button_not_selected));
-                        organisationRB.setTextColor(getResources().getColor(R.color.radio_button_selected));
-                        break;
-                    }
-                }
-            }
-        });
-
-        genderRG = v.findViewById(R.id.gender_rg);
-        maleRB = v.findViewById(R.id.rb_male);
-        femaleRB = v.findViewById(R.id.rb_female);
-        maleRB.setSupportButtonTintList(colorStateList);
-        femaleRB.setSupportButtonTintList(colorStateList);
-
-        genderRG.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                switch (checkedId) {
-                    case R.id.rb_male: {
-                        maleRB.setTextColor(getResources().getColor(R.color.radio_button_selected));
-                        femaleRB.setTextColor(getResources().getColor(R.color.radio_button_not_selected));
-                        break;
-                    }
-                    case R.id.rb_female: {
-                        maleRB.setTextColor(getResources().getColor(R.color.radio_button_not_selected));
-                        femaleRB.setTextColor(getResources().getColor(R.color.radio_button_selected));
-                        break;
-                    }
-                }
-            }
-        });
-
-        dobEt = v.findViewById(R.id.dob_et);
-        emailEt = v.findViewById(R.id.email_et);
-        inputLayMobileNumber = v.findViewById(R.id.input_lay_mobile_no);
-        inputMobileNumber = v.findViewById(R.id.input_mobile_no);
-        prefixLL = v.findViewById(R.id.country_lay);
-        flagIV = v.findViewById(R.id.flag_iv);
-        countryCodeTv = v.findViewById(R.id.country_mobile_code_tv);
-
-        inputMobileNumber.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                return false;
-            }
-        });
-        inputMobileNumber.setClickable(false);
-        inputMobileNumber.setLongClickable(false);
-        inputMobileNumber.setFocusable(false);
-        inputMobileNumber.setClickable(false);
-        inputMobileNumber.setLongClickable(false);
-        inputMobileNumber.setFocusable(false);
-
-        mobileNumberEditIv = v.findViewById(R.id.mobile_edit_iv);
-        mobileNumberEditIv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-            }
-        });
-        countryCodeTv.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                return false;
-            }
-        });
-
-        String countryID = ((UserProfileActivity) getActivity()).getCountryID();
-        flagIV.setImageResource(getActivity().getResources().getIdentifier("drawable/"
-                + countryID, null, getActivity().getPackageName()));
-        countryCodeTv.setText("+" + ((UserProfileActivity) getActivity()).getCountryDialCode());
-
-        countryCodeTv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ((UserProfileActivity) getActivity()).hideSoftKeyPad();
-                final DialogPlus dialog = DialogPlus.newDialog(getActivity())
-                        .setExpanded(false)
-                        .setGravity(Gravity.TOP)
-                        .setContentHolder(new ViewHolder(R.layout.country_list_lay))
-                        .setCancelable(true)
-                        .setBackgroundColorResourceId(R.color.transparent)
-                        .setOnBackPressListener(new OnBackPressListener() {
-                            @Override
-                            public void onBackPressed(DialogPlus dialog) {
-                                dialog.dismiss();
-                            }
-                        })
-                        .create(false);
-                dialog.show();
-
-                View dialogView = dialog.getHolderView();
-                AppCompatEditText searchableET = dialogView.findViewById(R.id.searchable_et);
-                AppCompatTextView noResultTv = dialogView.findViewById(R.id.no_result_tv);
-//                TypefaceHelper.getInstance().setTypeface(searchableET, TypefaceHelper.getFont(TypefaceHelper.FONT.LIGHT));
-//                TypefaceHelper.getInstance().setTypeface(noResultTv, TypefaceHelper.getFont(TypefaceHelper.FONT.LIGHT));
-                RecyclerView countryLv = dialogView.findViewById(R.id.country_lv);
-                adapter = new CountriesAdap(getActivity(), countryCodesList, searchableET, noResultTv, dialog);
-                countryLv.setAdapter(adapter);
-                countryLv.setLayoutManager(new LinearLayoutManager(getActivity()));
-                adapter.setOnItemClickListener(new CountriesAdap.CountryClickListener() {
-                    @Override
-                    public void onCountryClick(View view, int position, String[] countryStrArray) {
-                        String pngName = countryStrArray[1].trim().toLowerCase();
-                        flagIV.setImageResource(getActivity().getResources().getIdentifier("drawable/" + pngName, null, getActivity().getPackageName()));
-
-                        LOG.d("CountryISOCode", "" + countryStrArray[0]);
-                        String ISOCode = countryStrArray[0];
-                        countryCodeTv.setText("");
-                        countryCodeTv.setText("+" + ISOCode);
-                        countryCodeTv.invalidate();
-                        ((UserProfileActivity) getActivity()).hideSoftKeyPad();
-                        dialog.dismiss();
-                    }
-                });
-            }
-        });
 
         createProfileBttn = v.findViewById(R.id.edit_profile_bttn);
 
         profileIV.setOnClickListener(viewProfileOnClickListener);
         editProfilePicIV.setOnClickListener(editProfileOnClickListener);
 
-        dobEt.setKeyListener(null);
-        dobEt.setClickable(true);
-        final Drawable purchase_date_drawable = getResources().getDrawable(R.drawable.ic_calendar);
-        final Drawable clear_purchase_date_drawable = getResources().getDrawable(R.drawable.ic_clear);
+        createProfileBttn.setOnClickListener(updateProfileOnClickListener);
 
-        dobEt.setOnTouchListener(new View.OnTouchListener() {
+        mScrollView = v.findViewById(R.id.scroll);
+        mScrollView.setScrollViewCallbacks(this);
+
+        prefix_spinner = (MaterialSpinner)v.findViewById(R.id.prefix_spinner);
+
+        ArrayAdapter<String> prefixAdapter = new ArrayAdapter<String>(getActivity(),
+                android.R.layout.simple_spinner_item, getResources().getStringArray(R.array.prefix_array));
+        prefixAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        prefix_spinner.setAdapter(prefixAdapter);
+        prefix_spinner.setOnItemSelectedListener(prefixItemSelectedListener);
+
+        first_name_input_et = (MaterialEditText)v.findViewById(R.id.first_name_input_et);
+        middle_name_input_et = (MaterialEditText)v.findViewById(R.id.middle_name_input_et);
+        last_name_input_et = (MaterialEditText)v.findViewById(R.id.last_name_input_et);
+
+        gender_rg = (RadioGroup)v.findViewById(R.id.gender_rg);
+        rb_male = (AppCompatRadioButton)v.findViewById(R.id.rb_male);
+        rb_female = (AppCompatRadioButton)v.findViewById(R.id.rb_female);
+        gender_rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
-            public boolean onTouch(View v, MotionEvent event) {
-
-                if (event.getAction() == MotionEvent.ACTION_UP) {
-
-                    final int DRAWABLE_LEFT = 0;
-                    final int DRAWABLE_TOP = 1;
-                    final int DRAWABLE_RIGHT = 2;
-                    final int DRAWABLE_BOTTOM = 3;
-
-                    if (dobEt.getCompoundDrawables()[DRAWABLE_RIGHT] == null)
-                        return false;
-
-                    if (EditTextUtils.isEmpty(dobEt) && event.getRawX() >= (dobEt.getRight() - dobEt.getCompoundDrawables()[DRAWABLE_RIGHT].getBounds().width())) {
-                        ((BaseFragmentActivity) getActivity()).hideSoftKeyPad();
-                        ((UserProfileActivity) getActivity()).setDateResultTo(dobEt, null, false);
-                        getActivity().showDialog(BaseFragmentActivity.DATE_PICKER_ID);
-                        return true;
-                    } else if (!EditTextUtils.isEmpty(dobEt) && event.getRawX() >= (dobEt.getRight() - dobEt.getCompoundDrawables()[DRAWABLE_RIGHT].getBounds().width())) {
-                        dobEt.setText("");
-                        return true;
-                    } else {
-                        if (EditTextUtils.isEmpty(dobEt)) {
-                            ((BaseFragmentActivity) getActivity()).hideSoftKeyPad();
-                            ((UserProfileActivity) getActivity()).setDateResultTo(dobEt, null, false);
-                            getActivity().showDialog(BaseFragmentActivity.DATE_PICKER_ID);
-                        }
-                        return true;
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                switch (checkedId) {
+                    case R.id.rb_male: {
+                        rb_male.setTextColor(getResources().getColor(R.color.radio_button_selected));
+                        rb_female.setTextColor(getResources().getColor(R.color.radio_button_not_selected));
+                        break;
                     }
-                } else
-                    return false;
+                    case R.id.rb_female: {
+                        rb_male.setTextColor(getResources().getColor(R.color.radio_button_not_selected));
+                        rb_female.setTextColor(getResources().getColor(R.color.radio_button_selected));
+                        break;
+                    }
+                }
             }
         });
 
-        dobEt.addTextChangedListener(new TextWatcher() {
+        marital_status_spinner = (MaterialSpinner)v.findViewById(R.id.marital_status_spinner);
+
+        ArrayAdapter<String> maritalStatusAdapter = new ArrayAdapter<String>(getActivity(),
+                android.R.layout.simple_spinner_item, getResources().getStringArray(R.array.marital_status_array));
+        maritalStatusAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        marital_status_spinner.setAdapter(maritalStatusAdapter);
+        marital_status_spinner.setOnItemSelectedListener(maritalStatusItemSelectedListener);
+
+        nationality_spinner = (MaterialSpinner)v.findViewById(R.id.nationality_spinner);
+
+        ArrayAdapter<String> nationalityAdapter = new ArrayAdapter<String>(getActivity(),
+                android.R.layout.simple_spinner_item, getResources().getStringArray(R.array.nationality_array));
+        nationalityAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        nationality_spinner.setAdapter(nationalityAdapter);
+        nationality_spinner.setOnItemSelectedListener(nationalityItemSelectedListener);
+
+        religion_spinner = (MaterialSpinner)v.findViewById(R.id.religion_spinner);
+
+        ArrayAdapter<String> religionAdapter = new ArrayAdapter<String>(getActivity(),
+                android.R.layout.simple_spinner_item, getResources().getStringArray(R.array.religion_array));
+        religionAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        religion_spinner.setAdapter(religionAdapter);
+        religion_spinner.setOnItemSelectedListener(religionItemSelectedListener);
+
+        dob_et = (MaterialEditText)v.findViewById(R.id.dob_et);
+        dob_et.setLongClickable(false);
+        final Drawable purchase_date_drawable = getResources().getDrawable(R.drawable.ic_calendar);
+        final Drawable clear_purchase_date_drawable = getResources().getDrawable(R.drawable.ic_clear);
+
+        dob_et.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                    if (dob_et.getCompoundDrawables()[2] == null)
+                        return false;
+
+                    if (EditTextUtils.isEmpty(dob_et) && event.getX() > dob_et.getWidth() - dob_et.getPaddingRight() - purchase_date_drawable.getIntrinsicWidth()) {
+                        ((BaseFragmentActivity) getActivity()).hideSoftKeyPad();
+                        ((BaseFragmentActivity) getActivity()).setDateResultTo(dob_et, null, false);
+                        ((BaseFragmentActivity)getActivity()).showDialog(BaseFragmentActivity.DATE_PICKER_ID);
+                    } else if (!EditTextUtils.isEmpty(dob_et) && event.getX() > dob_et.getWidth() - dob_et.getPaddingRight() - clear_purchase_date_drawable.getIntrinsicWidth()) {
+                        dob_et.setText("");
+                    }
+                    return true;
+                }
+                else
+                    return false;
+            }
+        });
+        dob_et.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -328,33 +310,99 @@ public class UserProfileFragment extends BaseAbstractFragment<UserProfileFragmen
 
             @Override
             public void afterTextChanged(Editable s) {
-
-                if (EditTextUtils.getText(dobEt).length() == 0) {
-                    dobEt.setCompoundDrawablesWithIntrinsicBounds(null, null, purchase_date_drawable, null);
-                } else if (EditTextUtils.getText(dobEt).length() > 0) {
-                    dobEt.setCompoundDrawablesWithIntrinsicBounds(null, null, clear_purchase_date_drawable, null);
+                if (EditTextUtils.getText(dob_et).length() == 0) {
+                    dob_et.setCompoundDrawablesWithIntrinsicBounds(null,null,purchase_date_drawable,null);
+                } else if (EditTextUtils.getText(dob_et).length() > 0) {
+                    dob_et.setCompoundDrawablesWithIntrinsicBounds(null,null,clear_purchase_date_drawable,null);
                 }
             }
         });
 
-        createProfileBttn.setOnClickListener(updateProfileOnClickListener);
+        aadhaar_number_et = (MaterialEditText)v.findViewById(R.id.aadhaar_number_et);
+        edit_profile_address_iv = (AppCompatImageView)v.findViewById(R.id.edit_profile_address_iv);
+        edit_profile_address_iv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AddEditAddressDialog addEditAddressDialog = new AddEditAddressDialog(getActivity(), addressAddOrUpdateInputListener, visibleCurrentLocation);
+                addEditAddressDialog.show();
+            }
+        });
+        profile_default_address_tv = (AppCompatTextView)v.findViewById(R.id.profile_default_address_tv);
 
-        mScrollView = v.findViewById(R.id.scroll);
-        mScrollView.setScrollViewCallbacks(this);
-        dobEt.setOnFocusChangeListener((view, hasFocus) -> {
-                    if (hasFocus) {
-                        ((BaseFragmentActivity<BaseViewModal>) getActivity()).hideSoftKeyPad();
-                    }
-                }
-        );
+        emailEt = v.findViewById(R.id.email_et);
+        mobile_et = v.findViewById(R.id.mobile_et);
 
-        return v;
+        countryCodesList = Arrays.asList(getResources().getStringArray(R.array.CountryCodes));
+
+        countryCodeLay = v.findViewById(R.id.country_lay);
+        countryFlagTv = v.findViewById(R.id.flag_tv);
+        countryFlagIv = v.findViewById(R.id.flag_iv);
+        countryISDCodeTv = v.findViewById(R.id.country_mobile_code_tv);
+        //countryFlagTv.setText(localeToEmoji("IN"));
+        String countryID = ((UserProfileActivity) getActivity()).getCountryID();
+        /*countryFlagIv.setImageResource(getActivity().getResources().getIdentifier("drawable/"
+                + countryID, null, getActivity().getPackageName()));*/
+        Glide.with(getActivity())
+                .load(getActivity().getResources().getIdentifier("drawable/" + countryID, null, getActivity().getPackageName()))
+                .apply(RequestOptions
+                        .noTransformation()
+                        .centerInside()
+                        .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
+                        .circleCrop())
+                .into(countryFlagIv);
+        countryISDCodeTv.setText(countryID/*"+" + ((UserProfileActivity) getActivity()).getCountryDialCode()*/);
+        countryIsdCode = ((UserProfileActivity) getActivity()).getCountryDialCode();
+    }
+
+    AddEditAddressDialog.AddressAddOrUpdateInputListener addressAddOrUpdateInputListener = new AddEditAddressDialog.AddressAddOrUpdateInputListener() {
+        @Override
+        public void onAddressAddOrUpdateInputCompleted(AddressModel addressModel) {
+            visibleCurrentLocation = addressModel;
+            fillLocationDetails();
+        }
+    };
+
+    private void fillLocationDetails() {
+
+        String addProfileDefaultAddressHint = getFormattedAddress();
+        profile_default_address_tv.setText(addProfileDefaultAddressHint);
+    }
+
+    private String getFormattedAddress() {
+
+        String completeAddress = null;
+
+        if (visibleCurrentLocation != null) {
+            StringBuilder stringBuilder = new StringBuilder();
+            if (visibleCurrentLocation.getName() != null && visibleCurrentLocation.getName().length() > 0)
+                stringBuilder.append(visibleCurrentLocation.getName() + " ");
+            if (visibleCurrentLocation.getAddressLine1() != null && visibleCurrentLocation.getAddressLine1().length() > 0)
+                stringBuilder.append(visibleCurrentLocation.getAddressLine1() + " ");
+            if (visibleCurrentLocation.getAddressLine2() != null && visibleCurrentLocation.getAddressLine2().length() > 0)
+                stringBuilder.append(visibleCurrentLocation.getAddressLine2() + " ");
+            if (visibleCurrentLocation.getCity() != null && visibleCurrentLocation.getCity().length() > 0)
+                stringBuilder.append(visibleCurrentLocation.getCity() + " ");
+            if (visibleCurrentLocation.getDistrict() != null && visibleCurrentLocation.getDistrict().length() > 0)
+                stringBuilder.append(visibleCurrentLocation.getDistrict() + " ");
+            if (visibleCurrentLocation.getStateCode() != null && visibleCurrentLocation.getStateCode().length() > 0)
+                stringBuilder.append(visibleCurrentLocation.getStateCode() + " ");
+            if (visibleCurrentLocation.getCountry() != null && visibleCurrentLocation.getCountry().length() > 0)
+                stringBuilder.append(visibleCurrentLocation.getCountry() + " ");
+            if (visibleCurrentLocation.getPinCode() != null && visibleCurrentLocation.getPinCode().length() > 0)
+                stringBuilder.append(" - " + visibleCurrentLocation.getPinCode());
+
+            completeAddress = stringBuilder.toString();
+        }
+
+        return completeAddress;
     }
 
     View.OnClickListener updateProfileOnClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-
+            mViewModal.validateRegistrationDetails(EditTextUtils.getText(first_name_input_et), EditTextUtils.getText(last_name_input_et), gender_rg.getCheckedRadioButtonId(),
+                    selectedMaritalStatus, selectedNationality, selectedReligion, EditTextUtils.getText(mobile_et), EditTextUtils.getText(emailEt), EditTextUtils.getText(dob_et),
+                    EditTextUtils.getText(aadhaar_number_et), visibleCurrentLocation);
         }
     };
 
@@ -412,12 +460,47 @@ public class UserProfileFragment extends BaseAbstractFragment<UserProfileFragmen
 
     @Override
     public void failedToProcess(String errorMsg) {
+        ((UserProfileActivity)getActivity()).dismissProgressDialog();
+        if(errorMsg != null && errorMsg.length() > 0){
 
+            OnClickListener onClickListener = new OnClickListener() {
+                @Override
+                public void onClick(DialogPlus dialog, View view) {
+                    switch (view.getId()){
+                        case R.id.positive_btn:
+                        {
+                            dialog.dismiss();
+                            break;
+                        }
+                    }
+                }
+            };
+
+            ((UserProfileActivity)getActivity()).showError(errorMsg, onClickListener, getResources().getString(R.string.ok), null, DialogIconCodes.DIALOG_FAILED.getIconCode());
+        }
     }
 
     @Override
     public void updateUserProfile(String msg) {
+        ((UserProfileActivity)getActivity()).dismissProgressDialog();
+        if(msg != null && msg.length() > 0){
 
+            OnClickListener onClickListener = new OnClickListener() {
+                @Override
+                public void onClick(DialogPlus dialog, View view) {
+                    switch (view.getId()){
+                        case R.id.positive_btn:
+                        {
+                            dialog.dismiss();
+                            getActivity().finish();
+                            break;
+                        }
+                    }
+                }
+            };
+
+            ((UserProfileActivity)getActivity()).showError(msg, onClickListener, getResources().getString(R.string.ok), null, DialogIconCodes.DIALOG_SUCCESS.getIconCode());
+        }
     }
 
     @Override
@@ -437,13 +520,85 @@ public class UserProfileFragment extends BaseAbstractFragment<UserProfileFragmen
 
     @Override
     public void loadUserProfileDetails(final UserProfileTable userProfileTable){
+        customerProfile = userProfileTable;
         if(getActivity() != null){
             getActivity().runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
                     try{
+
+                        if(customerProfile.getTitle() != null){
+                            selectedPrefix = customerProfile.getTitle();
+                            String[] titleArray = getResources().getStringArray(R.array.prefix_array);
+                            if(titleArray != null && titleArray.length > 0){
+                                for(int i = 0; i < titleArray.length; i++){
+                                    if(selectedPrefix.equalsIgnoreCase(titleArray[i])){
+                                        prefix_spinner.setSelection(i+1);
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+
                         if (customerProfile.getFirstName() != null) {
-                            nameEt.setText(customerProfile.getFirstName());
+                            first_name_input_et.setText(customerProfile.getFirstName());
+                        }
+                        if (customerProfile.getMiddleName()!= null) {
+                            middle_name_input_et.setText(customerProfile.getMiddleName());
+                        }
+                        if (customerProfile.getLastName() != null) {
+                            last_name_input_et.setText(customerProfile.getLastName());
+                        }
+
+                        if(customerProfile.getGender() != null){
+                            if (customerProfile.getGender().startsWith("M")) {
+                                gender_rg.check(R.id.rb_male);
+                            } else if (customerProfile.getGender().startsWith("F")) {
+                                gender_rg.check(R.id.rb_female);
+                            }
+                        }
+
+                        if(customerProfile.getMaritalStatus() != null){
+                            selectedMaritalStatus = customerProfile.getMaritalStatus();
+                            String[] maritalStatusArray = getResources().getStringArray(R.array.marital_status_array);
+                            if(maritalStatusArray != null && maritalStatusArray.length > 0){
+                                for(int i = 0; i < maritalStatusArray.length; i++){
+                                    if(selectedMaritalStatus.equalsIgnoreCase(maritalStatusArray[i])){
+                                        marital_status_spinner.setSelection(i+1);
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+
+                        if(customerProfile.getNationality() != null){
+                            selectedNationality = customerProfile.getNationality();
+                            String[] nationalityArray = getResources().getStringArray(R.array.nationality_array);
+                            if(nationalityArray != null && nationalityArray.length > 0){
+                                for(int i = 0; i < nationalityArray.length; i++){
+                                    if(selectedNationality.equalsIgnoreCase(nationalityArray[i])){
+                                        nationality_spinner.setSelection(i+1);
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+
+                        if(customerProfile.getReligion() != null){
+                            selectedReligion = customerProfile.getReligion();
+                            String[] religionArray = getResources().getStringArray(R.array.religion_array);
+                            if(religionArray != null && religionArray.length > 0){
+                                for(int i = 0; i < religionArray.length; i++){
+                                    if(selectedReligion.equalsIgnoreCase(religionArray[i])){
+                                        religion_spinner.setSelection(i+1);
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+
+                        if (customerProfile.getMobileNumber() != null) {
+                            mobile_et.setText(customerProfile.getMobileNumber());
                         }
 
                         if (customerProfile.getIsdCode() != null) {
@@ -456,12 +611,12 @@ public class UserProfileFragment extends BaseAbstractFragment<UserProfileFragmen
 
                                     LOG.d("CountryISOCode", "" + g[0]);
                                     String ISOCode = g[0];
-                                    countryCodeTv.setText("");
-                                    countryCodeTv.setText("+" + ISOCode);
-                                    countryCodeTv.invalidate();
-                                    countryCodeTv.setClickable(false);
-                                    countryCodeTv.setLongClickable(false);
-                                    countryCodeTv.setFocusable(false);
+                                    countryISDCodeTv.setText("");
+                                    countryISDCodeTv.setText("+" + ISOCode);
+                                    countryISDCodeTv.invalidate();
+                                    countryISDCodeTv.setClickable(false);
+                                    countryISDCodeTv.setLongClickable(false);
+                                    countryISDCodeTv.setFocusable(false);
                                     prefixLL.setClickable(false);
                                     prefixLL.setLongClickable(false);
                                     prefixLL.setFocusable(false);
@@ -470,29 +625,38 @@ public class UserProfileFragment extends BaseAbstractFragment<UserProfileFragmen
                             }
                         }
 
-                        if (customerProfile.getGender() != null) {
-                            if (customerProfile.getGender().startsWith("M")) {
-                                genderRG.check(R.id.rb_male);
-                            } else if (customerProfile.getGender().startsWith("F")) {
-                                genderRG.check(R.id.rb_female);
-                            }
+                        if (customerProfile.getEmail() != null) {
+                            emailEt.setText(customerProfile.getEmail());
                         }
 
                         if (customerProfile.getDateOfBirth() > 0) {
                             String formattedDob = Util.getDateString(customerProfile.getDateOfBirth());
-                            dobEt.setText(formattedDob);
+                            dob_et.setText(formattedDob);
                         }
-                        if (customerProfile.getEmail() != null) {
-                            emailEt.setText(customerProfile.getEmail());
+
+                        if(customerProfile.getAadhaarNumber() != null){
+                            aadhaar_number_et.setText(customerProfile.getAadhaarNumber());
                         }
-                        if (customerProfile.getMobileNumber() != null) {
-                            inputMobileNumber.setText(customerProfile.getMobileNumber());
-                        }
+
+                        mViewModal.loadUserAddress(customerProfile.getUniqueId());
 
                     }catch (Exception e){
                         e.printStackTrace();
 
                     }
+                }
+            });
+        }
+    }
+
+    @Override
+    public void loadUserProfilAddressDetails(AddressModel addressModel) {
+        visibleCurrentLocation = addressModel;
+        if(getActivity() != null){
+            getActivity().runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    fillLocationDetails();
                 }
             });
         }

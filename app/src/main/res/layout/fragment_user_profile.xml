@@ -112,81 +112,113 @@
                 android:orientation="vertical"
                 android:padding="10dp">
 
-                <android.support.v7.widget.AppCompatTextView
-                    android:id="@+id/customer_type_tv"
-                    style="@style/semi_bold_14sp"
+                <LinearLayout
+                    android:id="@+id/prefix_spinner_ll"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="@string/customer_type"
-                    android:textAllCaps="false"
-                    android:textColor="@color/colorPrimary"
-                    android:textDirection="locale"
-                    android:visibility="gone" />
+                    android:weightSum="1">
 
-                <RadioGroup
-                    android:id="@+id/customer_type_rg"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="3dp"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:visibility="gone">
-
-                    <android.support.v7.widget.AppCompatRadioButton
-                        android:id="@+id/rb_individual"
-                        style="@style/semi_bold_14sp"
-                        android:layout_width="wrap_content"
+                    <com.hapis.customer.ui.custom.MaterialSpinner
+                        android:id="@+id/prefix_spinner"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="15dp"
-                        android:layout_marginRight="15dp"
-                        android:buttonTint="@color/colorPrimary"
-                        android:text="@string/individual"
-                        android:textColor="@color/colorPrimary"
-                        android:textDirection="locale" />
-
-                    <android.support.v7.widget.AppCompatRadioButton
-                        android:id="@+id/rb_organisation"
-                        style="@style/semi_bold_14sp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:buttonTint="@color/colorPrimary"
-                        android:text="@string/organisation"
-                        android:textColor="@color/colorPrimary"
-                        android:textDirection="locale" />
-                </RadioGroup>
+                        android:layout_weight="1"
+                        android:background="@android:color/transparent"
+                        android:entries="@array/prefix_array"
+                        app:ms_alignLabels="true"
+                        app:ms_arrowSize="14dp"
+                        app:ms_baseColor="@color/app_dark_color"
+                        app:ms_dropDownTitleColor="@color/app_dark_color"
+                        app:ms_enableErrorLabel="true"
+                        app:ms_enableFloatingLabel="true"
+                        app:ms_errorColor="@color/error"
+                        app:ms_floatingLabelColor="@color/hint_color"
+                        app:ms_floatingLabelText="@string/prefix"
+                        app:ms_highlightColor="@color/colorPrimary"
+                        app:ms_hint="@string/select_prefix"
+                        app:ms_hintColor="@color/hint_color"
+                        app:ms_multiline="true"
+                        app:ms_thickness=".5dp"/>
+                </LinearLayout>
 
                 <com.hapis.customer.ui.custom.materialedittext.MaterialEditText
-                    android:id="@+id/name_et"
-                    style="@style/semi_bold_14sp"
+                    android:id="@+id/first_name_input_et"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:hint="@string/name"
-                    android:inputType="textNoSuggestions"
+                    android:hint="@string/hint_first_name"
                     android:maxLines="1"
                     android:textAllCaps="false"
-                    android:textColorHint="#9e9e9e"
-                    android:textDirection="locale"
+                    android:textColorHint="@color/colorPrimary"
+                    android:textSize="16sp"
+                    android:imeOptions="actionNext"
+                    android:inputType="textPersonName"
+                    android:longClickable="false"
+                    android:maxLength="@integer/NAME_MAX_LENGTH"
                     app:met_baseColor="#616161"
                     app:met_floatingLabel="normal"
-                    app:met_floatingLabelText="@string/name"
+                    app:met_floatingLabelText="@string/hint_first_name"
                     app:met_floatingLabelTextColor="#9e9e9e"
                     app:met_primaryColor="#616161"
                     app:met_textColor="@color/app_dark_color"
                     app:met_textColorHint="#9e9e9e"
-                    app:met_underlineColor="#616161" />
+                    app:met_underlineColor="#616161"/>
+
+                <com.hapis.customer.ui.custom.materialedittext.MaterialEditText
+                    android:id="@+id/middle_name_input_et"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:hint="@string/hint_middle_name"
+                    android:maxLines="1"
+                    android:textAllCaps="false"
+                    android:textColorHint="@color/colorPrimary"
+                    android:textSize="16sp"
+                    android:imeOptions="actionNext"
+                    android:inputType="textPersonName"
+                    android:longClickable="false"
+                    android:maxLength="@integer/NAME_MAX_LENGTH"
+                    app:met_baseColor="#616161"
+                    app:met_floatingLabel="normal"
+                    app:met_floatingLabelText="@string/hint_middle_name"
+                    app:met_floatingLabelTextColor="#9e9e9e"
+                    app:met_primaryColor="#616161"
+                    app:met_textColor="@color/app_dark_color"
+                    app:met_textColorHint="#9e9e9e"
+                    app:met_underlineColor="#616161"/>
+
+                <com.hapis.customer.ui.custom.materialedittext.MaterialEditText
+                    android:id="@+id/last_name_input_et"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:hint="@string/hint_last_name"
+                    android:maxLines="1"
+                    android:textAllCaps="false"
+                    android:textColorHint="@color/colorPrimary"
+                    android:textSize="16sp"
+                    android:imeOptions="actionNext"
+                    android:inputType="textPersonName"
+                    android:longClickable="false"
+                    android:maxLength="@integer/NAME_MAX_LENGTH"
+                    app:met_baseColor="#616161"
+                    app:met_floatingLabel="normal"
+                    app:met_floatingLabelText="@string/hint_last_name"
+                    app:met_floatingLabelTextColor="#9e9e9e"
+                    app:met_primaryColor="#616161"
+                    app:met_textColor="@color/app_dark_color"
+                    app:met_textColorHint="#9e9e9e"
+                    app:met_underlineColor="#616161"/>
 
                 <android.support.v7.widget.AppCompatTextView
                     android:id="@+id/gender_tv"
-                    style="@style/semi_bold_14sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:text="@string/gender"
+                    style="@style/semi_bold_14sp"
                     android:textAllCaps="false"
-                    android:textColor="@color/colorPrimary"
-                    android:textDirection="locale" />
+                    android:textColor="@color/colorPrimary"/>
 
                 <RadioGroup
                     android:id="@+id/gender_rg"
@@ -198,226 +230,254 @@
 
                     <android.support.v7.widget.AppCompatRadioButton
                         android:id="@+id/rb_male"
-                        style="@style/semi_bold_14sp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="15dp"
                         android:layout_marginRight="15dp"
                         android:buttonTint="@color/colorPrimary"
                         android:text="@string/male"
-                        android:textColor="@color/colorPrimary"
-                        android:textDirection="locale" />
+                        style="@style/semi_bold_14sp"
+                        android:textColor="@color/colorPrimary" />
 
                     <android.support.v7.widget.AppCompatRadioButton
                         android:id="@+id/rb_female"
-                        style="@style/semi_bold_14sp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:buttonTint="@color/colorPrimary"
                         android:text="@string/female"
-                        android:textColor="@color/colorPrimary"
-                        android:textDirection="locale" />
+                        style="@style/semi_bold_14sp"
+                        android:textColor="@color/colorPrimary" />
                 </RadioGroup>
 
                 <LinearLayout
+                    android:id="@+id/marital_status_spinner_ll"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:weightSum="1">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
+                    <com.hapis.customer.ui.custom.MaterialSpinner
+                        android:id="@+id/marital_status_spinner"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                        android:layout_weight="1"
+                        android:background="@android:color/transparent"
+                        android:entries="@array/marital_status_array"
+                        app:ms_alignLabels="true"
+                        app:ms_arrowSize="14dp"
+                        app:ms_baseColor="@color/app_dark_color"
+                        app:ms_dropDownTitleColor="@color/app_dark_color"
+                        app:ms_enableErrorLabel="true"
+                        app:ms_enableFloatingLabel="true"
+                        app:ms_errorColor="@color/error"
+                        app:ms_floatingLabelColor="@color/hint_color"
+                        app:ms_floatingLabelText="@string/marital_status"
+                        app:ms_highlightColor="@color/colorPrimary"
+                        app:ms_hint="@string/select_marital_status"
+                        app:ms_hintColor="@color/hint_color"
+                        app:ms_multiline="true"
+                        app:ms_thickness=".5dp"/>
+                </LinearLayout>
 
-                        <com.hapis.customer.ui.custom.materialedittext.MaterialEditText
-                            android:id="@+id/dob_et"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:drawableEnd="@drawable/ic_calendar"
-                            android:drawableRight="@drawable/ic_calendar"
-                            android:drawablePadding="5dp"
-                            android:hint="@string/birthday"
-                            android:maxLines="1"
-                            android:textAllCaps="false"
-                            android:textColorHint="@color/colorPrimary"
-                            android:textDirection="locale"
-                            android:textSize="16sp"
-                            app:met_baseColor="#616161"
-                            app:met_floatingLabel="normal"
-                            app:met_floatingLabelText="@string/birthday"
-                            app:met_floatingLabelTextColor="#9e9e9e"
-                            app:met_primaryColor="#616161"
-                            app:met_textColor="@color/app_dark_color"
-                            app:met_textColorHint="#9e9e9e"
-                            app:met_underlineColor="#616161" />
+                <LinearLayout
+                    android:id="@+id/nationality_spinner_ll"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:weightSum="1">
 
-                        <RelativeLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginStart="-30dp"
-                            android:layout_marginLeft="-30dp"
-                            android:layout_marginTop="10dp"
-                            android:visibility="gone">
+                    <com.hapis.customer.ui.custom.MaterialSpinner
+                        android:id="@+id/nationality_spinner"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@android:color/transparent"
+                        android:entries="@array/nationality_array"
+                        app:ms_alignLabels="true"
+                        app:ms_arrowSize="14dp"
+                        app:ms_baseColor="@color/app_dark_color"
+                        app:ms_dropDownTitleColor="@color/app_dark_color"
+                        app:ms_enableErrorLabel="true"
+                        app:ms_enableFloatingLabel="true"
+                        app:ms_errorColor="@color/error"
+                        app:ms_floatingLabelColor="@color/hint_color"
+                        app:ms_floatingLabelText="@string/nationality"
+                        app:ms_highlightColor="@color/colorPrimary"
+                        app:ms_hint="@string/select_nationality"
+                        app:ms_hintColor="@color/hint_color"
+                        app:ms_multiline="true"
+                        app:ms_thickness=".5dp"/>
+                </LinearLayout>
 
-                            <ImageButton
-                                android:id="@+id/clear_dob_edittext"
-                                style="?android:buttonBarButtonStyle"
-                                android:layout_width="16dp"
-                                android:layout_height="16dp"
-                                android:textDirection="locale"
-                                android:visibility="gone"
-                                app:srcCompat="@drawable/ic_clear" />
+                <LinearLayout
+                    android:id="@+id/religion_spinner_ll"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:weightSum="1">
 
-                            <ImageButton
-                                android:id="@+id/calendar_edittext"
-                                style="?android:buttonBarButtonStyle"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textDirection="locale"
-                                android:visibility="visible"
-                                app:srcCompat="@drawable/ic_calendar" />
-
-                        </RelativeLayout>
-                    </LinearLayout>
-
+                    <com.hapis.customer.ui.custom.MaterialSpinner
+                        android:id="@+id/religion_spinner"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@android:color/transparent"
+                        android:entries="@array/religion_array"
+                        app:ms_alignLabels="true"
+                        app:ms_arrowSize="14dp"
+                        app:ms_baseColor="@color/app_dark_color"
+                        app:ms_dropDownTitleColor="@color/app_dark_color"
+                        app:ms_enableErrorLabel="true"
+                        app:ms_enableFloatingLabel="true"
+                        app:ms_errorColor="@color/error"
+                        app:ms_floatingLabelColor="@color/hint_color"
+                        app:ms_floatingLabelText="@string/religion"
+                        app:ms_highlightColor="@color/colorPrimary"
+                        app:ms_hint="@string/select_religion"
+                        app:ms_hintColor="@color/hint_color"
+                        app:ms_multiline="true"
+                        app:ms_thickness=".5dp"/>
                 </LinearLayout>
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp">
 
-                    <LinearLayout
-                        android:id="@+id/country_lay"
-                        android:layout_width="wrap_content"
-                        android:layout_height="40dp"
-                        android:layout_marginTop="3dp"
-                        android:layout_marginEnd="5dp"
-                        android:layout_marginRight="5dp"
-                        android:background="@drawable/bottom_underline_stroke"
-                        android:gravity="center"
-                        android:orientation="horizontal"
-                        android:paddingStart="3dp"
-                        android:paddingLeft="3dp"
-                        android:paddingEnd="3dp"
-                        android:paddingRight="3dp">
-
-                        <android.support.v7.widget.AppCompatTextView
-                            android:id="@+id/flag_tv"
-                            style="@style/regular_14sp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:lineSpacingExtra="22.7sp"
-                            android:textColor="@color/app_dark_color"
-                            android:textDirection="locale"
-                            android:visibility="gone" />
-
-                        <!--<android.support.v7.widget.CardView
-                            android:layout_width="26dp"
-                            android:layout_height="26dp"
-                            android:layout_centerHorizontal="true"
-                            android:shape="ring"
-                            app:cardBackgroundColor="@color/transparent"
-                            app:cardCornerRadius="13dp"
-                            app:cardElevation="0dp">
-
-                            <RelativeLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent">-->
-
-                                <android.support.v7.widget.AppCompatImageView
-                                    android:id="@+id/flag_iv"
-                                    android:layout_width="@dimen/country_flag"
-                                    android:layout_height="@dimen/country_flag"
-                                    android:adjustViewBounds="true"/>
-                            <!--</RelativeLayout>
-                        </android.support.v7.widget.CardView>-->
-
-                        <android.support.v7.widget.AppCompatTextView
-                            android:id="@+id/country_mobile_code_tv"
-                            style="@style/regular_14sp"
-                            android:layout_width="40dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="2dp"
-                            android:layout_marginLeft="2dp"
-                            android:layout_marginEnd="3dp"
-                            android:layout_marginRight="3dp"
-                            android:background="@color/transparent"
-                            android:gravity="center"
-                            android:lineSpacingExtra="22.7sp"
-                            android:text="+ 888"
-                            android:textAllCaps="true"
-                            android:textColor="@color/app_dark_color"
-                            android:textDirection="locale" />
-
-                        <android.support.v7.widget.AppCompatImageView
-                            android:layout_width="10dp"
-                            android:layout_height="10dp"
-                            android:adjustViewBounds="true"
-                            android:scaleType="centerInside"
-                            android:src="@drawable/drop_down_arrow" />
-                    </LinearLayout>
-
-                    <android.support.design.widget.TextInputLayout
-                        android:id="@+id/input_lay_mobile_no"
+                    <com.hapis.customer.ui.custom.materialedittext.MaterialEditText
+                        android:id="@+id/mobile_et"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_toEndOf="@+id/country_lay"
-                        android:layout_toRightOf="@+id/country_lay"
-                        android:textColorHint="@color/md_grey_500"
-                        android:textDirection="locale"
-                        app:hintAnimationEnabled="true"
-                        app:hintEnabled="true">
+                        android:layout_marginTop="5dp"
+                        android:maxLines="1"
+                        android:digits="0123456789"
+                        android:textAllCaps="false"
+                        android:textColorHint="@color/colorPrimary"
+                        android:textSize="16sp"
+                        android:hint="@string/mobile"
+                        android:imeOptions="actionNext"
+                        android:inputType="phone"
+                        android:longClickable="false"
+                        android:maxLength="@integer/MOBILE_NO_LENGTH"
+                        android:paddingLeft="100dp"
+                        app:met_baseColor="#616161"
+                        app:met_floatingLabel="normal"
+                        app:met_floatingLabelText="@string/hint_mobile"
+                        app:met_floatingLabelTextColor="#9e9e9e"
+                        app:met_primaryColor="#616161"
+                        app:met_textColor="@color/app_dark_color"
+                        app:met_textColorHint="#9e9e9e"
+                        app:met_underlineColor="#616161"/>
 
-                        <android.support.design.widget.TextInputEditText
-                            android:id="@+id/input_mobile_no"
-                            style="@style/regular_14sp"
-                            android:layout_width="match_parent"
-                            android:layout_height="40dp"
-                            android:gravity="center_vertical"
-                            android:imeOptions="actionNext"
-                            android:inputType="textEmailAddress"
-                            android:longClickable="false"
-                            android:paddingStart="@dimen/_6dp"
-                            android:paddingLeft="@dimen/_6dp"
-                            android:paddingEnd="32dp"
-                            android:paddingRight="32dp"
-                            android:textColor="@color/app_dark_color"
-                            android:textDirection="locale" />
-                    </android.support.design.widget.TextInputLayout>
+                    <LinearLayout
+                        android:id="@+id/mobile_lay"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:orientation="horizontal">
 
-                    <android.support.v7.widget.AppCompatImageView
-                        android:id="@+id/mobile_edit_iv"
-                        android:layout_width="23dp"
-                        android:layout_height="23dp"
-                        android:layout_alignParentEnd="true"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginEnd="5dp"
-                        android:layout_marginRight="5dp"
-                        app:srcCompat="@drawable/ic_edit_address_place_new_sr" />
+                        <LinearLayout
+                            android:id="@+id/country_lay"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginBottom="2dp"
+                            android:layout_marginRight="12dp"
+                            android:layout_marginTop="2dp"
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            android:paddingLeft="3dp"
+                            android:paddingRight="3dp">
 
+                            <android.support.v7.widget.AppCompatTextView
+                                android:id="@+id/flag_tv"
+                                style="@style/regular_16sp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:visibility="gone" />
+
+                            <android.support.v7.widget.AppCompatImageView
+                                android:id="@+id/flag_iv"
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
+                                android:adjustViewBounds="true"
+                                android:scaleType="centerCrop" />
+
+                            <android.support.v7.widget.AppCompatTextView
+                                android:id="@+id/country_mobile_code_tv"
+                                style="@style/regular_14sp"
+                                android:layout_width="40dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="3dp"
+                                android:layout_marginRight="3dp"
+                                android:background="@color/transparent"
+                                android:gravity="center"
+                                android:text="+ 888"
+                                android:textAllCaps="true"
+                                android:textColor="@color/app_dark_color" />
+
+                            <android.support.v7.widget.AppCompatImageView
+                                android:layout_width="10dp"
+                                android:layout_height="10dp"
+                                android:adjustViewBounds="true"
+                                android:scaleType="centerInside"
+                                android:src="@drawable/drop_down_arrow" />
+                        </LinearLayout>
+                    </LinearLayout>
                 </RelativeLayout>
 
-                <com.hapis.customer.ui.custom.materialedittext.MaterialEditText
+                <com.hapis.customer.ui.custom.InstantAutoCompleteTextView
                     android:id="@+id/email_et"
+                    android:layout_marginTop="5dp"
                     style="@style/regular_14sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:completionThreshold="1"
+                    android:gravity="center_vertical"
+                    android:hint="@string/hint_email"
+                    android:imeOptions="actionNext"
+                    android:inputType="textEmailAddress"
+                    android:longClickable="false"
+                    android:popupBackground="@drawable/email_id_autocomplete_bg"
+                    android:textColor="@color/app_dark_color"
+                    android:textColorHint="@color/app_dark_color" />
+
+                <com.hapis.customer.ui.custom.materialedittext.MaterialEditText
+                    android:id="@+id/dob_et"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:hint="@string/email_hint"
+                    android:hint="@string/birthday"
                     android:maxLines="1"
                     android:textAllCaps="false"
-                    android:textColorHint="#9e9e9e"
-                    android:textDirection="locale"
+                    android:textColorHint="@color/colorPrimary"
+                    android:textSize="16sp"
+                    android:drawableRight="@drawable/ic_calendar_wrapped"
+                    android:drawablePadding="5dp"
                     app:met_baseColor="#616161"
                     app:met_floatingLabel="normal"
-                    app:met_floatingLabelText="@string/email_hint"
+                    app:met_floatingLabelText="@string/birthday"
                     app:met_floatingLabelTextColor="#9e9e9e"
                     app:met_primaryColor="#616161"
                     app:met_textColor="@color/app_dark_color"
                     app:met_textColorHint="#9e9e9e"
-                    app:met_underlineColor="#616161" />
+                    app:met_underlineColor="#616161"/>
+
+                <com.hapis.customer.ui.custom.materialedittext.MaterialEditText
+                    android:id="@+id/aadhaar_number_et"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:hint="@string/hint_aadhaar_number"
+                    android:maxLines="1"
+                    android:textAllCaps="false"
+                    android:textColorHint="@color/colorPrimary"
+                    android:textSize="16sp"
+                    app:met_baseColor="#616161"
+                    app:met_floatingLabel="normal"
+                    app:met_floatingLabelText="@string/hint_aadhaar_number"
+                    app:met_floatingLabelTextColor="#9e9e9e"
+                    app:met_primaryColor="#616161"
+                    app:met_textColor="@color/app_dark_color"
+                    app:met_textColorHint="#9e9e9e"
+                    app:met_underlineColor="#616161"/>
 
                 <LinearLayout
                     android:id="@+id/profile_address_ll"

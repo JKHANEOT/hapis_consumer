@@ -1810,5 +1810,7 @@
     <string name="payment_pending">Pending</string>
     <string name="insufficient_wallet_balance_plz_recharge_to_continue">Insufficient wallet account balance, please recharge to continue.</string>
     <string name="past_recharges"><u>Past Recharges:</u></string>
+    <string name="update_profile_successful">Update profile successful.</string>
+    <string name="update_profile_failed">Update profile failed.</string>
 
 </resources>

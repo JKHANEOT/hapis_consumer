@@ -25,6 +25,8 @@ public class UserModelResponse extends ResponseMessageModel<UserModel> {
 	/** The message. */
 	private UserModel message;
 
+	private String customerCode;
+
 	/* (non-Javadoc)
 	 * @see com.nhance.messaging.base.ResponseMessageModel#getMessage()
 	 */
@@ -39,6 +41,14 @@ public class UserModelResponse extends ResponseMessageModel<UserModel> {
 	@Override
 	public void setMessage(UserModel message) {
 		this.message = message;
+	}
+
+	public String getCustomerCode() {
+		return customerCode;
+	}
+
+	public void setCustomerCode(String customerCode) {
+		this.customerCode = customerCode;
 	}
 
 	
