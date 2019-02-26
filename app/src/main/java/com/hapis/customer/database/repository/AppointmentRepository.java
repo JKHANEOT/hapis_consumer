@@ -889,7 +889,8 @@ public class AppointmentRepository {
 
                     } catch (Exception e) {
                         e.printStackTrace();
-                        appointmentDetailsCallBack.failedToGetHospitalDetails();
+                        if(appointmentDetailsCallBack != null)
+                            appointmentDetailsCallBack.failedToGetHospitalDetails();
                     }
                 }
             }

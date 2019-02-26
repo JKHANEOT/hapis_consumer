@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/bg_gray"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/title_bar_rl"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary">
+
+        <LinearLayout
+            android:id="@+id/close_dialog_ll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="5dp"
+            android:layout_alignParentLeft="true"
+
+            android:padding="7dp"
+            android:orientation="horizontal"
+            android:layout_alignParentStart="true"
+            android:layout_marginEnd="5dp"
+            android:layout_marginStart="10dp">
+
+            <android.support.v7.widget.AppCompatImageView
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                app:srcCompat="@drawable/ic_clear_white"/>
+
+        </LinearLayout>
+
+        <android.support.v7.widget.AppCompatTextView
+            android:textDirection="locale"
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:gravity="center"
+            android:layout_centerVertical="true"
+            android:text="@string/book_ride"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            style="@style/semi_bold_16sp"/>
+
+    </RelativeLayout>
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/nearest_car_tv"
+        android:layout_below="@+id/title_bar_rl"
+        android:layout_margin="20dp"
+        android:textDirection="locale"
+        style="@style/semi_bold_14sp"
+        android:text="@string/nearest_car"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAllCaps="true"
+        android:textColor="@color/app_dark_color"/>
+
+    <RelativeLayout
+        android:id="@+id/time_away_top_rl"
+        android:layout_below="@+id/nearest_car_tv"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/circle_stroke_app_dark">
+        <RelativeLayout
+            android:id="@+id/time_away_rl"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/circle_app_dark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/time_duration_tv"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:textDirection="locale"
+                style="@style/semi_bold_20sp"
+                android:text="5"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAllCaps="true"
+                android:textColor="@color/white"/>
+
+            <android.support.v7.widget.AppCompatTextView
+                android:layout_below="@+id/time_duration_tv"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="-5dp"
+                android:textDirection="locale"
+                style="@style/regular_10sp"
+                android:text="mins"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/soft_white"/>
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/book_ride_avatar_iv"
+        android:layout_below="@+id/time_away_top_rl"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:scaleType="centerInside"/>
+
+    <RelativeLayout
+        android:layout_below="@+id/book_ride_avatar_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:background="@color/white_50">
+
+        <LinearLayout
+            android:id="@+id/fare_ll"
+            android:layout_marginTop="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="300">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="100"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:textDirection="locale"
+                    style="@style/regular_12sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Minimum"
+                    android:textColor="@color/app_dark_color" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:textDirection="locale"
+                    style="@style/semi_bold_16sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/thirty_five_rs_currency"
+                    android:textColor="#1C8A8D" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="100"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:textDirection="locale"
+                    style="@style/regular_12sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Fare"
+                    android:textColor="@color/app_dark_color" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:textDirection="locale"
+                    style="@style/semi_bold_16sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/five_per_kilometer_rs_currency"
+                    android:textColor="#1C8A8D" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="100"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:textDirection="locale"
+                    style="@style/regular_12sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Pay With"
+                    android:textColor="@color/app_dark_color" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:textDirection="locale"
+                    style="@style/semi_bold_16sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Cash"
+                    android:textColor="#1C8A8D" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_above="@+id/book_ride_tv"
+            android:layout_below="@+id/fare_ll"
+            android:textDirection="locale"
+            style="@style/semi_bold_16sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginBottom="20dp"
+            android:layout_centerHorizontal="true"
+            android:text="Estimate Total Fare"
+            android:textColor="@color/app_dark_color" />
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/book_ride_tv"
+            android:clickable="true"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="10dp"
+            android:textDirection="locale"
+            style="@style/semi_bold_16sp"
+            android:text="@string/book_a_ride"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:background="#1C8A8D"
+            android:layout_height="@dimen/button_height"
+            android:textAllCaps="true"
+            android:textColor="@color/white"/>
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

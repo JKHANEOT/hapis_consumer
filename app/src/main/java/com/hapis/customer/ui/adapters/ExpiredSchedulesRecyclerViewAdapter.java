@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.hapis.customer.R;
@@ -102,12 +103,23 @@ public class ExpiredSchedulesRecyclerViewAdapter extends RecyclerView.Adapter<Re
 
                 generalViewHolder.appointment_date_tv.setText(stringBuilder.toString());
 
+                if(appointmentRequest.getFee() != null && appointmentRequest.getFee().doubleValue() > 0) {
+                    generalViewHolder.fee_val_tv.setText(generalViewHolder.fee_val_tv.getResources().getString(R.string.rs_currency) + " " + Util.getFormattedAmount(appointmentRequest.getFee().doubleValue()));
+                    generalViewHolder.payment_details1_ll.setVisibility(View.VISIBLE);
+                }
+                else {
+                    generalViewHolder.fee_val_tv.setText(generalViewHolder.fee_val_tv.getResources().getString(R.string.rs_currency) + " " + Util.getFormattedAmount(0.0));
+                    generalViewHolder.payment_details1_ll.setVisibility(View.GONE);
+                }
+
                 generalViewHolder.menu_over_flow_img_btn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         showPopupMenu(view, position, appointmentRequest);
                     }
                 });
+
+                generalViewHolder.payment_details2_ll.setVisibility(View.GONE);
 
                 break;
             }
@@ -176,16 +188,21 @@ public class ExpiredSchedulesRecyclerViewAdapter extends RecyclerView.Adapter<Re
         private ImageView hospital_icon;
         private AppCompatImageButton menu_over_flow_img_btn;
         private TextView hospital_title_tv,doctor_title_tv, appointment_date_tv,appointment_address_tv;
+        private LinearLayout payment_details1_ll, payment_details2_ll;
+        private AppCompatTextView fee_val_tv;
 
         public GeneralViewHolder(View v) {
             super(v);
 
             hospital_icon = v.findViewById(R.id.hospital_icon);
+            fee_val_tv = v.findViewById(R.id.fee_val_tv);
             menu_over_flow_img_btn = v.findViewById(R.id.menu_over_flow_img_btn);
             hospital_title_tv = v.findViewById(R.id.hospital_title_tv);
             doctor_title_tv = v.findViewById(R.id.doctor_title_tv);
             appointment_date_tv = v.findViewById(R.id.appointment_date_tv);
             appointment_address_tv = v.findViewById(R.id.appointment_address_tv);
+            payment_details1_ll = v.findViewById(R.id.payment_details1_ll);
+            payment_details2_ll = v.findViewById(R.id.payment_details2_ll);
         }
     }
 

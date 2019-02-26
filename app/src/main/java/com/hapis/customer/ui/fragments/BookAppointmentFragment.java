@@ -1,5 +1,6 @@
 package com.hapis.customer.ui.fragments;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
@@ -19,6 +20,9 @@ import com.hapis.customer.HapisApplication;
 import com.hapis.customer.R;
 import com.hapis.customer.ui.BaseFragmentActivity;
 import com.hapis.customer.ui.BookAppointmentActivity;
+import com.hapis.customer.ui.DashboardActivity;
+import com.hapis.customer.ui.callback.BookRideDialogCallBack;
+import com.hapis.customer.ui.callback.BookRideInitDialogCallBack;
 import com.hapis.customer.ui.callback.CommonSearchCallBack;
 import com.hapis.customer.ui.callback.SelectDateAndTimeSlotCallBack;
 import com.hapis.customer.ui.callback.SelectPreferredLocationCallBack;
@@ -451,59 +455,45 @@ public class BookAppointmentFragment extends BaseAbstractFragment<BookAppointmen
     @Override
     public void createAppointment(String msg) {
         ((BookAppointmentActivity)getActivity()).dismissProgressDialog();
-        AppointmentBookingDetailsDialogFrag dialog = AppointmentBookingDetailsDialogFrag.newInstance(selectedDoctorDetails, selectedEnterpriseRequest, EditTextUtils.getText(select_time_slot_edittext), EditTextUtils.getText(select_date_edittext));
+        AppointmentBookingDetailsDialogFrag dialog = AppointmentBookingDetailsDialogFrag.newInstance(bookRideInitDialogCallBack, selectedDoctorDetails, selectedEnterpriseRequest, EditTextUtils.getText(select_time_slot_edittext), EditTextUtils.getText(select_date_edittext));
         dialog.show(getActivity().getSupportFragmentManager(), AppointmentBookingDetailsDialogFrag.TAG);
-        /*if(msg != null && msg.length() > 0){
 
-            OnClickListener onClickListener = new OnClickListener() {
-                @Override
-                public void onClick(DialogPlus dialog, View view) {
-                    switch (view.getId()){
-                        case R.id.positive_btn:
-                        {
-                            Intent intent = new Intent(getActivity(), DashboardActivity.class);
-                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                            startActivity(intent);
-                            try {
-                                getActivity().finishAffinity();
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                            }
-                            break;
-                        }
-                        case R.id.negative_btn:
-                        {
-                            Intent intent = new Intent(getActivity(), DashboardActivity.class);
-                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                            startActivity(intent);
-                            try {
-                                getActivity().finishAffinity();
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                            }
-                            break;
-                        }
-                    }
-                }
-            };
+    }
 
-            StringBuilder stringBuilder = new StringBuilder();
+    BookRideDialogCallBack bookRideDialogCallBack = new BookRideDialogCallBack() {
+        @Override
+        public void bookRideDone() {
+            moveToDashboard();
+        }
 
-            stringBuilder.append(selectedDoctorDetails.getFullName()+" - "+selectedDoctorDetails.getSpecialization()+"\n");
+        @Override
+        public void bookRideWindowClosed() {
+            moveToDashboard();
+        }
+    };
 
-            EnterpriseAddressRequest enterpriseAddressRequest = null;
+    BookRideInitDialogCallBack bookRideInitDialogCallBack = new BookRideInitDialogCallBack() {
+        @Override
+        public void bookRide(int rideIcon) {
+            BookRideDialogFragment bookRideDialogFragment = BookRideDialogFragment.newInstance(bookRideDialogCallBack, rideIcon);
+            bookRideDialogFragment.show(getActivity().getSupportFragmentManager(), BookRideDialogFragment.TAG);
+        }
 
-            if((selectedEnterpriseRequest.getAddresses() != null && !selectedEnterpriseRequest.getAddresses().isEmpty())){
-                enterpriseAddressRequest = selectedEnterpriseRequest.getAddresses().iterator().next();
-            }
+        @Override
+        public void bookRideSkip() {
+            moveToDashboard();
+        }
+    };
 
-            stringBuilder.append(selectedEnterpriseRequest.getEnterpriseName()+" - "+(enterpriseAddressRequest != null ? enterpriseAddressRequest.getAddressLine1()
-                    + " "+enterpriseAddressRequest.getCity()+ " "+enterpriseAddressRequest.getPostalCode() : "")+"\n");
-            stringBuilder.append("Need Cab ?");
-
-//            ((BookAppointmentActivity)getActivity()).showError(msg, onClickListener, getResources().getString(R.string.ok), null, );
-            AlertUtil.showAlert(getActivity(), msg, stringBuilder.toString(), "Yes", "No", onClickListener, DialogIconCodes.DIALOG_SUCCESS.getIconCode());
-        }*/
+    private void moveToDashboard(){
+        Intent intent = new Intent(getActivity(), DashboardActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+        try {
+            getActivity().finishAffinity();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private double walletBalance = 0.0;

@@ -241,6 +241,8 @@
     </string-array>
 
     <string name="rs_currency">\u20B9</string> <!--ruppee-->
+    <string name="thirty_five_rs_currency">\u20B9 35</string> <!--ruppee-->
+    <string name="five_per_kilometer_rs_currency">\u20B9 5/KM</string> <!--ruppee-->
     <string name="rs">&#36;</string> <!--dollar-->
 
     <string name="Rs1">\u20B9\u00204000</string>
@@ -1812,5 +1814,8 @@
     <string name="past_recharges"><u>Past Recharges:</u></string>
     <string name="update_profile_successful">Update profile successful.</string>
     <string name="update_profile_failed">Update profile failed.</string>
+    <string name="book_a_ride">Book A Ride</string>
+    <string name="nearest_car">Nearest Car</string>
+    <string name="book_ride">Book Ride</string>
 
 </resources>

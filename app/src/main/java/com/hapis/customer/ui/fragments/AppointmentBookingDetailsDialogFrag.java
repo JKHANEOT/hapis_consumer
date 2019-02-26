@@ -25,6 +25,7 @@ import com.google.gson.Gson;
 import com.hapis.customer.R;
 import com.hapis.customer.ui.DashboardActivity;
 import com.hapis.customer.ui.adapters.SelectRideAdapter;
+import com.hapis.customer.ui.callback.BookRideInitDialogCallBack;
 import com.hapis.customer.ui.custom.recyclerviewanimations.RecyclerviewClickListeners;
 import com.hapis.customer.ui.models.appointments.DoctorDetails;
 import com.hapis.customer.ui.models.enterprise.EnterpriseAddressRequest;
@@ -62,8 +63,15 @@ public class AppointmentBookingDetailsDialogFrag extends DialogFragment {
         // Required empty public constructor
     }
 
-    public static AppointmentBookingDetailsDialogFrag newInstance(DoctorDetails selectedDoctorDetails, EnterpriseRequest selectedEnterpriseRequest, String select_time_slot, String appointmentDate) {
+    private BookRideInitDialogCallBack mBookRideInitDialogCallBack;
+
+    public void setBookRideInitDialogCallBack(BookRideInitDialogCallBack bookRideInitDialogCallBack) {
+        mBookRideInitDialogCallBack = bookRideInitDialogCallBack;
+    }
+
+    public static AppointmentBookingDetailsDialogFrag newInstance(BookRideInitDialogCallBack bookRideInitDialogCallBack, DoctorDetails selectedDoctorDetails, EnterpriseRequest selectedEnterpriseRequest, String select_time_slot, String appointmentDate) {
         AppointmentBookingDetailsDialogFrag f = new AppointmentBookingDetailsDialogFrag();
+        f.setBookRideInitDialogCallBack(bookRideInitDialogCallBack);
         Gson gson = new Gson();
         String selectedDoctorDetailsJson = gson.toJson(selectedDoctorDetails);
         String selectedEnterpriseRequestJson = gson.toJson(selectedEnterpriseRequest);
@@ -150,6 +158,8 @@ public class AppointmentBookingDetailsDialogFrag extends DialogFragment {
 
     private SelectRideAdapter mAdapter;
 
+    private int rideIcon;
+
     @Override
     public void onViewCreated(View v, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(v, savedInstanceState);
@@ -202,21 +212,16 @@ public class AppointmentBookingDetailsDialogFrag extends DialogFragment {
         cab_booking_ll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                mBookRideInitDialogCallBack.bookRide(rideIcon);
+                dismiss();
             }
         });
         skip_cab_booking_ll = v.findViewById(R.id.skip_cab_booking_ll);
         skip_cab_booking_ll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), DashboardActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
-                try {
-                    getActivity().finishAffinity();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+                mBookRideInitDialogCallBack.bookRideSkip();
+                dismiss();
             }
         });
         cab_booking_rl = v.findViewById(R.id.cab_booking_rl);
@@ -234,6 +239,8 @@ public class AppointmentBookingDetailsDialogFrag extends DialogFragment {
 //        mAdapter.setSelectedPosition(selectedIndex);
 //        ride_types_rv.scrollToPosition(selectedIndex);
 
+        rideIcon = getDrawableIds()[0];
+
         ride_types_rv.setAdapter(mAdapter);
 
         ride_types_rv.addOnItemTouchListener(new RecyclerviewClickListeners.RecyclerTouchListener(getActivity(),
@@ -242,6 +249,7 @@ public class AppointmentBookingDetailsDialogFrag extends DialogFragment {
             public void onClick(final View view, final int position) {
                 mAdapter.setSelectedPosition(position);
                 mAdapter.notifyDataSetChanged();
+                rideIcon = getDrawableIds()[position];
             }
 
             @Override
