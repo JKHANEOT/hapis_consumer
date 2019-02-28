@@ -1817,5 +1817,19 @@
     <string name="book_a_ride">Book A Ride</string>
     <string name="nearest_car">Nearest Car</string>
     <string name="book_ride">Book Ride</string>
+    <string name="consultation">Consultation Info</string>
+    <string name="payment_information"><u>Payment Information:</u></string>
+    <string name="prescription_label">Prescription</string>
+    <string name="prescription">Prescription</string>
+    <string name="consultation_summary"><u>Consultation Summary:</u></string>
+    <string name="doctor_notes">Doctor Notes</string>
+    <string name="appointment_information"><u>Appointment Information:</u></string>
+    <string name="your_notes">Your Notes</string>
+    <string name="medicine">Medicine</string>
+    <string name="consummation">Consummation (Days)</string>
+    <string name="morning">Morning</string>
+    <string name="BF">BF</string>
+    <string name="AF">AF</string>
+    <string name="no_appointments_visited">No Appointments Visited.</string>
 
 </resources>

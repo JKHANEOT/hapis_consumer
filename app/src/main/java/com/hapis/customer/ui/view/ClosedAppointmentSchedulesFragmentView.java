@@ -5,7 +5,7 @@ import com.hapis.customer.ui.models.appointments.AppointmentRequest;
 
 import java.util.List;
 
-public interface ExpiredSchedulesFragmentView extends BaseView {
+public interface ClosedAppointmentSchedulesFragmentView extends BaseView {
 
     void showError(String errorMsg, OnClickListener onClickListener, String positiveLbl, String negativeLbl, String status);
 

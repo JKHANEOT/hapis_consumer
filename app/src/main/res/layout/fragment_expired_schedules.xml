@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/padding_twenty"
-    tools:context=".ui.fragments.ExpiredSchedulesSchedulesFrag">
+    tools:context=".ui.fragments.ClosedAppointmentSchedulesFrag">
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab_create_an_appointment"
@@ -25,7 +25,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:text="@string/no_payments_pending"
+        android:text="@string/no_appointments_visited"
         android:textAllCaps="false"
         android:textColor="@color/softwhite"
         android:textSize="@dimen/msg_text_large"

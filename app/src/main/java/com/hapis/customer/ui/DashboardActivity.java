@@ -27,7 +27,7 @@ import com.hapis.customer.ui.custom.badges.Badge;
 import com.hapis.customer.ui.custom.badges.BadgeView;
 import com.hapis.customer.ui.custom.dialogplus.DialogPlus;
 import com.hapis.customer.ui.custom.dialogplus.OnClickListener;
-import com.hapis.customer.ui.fragments.ExpiredSchedulesSchedulesFrag;
+import com.hapis.customer.ui.fragments.ClosedAppointmentSchedulesFrag;
 import com.hapis.customer.ui.fragments.MenuMoreDialogFragment;
 import com.hapis.customer.ui.fragments.UpComingSchedulesFrag;
 import com.hapis.customer.ui.utils.AlertUtil;
@@ -139,7 +139,7 @@ public class DashboardActivity extends BaseFragmentActivity<DashboardViewModal> 
                     return true;
                 }
                 case R.id.navigation_history: {
-                    loadFragment(new ExpiredSchedulesSchedulesFrag());
+                    loadFragment(new ClosedAppointmentSchedulesFrag());
                     return true;
                 }
                 case R.id.navigation_inbox: {

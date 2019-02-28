@@ -19,7 +19,7 @@
         <!--card_view:cardUseCompatPadding="true"
         card_view:contentPadding="@dimen/card_view_content_padding"-->
 
-        <RelativeLayout
+        <FrameLayout
             android:id="@+id/item_lay"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -204,10 +204,10 @@
                 android:layout_height="30dp"
                 android:layout_marginEnd="10dp"
                 android:src="@mipmap/menu_overflow"
-                android:layout_alignParentEnd="true"
+                android:layout_gravity="end"
                 android:background="@null"/>
 
-        </RelativeLayout>
+        </FrameLayout>
     </android.support.v7.widget.CardView>
 
 </RelativeLayout>

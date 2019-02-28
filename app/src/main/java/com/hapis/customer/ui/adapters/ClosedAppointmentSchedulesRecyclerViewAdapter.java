@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.hapis.customer.R;
@@ -28,15 +29,15 @@ import java.util.List;
  * Created by Javeed on 2/27/2018.
  */
 
-public class ExpiredSchedulesRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class ClosedAppointmentSchedulesRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
 //    https://krtkush.github.io/2016/07/08/android-recyclerview-grouping-data.html
 
     private List<GroupDataListItem> consolidatedList = new ArrayList<>();
 
-    public ExpiredSchedulesRecyclerViewAdapter(List<GroupDataListItem> consolidatedList, ExpiredScheduleAdapterListeners expiredScheduleAdapterListeners) {
+    public ClosedAppointmentSchedulesRecyclerViewAdapter(List<GroupDataListItem> consolidatedList, ClosedAppointmentScheduleAdapterListeners closedAppointmentScheduleAdapterListeners) {
         this.consolidatedList = consolidatedList;
-        mExpiredScheduleAdapterListeners = expiredScheduleAdapterListeners;
+        mClosedAppointmentScheduleAdapterListeners = closedAppointmentScheduleAdapterListeners;
     }
 
     @Override
@@ -121,6 +122,13 @@ public class ExpiredSchedulesRecyclerViewAdapter extends RecyclerView.Adapter<Re
 
                 generalViewHolder.payment_details2_ll.setVisibility(View.GONE);
 
+                generalViewHolder.view_appointment_details_rl.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        mClosedAppointmentScheduleAdapterListeners.viewConsultationDetails(appointmentRequest, position);
+                    }
+                });
+
                 break;
             }
 
@@ -161,7 +169,7 @@ public class ExpiredSchedulesRecyclerViewAdapter extends RecyclerView.Adapter<Re
             switch (menuItem.getItemId()) {
 
                 case R.id.menu_followup: {
-                    mExpiredScheduleAdapterListeners.followupAppointment(mAppointmentRequest, mPosition);
+                    mClosedAppointmentScheduleAdapterListeners.followupAppointment(mAppointmentRequest, mPosition);
                     return true;
                 }
                 default:
@@ -190,6 +198,7 @@ public class ExpiredSchedulesRecyclerViewAdapter extends RecyclerView.Adapter<Re
         private TextView hospital_title_tv,doctor_title_tv, appointment_date_tv,appointment_address_tv;
         private LinearLayout payment_details1_ll, payment_details2_ll;
         private AppCompatTextView fee_val_tv;
+        private RelativeLayout view_appointment_details_rl;
 
         public GeneralViewHolder(View v) {
             super(v);
@@ -203,12 +212,14 @@ public class ExpiredSchedulesRecyclerViewAdapter extends RecyclerView.Adapter<Re
             appointment_address_tv = v.findViewById(R.id.appointment_address_tv);
             payment_details1_ll = v.findViewById(R.id.payment_details1_ll);
             payment_details2_ll = v.findViewById(R.id.payment_details2_ll);
+            view_appointment_details_rl = v.findViewById(R.id.view_appointment_details_rl);
         }
     }
 
-    private ExpiredScheduleAdapterListeners mExpiredScheduleAdapterListeners;
+    private ClosedAppointmentScheduleAdapterListeners mClosedAppointmentScheduleAdapterListeners;
 
-    public interface ExpiredScheduleAdapterListeners {
+    public interface ClosedAppointmentScheduleAdapterListeners {
         void followupAppointment(final AppointmentRequest appointmentRequest, int selectedIndex);
+        void viewConsultationDetails(final AppointmentRequest appointmentRequest, int selectedIndex);
     }
 }

@@ -1,8 +1,9 @@
 /**
- * 
+ *
  */
 package com.hapis.customer.ui.models.appointments;
 
+import com.hapis.customer.ui.models.consultation.Prescription;
 import com.hapis.customer.ui.models.enterprise.EnterpriseRequest;
 import com.hapis.customer.ui.models.users.UserRequest;
 
@@ -13,11 +14,11 @@ import com.hapis.customer.ui.models.users.UserRequest;
 public class AppointmentRequest extends AppointmentBaseRequest {
 
 	private static final long serialVersionUID = -5950575486385534665L;
-	
+
 	private String appointmentCode;
-	
+
 	private String customerCode;
-	
+
 	private String appointmentDate;
 
 	private UserRequest doctorDetails;
@@ -27,17 +28,17 @@ public class AppointmentRequest extends AppointmentBaseRequest {
 	private EnterpriseRequest enterpriseRequest;
 
 	private String hospitalCode;
-	
+
 	private Integer slotBooked;
-	
+
 	private String externalReference;
-	
+
 	private String patientName;
-	
+
 	private String patientGender;
-	
+
 	private Integer patientAge;
-	
+
 	private String patientRelation;
 
 	private Integer state;
@@ -49,6 +50,12 @@ public class AppointmentRequest extends AppointmentBaseRequest {
 	private String notes;
 
 	private Double fee;
+
+	private String doctorName;
+
+	private String hospitalName;
+
+	private Prescription prescription;
 
 	public String getCustomerCode() {
 		return customerCode;
@@ -192,5 +199,29 @@ public class AppointmentRequest extends AppointmentBaseRequest {
 
 	public void setFee(Double fee) {
 		this.fee = fee;
+	}
+
+	public String getDoctorName() {
+		return doctorName;
+	}
+
+	public void setDoctorName(String doctorName) {
+		this.doctorName = doctorName;
+	}
+
+	public String getHospitalName() {
+		return hospitalName;
+	}
+
+	public void setHospitalName(String hospitalName) {
+		this.hospitalName = hospitalName;
+	}
+
+	public Prescription getPrescription() {
+		return prescription;
+	}
+
+	public void setPrescription(Prescription prescription) {
+		this.prescription = prescription;
 	}
 }

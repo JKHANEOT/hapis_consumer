@@ -20,13 +20,13 @@ import com.hapis.customer.ui.models.users.UserRequest;
 
 import java.util.List;
 
-public class ExpiredSchedulesFragmentViewModal extends BaseViewModal<ExpiredSchedulesFragmentView> {
+public class ClosedAppointmentSchedulesFragmentViewModal extends BaseViewModal<ClosedAppointmentSchedulesFragmentView> {
 
-    private String TAG = ExpiredSchedulesFragmentViewModal.class.getName();
+    private String TAG = ClosedAppointmentSchedulesFragmentViewModal.class.getName();
 
     private AppointmentRepository appointmentRepository;
 
-    public ExpiredSchedulesFragmentViewModal(LifecycleOwner owner) {
+    public ClosedAppointmentSchedulesFragmentViewModal(LifecycleOwner owner) {
         super(owner);
 
         appointmentRepository = new AppointmentRepository();

@@ -13,9 +13,12 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.hapis.customer.R;
+import com.hapis.customer.exception.HapisException;
+import com.hapis.customer.networking.json.JSONAdaptor;
 import com.hapis.customer.ui.BookAppointmentActivity;
+import com.hapis.customer.ui.ConsultationActivity;
 import com.hapis.customer.ui.DashboardActivity;
-import com.hapis.customer.ui.adapters.ExpiredSchedulesRecyclerViewAdapter;
+import com.hapis.customer.ui.adapters.ClosedAppointmentSchedulesRecyclerViewAdapter;
 import com.hapis.customer.ui.adapters.datamodels.DateItem;
 import com.hapis.customer.ui.adapters.datamodels.GroupDataGeneralItem;
 import com.hapis.customer.ui.adapters.datamodels.GroupDataListItem;
@@ -24,8 +27,8 @@ import com.hapis.customer.ui.custom.recyclerviewanimations.RecyclerviewClickList
 import com.hapis.customer.ui.custom.recyclerviewanimations.animators.SlideInUpAnimator;
 import com.hapis.customer.ui.models.appointments.AppointmentRequest;
 import com.hapis.customer.ui.view.BaseView;
-import com.hapis.customer.ui.view.ExpiredSchedulesFragmentView;
-import com.hapis.customer.ui.view.ExpiredSchedulesFragmentViewModal;
+import com.hapis.customer.ui.view.ClosedAppointmentSchedulesFragmentView;
+import com.hapis.customer.ui.view.ClosedAppointmentSchedulesFragmentViewModal;
 import com.hapis.customer.utils.DateUtil;
 
 import java.util.ArrayList;
@@ -34,18 +37,18 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-public class ExpiredSchedulesSchedulesFrag extends BaseAbstractFragment<ExpiredSchedulesFragmentViewModal> implements
-        ExpiredSchedulesFragmentView, ExpiredSchedulesRecyclerViewAdapter.ExpiredScheduleAdapterListeners {
+public class ClosedAppointmentSchedulesFrag extends BaseAbstractFragment<ClosedAppointmentSchedulesFragmentViewModal> implements
+        ClosedAppointmentSchedulesFragmentView, ClosedAppointmentSchedulesRecyclerViewAdapter.ClosedAppointmentScheduleAdapterListeners {
 
-    private static final String TAG = ExpiredSchedulesSchedulesFrag.class.getName();
+    private static final String TAG = ClosedAppointmentSchedulesFrag.class.getName();
 
     private FloatingActionButton createAnAppointment;
 
     private AppCompatTextView list_empty_tv;
     private RecyclerView history_appointments_rv;
-    private ExpiredSchedulesRecyclerViewAdapter mAdapter;
+    private ClosedAppointmentSchedulesRecyclerViewAdapter mAdapter;
 
-    public ExpiredSchedulesSchedulesFrag() {
+    public ClosedAppointmentSchedulesFrag() {
         // Required empty public constructor
     }
 
@@ -85,7 +88,7 @@ public class ExpiredSchedulesSchedulesFrag extends BaseAbstractFragment<ExpiredS
 
     @Override
     protected Class getViewModalClass() {
-        return ExpiredSchedulesFragmentViewModal.class;
+        return ClosedAppointmentSchedulesFragmentViewModal.class;
     }
 
     @Override
@@ -96,6 +99,22 @@ public class ExpiredSchedulesSchedulesFrag extends BaseAbstractFragment<ExpiredS
     @Override
     public void followupAppointment(AppointmentRequest appointmentRequest, int selectedIndex) {
         Toast.makeText(getActivity(), "Clicked to followup", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void viewConsultationDetails(AppointmentRequest appointmentRequest, int selectedIndex) {
+        if(appointmentRequest != null){
+            try {
+                String consultation = JSONAdaptor.toJSON(appointmentRequest);
+                if(consultation != null && consultation.length() > 0){
+                    Intent intent = new Intent(getActivity(), ConsultationActivity.class);
+                    intent.putExtra(ConsultationActivity.APPOINTMENT_DETAILS_TAG, consultation);
+                    getActivity().startActivity(intent);
+                }
+            } catch (HapisException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     @Override
@@ -177,7 +196,7 @@ public class ExpiredSchedulesSchedulesFrag extends BaseAbstractFragment<ExpiredS
                 if (history_appointments_rv != null) {
                     history_appointments_rv.setVisibility(View.VISIBLE);
                     list_empty_tv.setVisibility(View.GONE);
-                    mAdapter = new ExpiredSchedulesRecyclerViewAdapter(consolidatedList, ExpiredSchedulesSchedulesFrag.this);
+                    mAdapter = new ClosedAppointmentSchedulesRecyclerViewAdapter(consolidatedList, ClosedAppointmentSchedulesFrag.this);
                     history_appointments_rv.setAdapter(mAdapter);
                     mAdapter.notifyDataSetChanged();
                 }
